@@ -571,33 +571,43 @@
     .rsec { display: none; padding: 0 28px; }
     .rsec.show { display: block; }
 
+    .rsec.show { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 28px; }
     .ri {
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 0;
-      border-bottom: 1px solid #EDF0F5;
-    }
-    .ri:last-of-type { border-bottom: none; }
-    .ri-nc { flex-shrink: 0; width: 28px; text-align: center; padding-top: 4px; }
-    .ri-n  { font-size: 22px; font-weight: 500; color: #C0CAD6; display: block; line-height: 1; }
-    .ri-n.n1 { color: #C8A84B; }
-    .ri-n.n2 { color: #8A9AAA; }
-    .ri-n.n3 { color: #A08870; }
-    .ri-medal { font-size: 12px; color: #C8A84B; display: block; margin-top: 3px; letter-spacing: 0.05em; }
-    .ri-img {
-      width: 76px;
-      height: 76px;
-      flex-shrink: 0;
-      background: #EBF0F5;
-      border-radius: 4px;
+      flex-direction: column;
+      background: #fff;
       border: 1px solid #D5DAE4;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ri:last-of-type { border-bottom: 1px solid #D5DAE4; }
+    .ri-nc {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 4px;
+      padding: 3px 10px;
+      text-align: center;
+    }
+    .ri-n  { font-size: 20px; font-weight: 700; color: #fff; display: block; line-height: 1; }
+    .ri-n.n1 { color: #C8A84B; }
+    .ri-n.n2 { color: #ccc; }
+    .ri-n.n3 { color: #c8a07a; }
+    .ri-medal { font-size: 11px; color: #C8A84B; display: block; margin-top: 2px; letter-spacing: 0.05em; }
+    .ri-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #EBF0F5;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
+      font-size: 48px;
     }
-    .ri-info { flex: 1; min-width: 0; }
+    .ri-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ri-info { flex: 1; min-width: 0; padding: 14px; }
+    @media (max-width: 700px) { .rsec.show { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 480px) { .rsec.show { grid-template-columns: 1fr !important; } }
     .ri-tag {
       display: inline-block;
       font-size: 14px;
@@ -1057,31 +1067,31 @@
 
     <!-- 義実家 -->
     <div class="rsec show" id="rk-family">
-      <div class="ri"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">毎年贈っている方に</span><div class="ri-name">国産有明海産 老舗の海苔詰め合わせ</div><div class="ri-somm">格式ある老舗の品は、年配の方に「選んでくれた」気持ちが伝わります。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">初めて贈る方に安心</span><div class="ri-name">播州手延べそうめん 特選化粧箱入り</div><div class="ri-somm">地域ブランドの特別感と、夏の定番という安心感が両立します。</div><div class="ri-foot"><span class="ri-price">¥2,980 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">料理好きな方に</span><div class="ri-name">職人仕込みの出汁・醤油 料理ギフトセット</div><div class="ri-somm">料理をされるご両親には、毎日使えるこだわりの調味料が喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,780 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n">4</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">健康を気遣いたい方に</span><div class="ri-name">国産ゆず果汁・ポン酢セット（無添加）</div><div class="ri-somm">体への気遣いが伝わる一品。思いやりを感じてもらえます。</div><div class="ri-foot"><span class="ri-price">¥4,320 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n">5</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">好みが分からない方に</span><div class="ri-name">百貨店監修 和洋菓子詰め合わせ</div><div class="ri-somm">幅広い年代に受け入れられる、安心と信頼のブランド力。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">毎年贈っている方に</span><div class="ri-name">国産有明海産 老舗の海苔詰め合わせ</div><div class="ri-somm">格式ある老舗の品は、年配の方に「選んでくれた」気持ちが伝わります。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">初めて贈る方に安心</span><div class="ri-name">播州手延べそうめん 特選化粧箱入り</div><div class="ri-somm">地域ブランドの特別感と、夏の定番という安心感が両立します。</div><div class="ri-foot"><span class="ri-price">¥2,980 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">料理好きな方に</span><div class="ri-name">職人仕込みの出汁・醤油 料理ギフトセット</div><div class="ri-somm">料理をされるご両親には、毎日使えるこだわりの調味料が喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,780 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n">4</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">健康を気遣いたい方に</span><div class="ri-name">国産ゆず果汁・ポン酢セット（無添加）</div><div class="ri-somm">体への気遣いが伝わる一品。思いやりを感じてもらえます。</div><div class="ri-foot"><span class="ri-price">¥4,320 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n">5</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">好みが分からない方に</span><div class="ri-name">百貨店監修 和洋菓子詰め合わせ</div><div class="ri-somm">幅広い年代に受け入れられる、安心と信頼のブランド力。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
       <a class="r-more" href="#">義実家・ご両親向けランキングをすべて見る（10商品）→</a>
     </div>
     <!-- 上司 -->
     <div class="rsec" id="rk-boss">
-      <div class="ri"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">格式を重んじる方に</span><div class="ri-name">高島屋監修 カタログギフト（5,000円コース）</div><div class="ri-somm">相手に選んでもらえるカタログは、好みを問わず安心。格も保てます。</div><div class="ri-foot"><span class="ri-price">¥5,500 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">センスを見せたい方に</span><div class="ri-name">老舗焙煎所 スペシャルティコーヒーギフト</div><div class="ri-somm">コーヒー好きな上司への贈り物として、選ぶセンスが際立ちます。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">複数人で楽しめる職場に</span><div class="ri-name">国産クラフトビール 飲み比べセット</div><div class="ri-somm">職場全体で楽しめるビールセットは、場を和ませる贈り物です。</div><div class="ri-foot"><span class="ri-price">¥3,996 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">格式を重んじる方に</span><div class="ri-name">高島屋監修 カタログギフト（5,000円コース）</div><div class="ri-somm">相手に選んでもらえるカタログは、好みを問わず安心。格も保てます。</div><div class="ri-foot"><span class="ri-price">¥5,500 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">センスを見せたい方に</span><div class="ri-name">老舗焙煎所 スペシャルティコーヒーギフト</div><div class="ri-somm">コーヒー好きな上司への贈り物として、選ぶセンスが際立ちます。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">複数人で楽しめる職場に</span><div class="ri-name">国産クラフトビール 飲み比べセット</div><div class="ri-somm">職場全体で楽しめるビールセットは、場を和ませる贈り物です。</div><div class="ri-foot"><span class="ri-price">¥3,996 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
       <a class="r-more" href="#">上司・目上の方向けランキングをすべて見る（10商品）→</a>
     </div>
     <!-- 子育て -->
     <div class="rsec" id="rk-kids">
-      <div class="ri"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">子どもが大喜びする</span><div class="ri-name">人気アイスブランド 詰め合わせギフト</div><div class="ri-somm">夏に届くアイスは子どもも親も笑顔になれる定番ギフト。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">家族全員で消費できる</span><div class="ri-name">国産フルーツゼリー 個包装ギフト</div><div class="ri-somm">子どもから大人まで楽しめて、個包装なので配りやすいのも好評。</div><div class="ri-foot"><span class="ri-price">¥2,700 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">忙しいパパ・ママに</span><div class="ri-name">国産フルーツジュース 贅沢飲み比べセット</div><div class="ri-somm">子どもにも安心な無添加ジュースセット。親御さんにも喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,456 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">子どもが大喜びする</span><div class="ri-name">人気アイスブランド 詰め合わせギフト</div><div class="ri-somm">夏に届くアイスは子どもも親も笑顔になれる定番ギフト。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">家族全員で消費できる</span><div class="ri-name">国産フルーツゼリー 個包装ギフト</div><div class="ri-somm">子どもから大人まで楽しめて、個包装なので配りやすいのも好評。</div><div class="ri-foot"><span class="ri-price">¥2,700 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">忙しいパパ・ママに</span><div class="ri-name">国産フルーツジュース 贅沢飲み比べセット</div><div class="ri-somm">子どもにも安心な無添加ジュースセット。親御さんにも喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,456 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
       <a class="r-more" href="#">子育て世帯向けランキングをすべて見る（10商品）→</a>
     </div>
     <!-- 取引先 -->
     <div class="rsec" id="rk-biz">
-      <div class="ri"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">信頼を伝えたい方に</span><div class="ri-name">老舗ブランド 個包装洋菓子 詰め合わせ</div><div class="ri-somm">会社全体でシェアしやすく、ブランド力が信頼感を添えます。</div><div class="ri-foot"><span class="ri-price">¥5,400 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><div class="ri-img">📦</div><div class="ri-info"><span class="ri-tag">連名ギフトに最適</span><div class="ri-name">高島屋監修 カタログギフト（8,000円コース）</div><div class="ri-somm">取引先への連名のお中元はカタログが最善。相手の自由度が高まります。</div><div class="ri-foot"><span class="ri-price">¥8,800 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">信頼を伝えたい方に</span><div class="ri-name">老舗ブランド 個包装洋菓子 詰め合わせ</div><div class="ri-somm">会社全体でシェアしやすく、ブランド力が信頼感を添えます。</div><div class="ri-foot"><span class="ri-price">¥5,400 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
+      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">連名ギフトに最適</span><div class="ri-name">高島屋監修 カタログギフト（8,000円コース）</div><div class="ri-somm">取引先への連名のお中元はカタログが最善。相手の自由度が高まります。</div><div class="ri-foot"><span class="ri-price">¥8,800 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
       <a class="r-more" href="#">取引先向けランキングをすべて見る（10商品）→</a>
     </div>
   </section>
