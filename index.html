@@ -340,9 +340,9 @@
       display: block;
       margin-bottom: 10px;
     }
-    .sec-ttl-inv { color: #fff !important; }
-    .sec-rl-inv { background: rgba(255,255,255,0.25) !important; }
-    .sec-sub-inv { color: rgba(255,255,255,0.72) !important; }
+    .sec-ttl-inv { color: #494949 !important; }
+    .sec-rl-inv { background: rgba(73,73,73,0.25) !important; }
+    .sec-sub-inv { color: #494949 !important; }
     .diag-outer {
       background: #FFCD1C;
       padding: 0 0 44px;
@@ -352,12 +352,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0,0,0,0.18);
+      border-bottom: 1px solid rgba(73,73,73,0.15);
+      background: rgba(0,0,0,0.06);
     }
-    .diag-topbar-lbl { font-size: 15px; letter-spacing: 0.14em; color: rgba(255,255,255,0.55); }
-    .diag-topbar-lbl span { color: #fff; font-weight: 500; }
-    .diag-step-lbl { font-size: 15px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
+    .diag-topbar-lbl { font-size: 15px; letter-spacing: 0.14em; color: #494949; }
+    .diag-topbar-lbl span { color: #494949; font-weight: 500; }
+    .diag-step-lbl { font-size: 15px; color: #494949; letter-spacing: 0.08em; }
 
     /* Progress */
     .diag-prog {
@@ -369,24 +369,24 @@
     .dp-step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .dp-circle {
       width: 38px; height: 38px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.25);
+      border: 2px solid rgba(73,73,73,0.3);
       display: flex; align-items: center; justify-content: center;
-      font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.35);
+      font-size: 17px; font-weight: 500; color: #494949;
       transition: all 0.3s;
     }
     .dp-circle.active { border-color: #C8A84B; color: #C8A84B; background: rgba(200,168,75,0.12); }
     .dp-circle.done   { border-color: #C8A84B; background: #C8A84B; color: #1B3060; }
-    .dp-lbl { font-size: 14px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; white-space: nowrap; }
+    .dp-lbl { font-size: 14px; color: #494949; letter-spacing: 0.06em; white-space: nowrap; }
     .dp-lbl.active { color: #C8A84B; }
-    .dp-lbl.done   { color: rgba(255,255,255,0.65); }
-    .dp-line { width: 64px; height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 20px; transition: background 0.3s; }
+    .dp-lbl.done   { color: #494949; }
+    .dp-line { width: 64px; height: 1px; background: rgba(73,73,73,0.2); margin-bottom: 20px; transition: background 0.3s; }
     .dp-line.done { background: #C8A84B; }
 
     /* Question */
     .diag-q-area { padding: 30px 28px 0; text-align: center; }
-    .diag-q-label { font-size: 13px; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); display: block; margin-bottom: 10px; }
-    .diag-q-text  { font-size: 28px; font-weight: 700; color: #C8A84B; line-height: 1.4; letter-spacing: 0.04em; margin-bottom: 8px; }
-    .diag-q-sub   { font-size: 17px; color: rgba(255,255,255,0.72); margin-bottom: 28px; }
+    .diag-q-label { font-size: 13px; letter-spacing: 0.22em; color: #494949; display: block; margin-bottom: 10px; }
+    .diag-q-text  { font-size: 28px; font-weight: 700; color: #494949; line-height: 1.4; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .diag-q-sub   { font-size: 17px; color: #494949; margin-bottom: 28px; }
 
     /* Step visibility */
     .diag-step { display: none; }
@@ -427,11 +427,11 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 28px; margin: 0 auto 12px;
     }
-    .dc-icon .material-symbols-rounded { font-size: 38px; color: #0557AB; }
+    .dc-icon .material-symbols-rounded { font-size: 38px; color: #494949; }
     .rc-icon .material-symbols-rounded { font-size: 34px; color: #0557AB; }
-    .dc-title { font-size: 17px; font-weight: 700; color: #0557AB; margin-bottom: 6px; line-height: 1.4; }
+    .dc-title { font-size: 17px; font-weight: 700; color: #494949; margin-bottom: 6px; line-height: 1.4; }
     .dc-desc  { font-size: 14px; color: #8A9AAA; line-height: 1.6; margin-bottom: 12px; }
-    .dc-choose { font-size: 15px; color: #0557AB; border-bottom: 1px solid #B8C8D8; display: inline-block; padding-bottom: 1px; }
+    .dc-choose { font-size: 15px; color: #494949; border-bottom: 1px solid #B8C8D8; display: inline-block; padding-bottom: 1px; }
 
     /* Selection cards — 2 col (step 2) */
     .diag-cards-2 {
@@ -458,21 +458,21 @@
     /* Nav (back link) */
     .diag-nav { text-align: center; padding: 18px 28px 0; }
     .diag-back-link {
-      font-size: 16px; color: rgba(255,255,255,0.45);
+      font-size: 16px; color: #494949;
       cursor: pointer; letter-spacing: 0.04em;
     }
-    .diag-back-link:hover { color: rgba(255,255,255,0.8); }
+    .diag-back-link:hover { color: #1E2A38; }
 
     /* Result */
     .diag-result-area { padding: 0 28px; }
-    .result-complete { font-size: 24px; color: #C8A84B; text-align: center; margin-bottom: 10px; }
+    .result-complete { font-size: 24px; color: #494949; text-align: center; margin-bottom: 10px; }
     .result-ttl-main {
-      font-size: 22px; font-weight: 700; color: #fff;
+      font-size: 22px; font-weight: 700; color: #494949;
       text-align: center; line-height: 1.5; margin-bottom: 18px;
     }
     .result-comment {
-      font-size: 17px; color: rgba(255,255,255,0.82);
-      line-height: 1.95; background: rgba(255,255,255,0.07);
+      font-size: 17px; color: #494949;
+      line-height: 1.95; background: rgba(0,0,0,0.05);
       border-radius: 6px; padding: 18px; margin-bottom: 22px;
       border-left: 3px solid #C8A84B;
     }
@@ -507,7 +507,7 @@
     .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
     .result-prod-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
     .result-prod-card.rpc-hidden { display: none; }
-    .result-empty-msg { color: rgba(255,255,255,0.7); text-align: center; padding: 24px 0; font-size: 16px; }
+    .result-empty-msg { color: #494949; text-align: center; padding: 24px 0; font-size: 16px; }
     .rpc-img {
       aspect-ratio: 1 / 1; background: #EBF0F5;
       display: flex; align-items: center; justify-content: center;
