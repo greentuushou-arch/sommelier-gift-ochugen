@@ -321,128 +321,157 @@
     .ttext { flex: 1; font-size: 16px; color: #1E2A38; }
     .tarrow { font-size: 14px; color: #C8A84B; }
 
-    /* ── SECTION 2: お中元診断 ── */
-    .diag-wrap {
-      margin: 24px 28px 0;
-      background: #fff;
-      border: 1px solid #D5DAE4;
-      border-radius: 8px;
-      padding: 28px 24px;
+    /* ── SECTION 2: お中元診断（nanaple style） ── */
+    .diag-outer {
+      background: #1B3060;
+      padding: 0 0 44px;
     }
-    .diag-hd {
+    .diag-topbar {
+      padding: 13px 28px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.18);
     }
-    .diag-seal {
-      width: 50px;
-      height: 50px;
-      flex-shrink: 0;
-      background: #4D6E8B;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-    .diag-hd-ttl { font-size: 17px; font-weight: 500; color: #1E2A38; }
-    .diag-hd-sub { font-size: 13px; color: #8A9AAA; margin-top: 3px; }
+    .diag-topbar-lbl { font-size: 13px; letter-spacing: 0.14em; color: rgba(255,255,255,0.55); }
+    .diag-topbar-lbl span { color: #fff; font-weight: 500; }
+    .diag-step-lbl { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; }
 
     /* Progress */
-    .prog-row {
-      display: flex;
-      align-items: center;
-      margin-bottom: 28px;
-    }
-    .prog-step { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-    .prog-c {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid #D5DAE4;
-      background: #F2F4F7;
+    .diag-prog {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      color: #A0AABB;
-      transition: all 0.25s;
+      padding: 26px 28px 0;
     }
-    .prog-c.active { background: #4D6E8B; border-color: #4D6E8B; color: #fff; }
-    .prog-c.done   { background: #C8A84B; border-color: #C8A84B; color: #fff; }
-    .prog-lbl { font-size: 12px; color: #A0AABB; white-space: nowrap; letter-spacing: 0.04em; }
-    .prog-lbl.active { color: #4D6E8B; }
-    .prog-ln { flex: 1; height: 1px; background: #D5DAE4; margin-bottom: 18px; }
+    .dp-step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .dp-circle {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.35);
+      transition: all 0.3s;
+    }
+    .dp-circle.active { border-color: #C8A84B; color: #C8A84B; background: rgba(200,168,75,0.12); }
+    .dp-circle.done   { border-color: #C8A84B; background: #C8A84B; color: #1B3060; }
+    .dp-lbl { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; white-space: nowrap; }
+    .dp-lbl.active { color: #C8A84B; }
+    .dp-lbl.done   { color: rgba(255,255,255,0.65); }
+    .dp-line { width: 64px; height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 20px; transition: background 0.3s; }
+    .dp-line.done { background: #C8A84B; }
 
-    /* Steps */
+    /* Question */
+    .diag-q-area { padding: 30px 28px 0; text-align: center; }
+    .diag-q-label { font-size: 11px; letter-spacing: 0.22em; color: rgba(255,255,255,0.45); display: block; margin-bottom: 10px; }
+    .diag-q-text  { font-size: 26px; font-weight: 700; color: #C8A84B; line-height: 1.4; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .diag-q-sub   { font-size: 15px; color: rgba(255,255,255,0.72); margin-bottom: 28px; }
+
+    /* Step visibility */
     .diag-step { display: none; }
     .diag-step.show { display: block; }
-    .dq {
-      font-size: 16px;
-      font-weight: 500;
-      color: #1E2A38;
-      margin-bottom: 14px;
-      letter-spacing: 0.03em;
-    }
-    .d-opts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .d-opt {
-      border: 1px solid #D5DAE4;
-      border-radius: 4px;
-      padding: 9px 16px;
-      font-size: 15px;
-      color: #1E2A38;
-      cursor: pointer;
-      background: #F2F4F7;
-      transition: all 0.2s;
-      letter-spacing: 0.03em;
-    }
-    .d-opt.sel { background: #4D6E8B; color: #fff; border-color: #4D6E8B; }
-    .d-opt:hover:not(.sel) { border-color: #4D6E8B; background: #EBF0F5; }
 
-    /* Diagnosis result box */
-    .diag-result {
-      background: #F5F0DC;
-      border: 1px solid #D4B84A;
-      border-radius: 5px;
-      padding: 16px;
-      margin-top: 18px;
-      display: none;
+    /* Selection cards — 3 col (step 1) */
+    .diag-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 0 28px;
     }
-    .diag-result.show { display: block; }
-    .dr-lbl { font-size: 11px; letter-spacing: 0.12em; color: #8A7020; margin-bottom: 5px; }
-    .dr-ttl { font-size: 16px; font-weight: 500; color: #1E2A38; margin-bottom: 6px; }
-    .dr-txt { font-size: 14px; color: #4A4030; line-height: 1.85; }
-
-    .diag-btn {
-      width: 100%;
-      margin-top: 18px;
-      padding: 15px;
-      background: #4D6E8B;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      letter-spacing: 0.06em;
+    @media (max-width: 560px) { .diag-cards { grid-template-columns: repeat(2, 1fr); } }
+    .diag-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 22px 14px 18px;
+      text-align: center;
       cursor: pointer;
-      font-family: inherit;
+      border: 2px solid transparent;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+    .diag-card:hover { transform: translateY(-3px); }
+    .diag-card.sel { border-color: #C8A84B; }
+    .dc-icon {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #EBF0F5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin: 0 auto 12px;
+    }
+    .dc-title { font-size: 15px; font-weight: 700; color: #4D6E8B; margin-bottom: 6px; line-height: 1.4; }
+    .dc-desc  { font-size: 12px; color: #8A9AAA; line-height: 1.6; margin-bottom: 12px; }
+    .dc-choose { font-size: 13px; color: #4D6E8B; border-bottom: 1px solid #B8C8D8; display: inline-block; padding-bottom: 1px; }
+
+    /* Selection cards — 2 col (step 2) */
+    .diag-cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 28px;
+    }
+    .diag-card-b {
+      background: #fff;
+      border-radius: 8px;
+      padding: 22px 16px 18px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+    .diag-card-b:hover { transform: translateY(-3px); }
+    .diag-card-b.sel { border-color: #C8A84B; }
+    .dcb-price { font-size: 20px; font-weight: 700; color: #4D6E8B; margin-bottom: 5px; }
+    .dcb-label { font-size: 13px; color: #8A9AAA; margin-bottom: 12px; }
+    .dcb-choose { font-size: 13px; color: #4D6E8B; border-bottom: 1px solid #B8C8D8; display: inline-block; }
+
+    /* Nav (back link) */
+    .diag-nav { text-align: center; padding: 18px 28px 0; }
+    .diag-back-link {
+      font-size: 14px; color: rgba(255,255,255,0.45);
+      cursor: pointer; letter-spacing: 0.04em;
+    }
+    .diag-back-link:hover { color: rgba(255,255,255,0.8); }
+
+    /* Result */
+    .diag-result-area { padding: 0 28px; }
+    .result-complete { font-size: 22px; color: #C8A84B; text-align: center; margin-bottom: 10px; }
+    .result-ttl-main {
+      font-size: 20px; font-weight: 700; color: #fff;
+      text-align: center; line-height: 1.5; margin-bottom: 18px;
+    }
+    .result-comment {
+      font-size: 15px; color: rgba(255,255,255,0.82);
+      line-height: 1.95; background: rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 18px; margin-bottom: 22px;
+      border-left: 3px solid #C8A84B;
+    }
+    .result-prod-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-bottom: 22px;
+    }
+    @media (max-width: 500px) { .result-prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; }
+    .rpc-img {
+      height: 82px; background: #EBF0F5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; position: relative;
+    }
+    .rpc-rank {
+      position: absolute; top: 6px; left: 6px;
+      background: #4D6E8B; color: #fff;
+      font-size: 10px; padding: 2px 6px; border-radius: 2px; letter-spacing: 0.04em;
+    }
+    .rpc-body { padding: 10px 10px 12px; }
+    .rpc-for   { font-size: 11px; color: #8A9AAA; margin-bottom: 3px; line-height: 1.5; }
+    .rpc-name  { font-size: 13px; font-weight: 500; color: #1E2A38; line-height: 1.4; margin-bottom: 5px; }
+    .rpc-price { font-size: 13px; color: #335577; font-weight: 500; }
+    .result-cta {
+      display: block; width: 100%; padding: 16px;
+      background: #C8A84B; color: #1B3060;
+      border: none; border-radius: 4px;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.06em;
+      cursor: pointer; font-family: inherit; text-align: center;
       transition: background 0.2s;
     }
-    .diag-btn:hover { background: #3D5A73; }
-    .diag-btn:disabled { background: #B8C8D8; cursor: not-allowed; }
-    .diag-back {
-      font-size: 14px;
-      color: #8A9AAA;
-      cursor: pointer;
-      text-align: center;
-      margin-top: 12px;
-    }
-    .diag-back:hover { color: #4D6E8B; }
+    .result-cta:hover { background: #D4B84A; }
 
     /* ── SECTION 3: ランキング ── */
     .rtabs-wrap {
@@ -831,63 +860,154 @@
        SECTION 2: お中元診断
   ══════════════════════════════ -->
   <section id="s-diag">
-    <div class="sec">
-      <span class="sec-ey">GIFT SHINDAN</span>
-      <div class="sec-ttl">お中元ギフト診断</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-      <div class="sec-sub">3つの質問に答えるだけで、ぴったりのギフトが見つかります</div>
-    </div>
-    <div class="diag-wrap">
-      <div class="diag-hd">
-        <div class="diag-seal">🍷</div>
-        <div>
-          <div class="diag-hd-ttl">ソムリエギフトに相談する</div>
-          <div class="diag-hd-sub">選択肢を選ぶだけ、すぐに提案が届きます</div>
+    <div class="diag-outer">
+
+      <!-- トップバー -->
+      <div class="diag-topbar">
+        <span class="diag-topbar-lbl">DIAGNOSIS <span>お中元ギフト診断</span></span>
+        <span class="diag-step-lbl" id="diag-step-lbl">Step 1</span>
+      </div>
+
+      <!-- プログレス -->
+      <div class="diag-prog">
+        <div class="dp-step">
+          <div class="dp-circle active" id="pc1">1</div>
+          <div class="dp-lbl active" id="pl1">贈る相手</div>
+        </div>
+        <div class="dp-line" id="dl1"></div>
+        <div class="dp-step">
+          <div class="dp-circle" id="pc2">2</div>
+          <div class="dp-lbl" id="pl2">ご予算</div>
+        </div>
+        <div class="dp-line" id="dl2"></div>
+        <div class="dp-step">
+          <div class="dp-circle" id="pc3">♥</div>
+          <div class="dp-lbl" id="pl3">結果</div>
         </div>
       </div>
-      <!-- Progress -->
-      <div class="prog-row">
-        <div class="prog-step"><div class="prog-c active" id="pc1">1</div><div class="prog-lbl active" id="pl1">贈る相手</div></div>
-        <div class="prog-ln"></div>
-        <div class="prog-step"><div class="prog-c" id="pc2">2</div><div class="prog-lbl" id="pl2">ご予算</div></div>
-        <div class="prog-ln"></div>
-        <div class="prog-step"><div class="prog-c" id="pc3">3</div><div class="prog-lbl" id="pl3">提案</div></div>
-      </div>
-      <!-- Step 1 -->
+
+      <!-- ── STEP 1: 誰に贈る ── -->
       <div class="diag-step show" id="ds1">
-        <div class="dq">Q1. 誰に贈りますか？</div>
-        <div class="d-opts">
-          <div class="d-opt" onclick="dSel(this,'q1')">義実家・ご両親</div>
-          <div class="d-opt" onclick="dSel(this,'q1')">会社・上司</div>
-          <div class="d-opt" onclick="dSel(this,'q1')">取引先・お客様</div>
-          <div class="d-opt" onclick="dSel(this,'q1')">子育て世帯</div>
-          <div class="d-opt" onclick="dSel(this,'q1')">健康を気遣う方</div>
-          <div class="d-opt" onclick="dSel(this,'q1')">好みが分からない</div>
+        <div class="diag-q-area">
+          <span class="diag-q-label">QUESTION 1</span>
+          <div class="diag-q-text">誰に贈りますか？</div>
+          <div class="diag-q-sub">贈る相手を選んでください。</div>
         </div>
-        <button class="diag-btn" id="dnext1" disabled onclick="dGoStep(2)">次へ →</button>
+        <div class="diag-cards">
+          <div class="diag-card" onclick="dCardSel(this,'q1','義実家・ご両親')">
+            <div class="dc-icon">🏠</div>
+            <div class="dc-title">義実家・ご両親</div>
+            <div class="dc-desc">毎年のご挨拶に。定番の上質ギフト。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card" onclick="dCardSel(this,'q1','会社・上司')">
+            <div class="dc-icon">💼</div>
+            <div class="dc-title">会社・上司へ</div>
+            <div class="dc-desc">センスと誠実さが伝わる品格ある一品。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card" onclick="dCardSel(this,'q1','取引先・お客様')">
+            <div class="dc-icon">🏢</div>
+            <div class="dc-title">取引先・お客様</div>
+            <div class="dc-desc">信頼と感謝を込めたビジネスギフト。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card" onclick="dCardSel(this,'q1','子育て世帯')">
+            <div class="dc-icon">👨‍👩‍👧</div>
+            <div class="dc-title">子育て世帯へ</div>
+            <div class="dc-desc">家族みんなで楽しめる夏らしいギフト。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card" onclick="dCardSel(this,'q1','健康を気遣う方')">
+            <div class="dc-icon">🌿</div>
+            <div class="dc-title">健康を気遣う方</div>
+            <div class="dc-desc">無添加・国産素材で思いやりを形に。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card" onclick="dCardSel(this,'q1','好みが分からない')">
+            <div class="dc-icon">🎁</div>
+            <div class="dc-title">好みが分からない</div>
+            <div class="dc-desc">外れなく贈れる、万人受けの定番品。</div>
+            <span class="dc-choose">選ぶ →</span>
+          </div>
+        </div>
       </div>
-      <!-- Step 2 -->
+
+      <!-- ── STEP 2: 予算 ── -->
       <div class="diag-step" id="ds2">
-        <div class="dq">Q2. ご予算はいくらですか？</div>
-        <div class="d-opts">
-          <div class="d-opt" onclick="dSel(this,'q2')">〜3,000円</div>
-          <div class="d-opt" onclick="dSel(this,'q2')">3,000〜5,000円</div>
-          <div class="d-opt" onclick="dSel(this,'q2')">5,000〜10,000円</div>
-          <div class="d-opt" onclick="dSel(this,'q2')">10,000円〜</div>
+        <div class="diag-q-area">
+          <span class="diag-q-label">QUESTION 2</span>
+          <div class="diag-q-text">ご予算を教えてください。</div>
+          <div class="diag-q-sub">送料込みの合計目安でお選びください。</div>
         </div>
-        <button class="diag-btn" id="dnext2" disabled onclick="dGoStep(3)">おすすめを見る →</button>
-        <div class="diag-back" onclick="dBack(1)">← 贈る相手を変える</div>
+        <div class="diag-cards-2">
+          <div class="diag-card-b" onclick="dCardSel(this,'q2','〜3,000円')">
+            <div class="dcb-price">〜3,000円</div>
+            <div class="dcb-label">気軽なご挨拶に</div>
+            <span class="dcb-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card-b" onclick="dCardSel(this,'q2','3,000〜5,000円')">
+            <div class="dcb-price">3,000〜5,000円</div>
+            <div class="dcb-label">定番の価格帯</div>
+            <span class="dcb-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card-b" onclick="dCardSel(this,'q2','5,000〜10,000円')">
+            <div class="dcb-price">5,000〜10,000円</div>
+            <div class="dcb-label">特別感のある一品</div>
+            <span class="dcb-choose">選ぶ →</span>
+          </div>
+          <div class="diag-card-b" onclick="dCardSel(this,'q2','10,000円〜')">
+            <div class="dcb-price">10,000円〜</div>
+            <div class="dcb-label">格式あるギフトに</div>
+            <span class="dcb-choose">選ぶ →</span>
+          </div>
+        </div>
+        <div class="diag-nav">
+          <span class="diag-back-link" onclick="dBack(1)">← 贈る相手を変える</span>
+        </div>
       </div>
-      <!-- Step 3 -->
+
+      <!-- ── STEP 3: 結果 ── -->
       <div class="diag-step" id="ds3">
-        <div class="diag-result show">
-          <div class="dr-lbl">ソムリエギフトからのご提案</div>
-          <div class="dr-ttl" id="dr-ttl">―</div>
-          <div class="dr-txt" id="dr-txt">―</div>
+        <div class="diag-q-area" style="padding-bottom:24px">
+          <div class="result-complete">♥ 診断完了</div>
+          <div class="result-ttl-main" id="dr-ttl">―</div>
         </div>
-        <a class="diag-btn" id="dr-link" href="#" style="display:block; text-align:center; margin-top:16px;">この条件で商品を見る →</a>
-        <div class="diag-back" onclick="dBack(1)">← 最初からやり直す</div>
+        <div class="diag-result-area">
+          <div class="result-comment" id="dr-txt">―</div>
+          <div class="result-prod-grid" id="dr-prods">
+            <div class="result-prod-card">
+              <div class="rpc-img">📦<span class="rpc-rank">No.1</span></div>
+              <div class="rpc-body">
+                <div class="rpc-for" id="rpc-for1">―</div>
+                <div class="rpc-name" id="rpc-name1">―</div>
+                <div class="rpc-price" id="rpc-price1">―</div>
+              </div>
+            </div>
+            <div class="result-prod-card">
+              <div class="rpc-img">📦<span class="rpc-rank">No.2</span></div>
+              <div class="rpc-body">
+                <div class="rpc-for" id="rpc-for2">―</div>
+                <div class="rpc-name" id="rpc-name2">―</div>
+                <div class="rpc-price" id="rpc-price2">―</div>
+              </div>
+            </div>
+            <div class="result-prod-card">
+              <div class="rpc-img">📦<span class="rpc-rank">No.3</span></div>
+              <div class="rpc-body">
+                <div class="rpc-for" id="rpc-for3">―</div>
+                <div class="rpc-name" id="rpc-name3">―</div>
+                <div class="rpc-price" id="rpc-price3">―</div>
+              </div>
+            </div>
+          </div>
+          <a class="result-cta" href="#" id="dr-link">この条件で商品をすべて見る →</a>
+        </div>
+        <div class="diag-nav" style="padding-bottom:8px">
+          <span class="diag-back-link" onclick="dBack(1)">← 最初からやり直す</span>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -1039,47 +1159,119 @@
 <script>
   /* ── 診断ロジック ── */
   var dR = '', dB = '';
-  var resultMap = {
-    '義実家・ご両親':  '定番でありながら上質感のある老舗の品がおすすめです。海苔の詰め合わせや播州そうめんは、年配の方に特に喜ばれます。',
-    '会社・上司':      'ビジネスシーンではカタログギフトか、複数人で楽しめる個包装の洋菓子が重宝されます。',
-    '取引先・お客様':  '会社全体でシェアしやすく、ブランド力が信頼感を添える老舗の洋菓子詰め合わせが定番です。',
-    '子育て世帯':      '子どもから大人まで笑顔になれるアイスギフトや個包装のゼリーセットが人気です。',
-    '健康を気遣う方':  '無添加・国産素材にこだわったポン酢セットやお茶のギフトで、思いやりを形に。',
-    '好みが分からない':'万人受けするカタログギフトか、老舗ブランドの定番詰め合わせが安心です。'
+
+  var resultData = {
+    '義実家・ご両親': {
+      comment: '定番でありながら上質感のある老舗の品がおすすめです。海苔の詰め合わせや播州そうめんは年配の方に特に喜ばれます。はじめて贈る方にも、毎年贈っている方にも安心してお選びいただけます。',
+      prods: [
+        { for: '毎年贈っている方に',   name: '国産有明海産 老舗の海苔詰め合わせ', price: '¥3,240 送料無料' },
+        { for: '初めて贈る方に安心',   name: '播州手延べそうめん 特選化粧箱入り',  price: '¥2,980 送料無料' },
+        { for: '料理好きな方に',        name: '職人仕込みの出汁・醤油 料理ギフト', price: '¥3,780 送料無料' }
+      ]
+    },
+    '会社・上司': {
+      comment: 'ビジネスシーンでは、相手に選んでもらえるカタログギフトか、複数人で楽しめる個包装の洋菓子が重宝されます。格式と実用性を兼ね備えた品をお選びください。',
+      prods: [
+        { for: '格式を重んじる方に',   name: '高島屋監修 カタログギフト 5,000円', price: '¥5,500 送料無料' },
+        { for: 'センスを見せたい方に', name: '老舗焙煎所 スペシャルティコーヒー',  price: '¥4,860 送料無料' },
+        { for: '複数人いる職場に',     name: '国産クラフトビール 飲み比べセット', price: '¥3,996 送料無料' }
+      ]
+    },
+    '取引先・お客様': {
+      comment: '取引先への贈答は、会社全体でシェアしやすく、ブランド力が信頼感を添えるものが最適です。個包装で配りやすいものが特に喜ばれます。',
+      prods: [
+        { for: '信頼を伝えたい方に',   name: '老舗ブランド 個包装洋菓子詰め合わせ', price: '¥5,400 送料無料' },
+        { for: '連名ギフトに最適',     name: '高島屋監修 カタログギフト 8,000円',   price: '¥8,800 送料無料' },
+        { for: '手土産感覚に',         name: '老舗海苔 特選詰め合わせ',             price: '¥4,320 送料無料' }
+      ]
+    },
+    '子育て世帯': {
+      comment: '子どもから大人まで笑顔になれる、夏らしいギフトがおすすめです。個包装で配りやすく、子どもにも安心して食べさせられるものが人気です。',
+      prods: [
+        { for: '子どもが大喜びする',   name: '人気アイスブランド 詰め合わせギフト',     price: '¥3,240 送料無料' },
+        { for: '家族全員で消費できる', name: '国産フルーツゼリー 個包装ギフト',         price: '¥2,700 送料無料' },
+        { for: '忙しいパパ・ママに',   name: '国産フルーツジュース 贅沢飲み比べセット', price: '¥3,456 送料無料' }
+      ]
+    },
+    '健康を気遣う方': {
+      comment: '無添加・国産素材にこだわったギフトで、相手への思いやりを形にしましょう。「体のことを考えて選んだ」気持ちが伝わる一品をご提案します。',
+      prods: [
+        { for: '健康意識が高い方に',   name: '国産ゆず果汁・ポン酢セット（無添加）', price: '¥4,320 送料無料' },
+        { for: '毎日使えるものを',     name: '職人仕込みの出汁・醤油 料理ギフト',    price: '¥3,780 送料無料' },
+        { for: 'お茶好きな方に',       name: '国産茶葉 特選ギフトセット',            price: '¥3,240 送料無料' }
+      ]
+    },
+    '好みが分からない': {
+      comment: '好みが分からないときは、相手に選んでもらえるカタログギフトか、幅広い年代に受け入れられる老舗の定番品が安心です。失敗なく贈れます。',
+      prods: [
+        { for: '相手に選んでもらえる', name: '高島屋監修 カタログギフト 5,000円',  price: '¥5,500 送料無料' },
+        { for: '万人受けする定番',     name: '百貨店監修 和洋菓子詰め合わせ',      price: '¥4,860 送料無料' },
+        { for: '老若男女問わず人気',   name: '国産有明海産 老舗の海苔詰め合わせ',  price: '¥3,240 送料無料' }
+      ]
+    }
   };
-  function dSel(el, grp) {
-    el.closest('.d-opts').querySelectorAll('.d-opt').forEach(function(o){ o.classList.remove('sel'); });
+
+  function dCardSel(el, grp, val) {
+    var parent = el.parentNode;
+    parent.querySelectorAll('.diag-card, .diag-card-b').forEach(function(c){ c.classList.remove('sel'); });
     el.classList.add('sel');
-    if (grp === 'q1') { dR = el.textContent; document.getElementById('dnext1').disabled = false; }
-    else              { dB = el.textContent; document.getElementById('dnext2').disabled = false; }
+    if (grp === 'q1') { dR = val; setTimeout(function(){ dGoStep(2); }, 280); }
+    else              { dB = val; setTimeout(function(){ dGoStep(3); }, 280); }
   }
+
   function dGoStep(n) {
     document.querySelectorAll('.diag-step').forEach(function(s){ s.classList.remove('show'); });
     document.getElementById('ds' + n).classList.add('show');
     updProg(n);
-    if (n === 3) {
-      document.getElementById('dr-ttl').textContent = dR + ' ｜ ' + dB;
-      document.getElementById('dr-txt').textContent = resultMap[dR] || 'ご要望に合ったギフトをご提案します。';
+    document.getElementById('diag-step-lbl').textContent = n === 3 ? '結果' : 'Step ' + n;
+    if (n === 3) { showResult(); }
+    document.getElementById('s-diag').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function showResult() {
+    var data = resultData[dR] || resultData['好みが分からない'];
+    document.getElementById('dr-ttl').textContent = dR + ' ｜ ' + dB;
+    document.getElementById('dr-txt').textContent = data.comment;
+    for (var i = 0; i < 3; i++) {
+      var p = data.prods[i];
+      document.getElementById('rpc-for'   + (i+1)).textContent   = p.for;
+      document.getElementById('rpc-name'  + (i+1)).textContent   = p.name;
+      document.getElementById('rpc-price' + (i+1)).textContent   = p.price;
     }
   }
+
   function dBack(n) {
     document.querySelectorAll('.diag-step').forEach(function(s){ s.classList.remove('show'); });
     document.getElementById('ds' + n).classList.add('show');
     updProg(n);
+    document.getElementById('diag-step-lbl').textContent = 'Step ' + n;
     if (n === 1) {
       dR = ''; dB = '';
-      document.getElementById('dnext1').disabled = true;
-      document.getElementById('dnext2').disabled = true;
-      document.querySelectorAll('.d-opt').forEach(function(o){ o.classList.remove('sel'); });
+      document.querySelectorAll('.diag-card, .diag-card-b').forEach(function(c){ c.classList.remove('sel'); });
     }
+    document.getElementById('s-diag').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
   function updProg(n) {
     for (var i = 1; i <= 3; i++) {
-      var c = document.getElementById('pc' + i), l = document.getElementById('pl' + i);
-      c.classList.remove('active','done'); l.classList.remove('active');
-      if      (i < n) { c.classList.add('done');   c.textContent = '✓'; }
-      else if (i === n){ c.classList.add('active'); l.classList.add('active'); c.textContent = i; }
-      else             { c.textContent = i; }
+      var c = document.getElementById('pc' + i);
+      var l = document.getElementById('pl' + i);
+      var lineAfter = document.getElementById('dl' + i);
+      c.classList.remove('active','done');
+      l.classList.remove('active','done');
+      if (lineAfter) lineAfter.classList.remove('done');
+      if (i < n) {
+        c.classList.add('done');
+        l.classList.add('done');
+        c.textContent = (i === 3) ? '♥' : '✓';
+        if (lineAfter) lineAfter.classList.add('done');
+      } else if (i === n) {
+        c.classList.add('active');
+        l.classList.add('active');
+        c.textContent = (i === 3) ? '♥' : i;
+      } else {
+        c.textContent = (i === 3) ? '♥' : i;
+      }
     }
   }
 
