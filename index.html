@@ -464,12 +464,34 @@
       border-radius: 6px; padding: 18px; margin-bottom: 22px;
       border-left: 3px solid #C8A84B;
     }
-    .result-prod-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
+    /* ヒーローカード (No.1) */
+    .result-hero-card {
+      display: block; text-decoration: none; color: inherit;
+      background: #fff; border-radius: 10px; overflow: hidden;
+      margin-bottom: 14px; border: 2px solid #C8A84B;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .result-hero-card:hover { transform: translateY(-3px); box-shadow: 0 6px 22px rgba(0,0,0,0.15); }
+    .result-hero-card.rpc-hidden { display: none; }
+    .rhc-img {
+      aspect-ratio: 16/9; background: #EBF0F5;
+      position: relative; overflow: hidden;
+    }
+    .rhc-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .rhc-rank {
+      position: absolute; top: 10px; left: 10px;
+      background: #C8A84B; color: #fff;
+      font-size: 13px; font-weight: 700;
+      padding: 5px 14px; border-radius: 4px; letter-spacing: 0.05em;
+    }
+    .rhc-body { padding: 14px 16px; }
+    .rpc-name-lg { font-size: 15px; font-weight: 700; margin-top: 4px; }
+    /* サブグリッド (No.2〜5) 2×2 */
+    .result-sub-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 10px; margin-bottom: 22px;
     }
-    @media (max-width: 500px) { .result-prod-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .result-prod-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .result-sub-grid { grid-template-columns: 1fr; } }
     .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
     .result-prod-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
     .result-prod-card.rpc-hidden { display: none; }
@@ -860,9 +882,9 @@
           <div class="diag-q-sub">贈る相手を選んでください。</div>
         </div>
         <div class="diag-cards">
-          <div class="diag-card" onclick="dCardSel(this,'q1','義実家・ご両親')">
+          <div class="diag-card" onclick="dCardSel(this,'q1','ご両親・親戚')">
             <div class="dc-icon">🏠</div>
-            <div class="dc-title">義実家・ご両親</div>
+            <div class="dc-title">ご両親・親戚</div>
             <div class="dc-desc">毎年のご挨拶に。定番の上質ギフト。</div>
             <span class="dc-choose">選ぶ →</span>
           </div>
@@ -941,16 +963,18 @@
         </div>
         <div class="diag-result-area">
           <div class="result-comment" id="dr-txt">―</div>
-          <div class="result-prod-grid" id="dr-prods">
-            <a class="result-prod-card" id="rpc-link1" href="#" target="_blank">
-              <div class="rpc-img"><img id="rpc-img1" src="" alt=""><span class="rpc-rank">No.1</span></div>
-              <div class="rpc-body">
-                <div class="rpc-for" id="rpc-for1">―</div>
-                <div class="rpc-name" id="rpc-name1">―</div>
-                <div class="rpc-price" id="rpc-price1">―</div>
-              </div>
-            </a>
-            <a class="result-prod-card" id="rpc-link2" href="#" target="_blank">
+          <!-- No.1 ヒーローカード -->
+          <a class="result-hero-card rpc-hidden" id="rpc-link1" href="#" target="_blank">
+            <div class="rhc-img"><img id="rpc-img1" src="" alt=""><span class="rhc-rank">No.1 ソムリエおすすめ</span></div>
+            <div class="rhc-body">
+              <div class="rpc-for" id="rpc-for1">―</div>
+              <div class="rpc-name rpc-name-lg" id="rpc-name1">―</div>
+              <div class="rpc-price" id="rpc-price1">―</div>
+            </div>
+          </a>
+          <!-- No.2〜5 サブグリッド 2×2 -->
+          <div class="result-sub-grid" id="dr-sub">
+            <a class="result-prod-card rpc-hidden" id="rpc-link2" href="#" target="_blank">
               <div class="rpc-img"><img id="rpc-img2" src="" alt=""><span class="rpc-rank">No.2</span></div>
               <div class="rpc-body">
                 <div class="rpc-for" id="rpc-for2">―</div>
@@ -958,12 +982,28 @@
                 <div class="rpc-price" id="rpc-price2">―</div>
               </div>
             </a>
-            <a class="result-prod-card" id="rpc-link3" href="#" target="_blank">
+            <a class="result-prod-card rpc-hidden" id="rpc-link3" href="#" target="_blank">
               <div class="rpc-img"><img id="rpc-img3" src="" alt=""><span class="rpc-rank">No.3</span></div>
               <div class="rpc-body">
                 <div class="rpc-for" id="rpc-for3">―</div>
                 <div class="rpc-name" id="rpc-name3">―</div>
                 <div class="rpc-price" id="rpc-price3">―</div>
+              </div>
+            </a>
+            <a class="result-prod-card rpc-hidden" id="rpc-link4" href="#" target="_blank">
+              <div class="rpc-img"><img id="rpc-img4" src="" alt=""><span class="rpc-rank">No.4</span></div>
+              <div class="rpc-body">
+                <div class="rpc-for" id="rpc-for4">―</div>
+                <div class="rpc-name" id="rpc-name4">―</div>
+                <div class="rpc-price" id="rpc-price4">―</div>
+              </div>
+            </a>
+            <a class="result-prod-card rpc-hidden" id="rpc-link5" href="#" target="_blank">
+              <div class="rpc-img"><img id="rpc-img5" src="" alt=""><span class="rpc-rank">No.5</span></div>
+              <div class="rpc-body">
+                <div class="rpc-for" id="rpc-for5">―</div>
+                <div class="rpc-name" id="rpc-name5">―</div>
+                <div class="rpc-price" id="rpc-price5">―</div>
               </div>
             </a>
           </div>
@@ -1189,16 +1229,18 @@
   var dR = '', dB = '';
 
   var resultData = {
-    /* ── 義実家・ご両親 ── */
-    '義実家・ご両親|〜3,000円': {
+    /* ── ご両親・親戚 ── */
+    'ご両親・親戚|〜3,000円': {
       comment: '「さすが、よく選んでくれた」と言わせる一品を。揖保乃糸の上質なそうめんや、スターバックスのコーヒーセットは、年配の方にも喜ばれる安心感があります。',
       prods: [
-        { for: '見てかわいい・食べて美味しい', name: '贅沢フルーツの水ようかん',                   price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/',       img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
-        { for: '個包装で配りやすい',           name: 'キャラメルバームクーヘン 個包装セット',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/',  img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s15.jpg' },
-        { for: 'お家でスタバ気分',             name: 'スターバックス コーヒー＆パウンドケーキセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/',   img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/starbucks/sbpc3re2_s1b.jpg' }
+        { for: 'やっぱり夏はこれ！定番の逸品',  name: 'やっぱり夏はそうめん！手延べ素麺揖保乃糸',              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/',       img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' },
+        { for: '見てかわいい・食べて美味しい',  name: '贅沢フルーツの水ようかん',                              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/',      img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
+        { for: '個包装で配りやすい',            name: 'キャラメルがしみ込んだバームクーヘン♪個包装も嬉しい！', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s15.jpg' },
+        { for: 'お家でスタバ気分♪',            name: 'お家でスタバ気分♪スターバックスコーヒーとパウンドケーキのセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/starbucks/sbpc3re2_s1b.jpg' },
+        { for: 'ヘルシーな夏ギフトに',          name: '飛騨高山ファクトリーの「すこやかドレッシング」ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/hidatakayama_0002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/0629/gift2/sukoyakad4_s1a.jpg' }
       ]
     },
-    '義実家・ご両親|3,000〜5,000円': {
+    'ご両親・親戚|3,000〜5,000円': {
       comment: '少し奮発して「特別感」を演出したいときに。ゴディバのアイスや菓子匠八の涼菓は、「さすが」と言われる贈り物です。',
       prods: [
         { for: '涼しげな夏らしい贈り物に',   name: '菓子匠八 涼夏のしずく 14個',       price: '¥3,000 送料無料',    url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/sp23s-00270_01.jpg' },
@@ -1206,11 +1248,11 @@
         { for: 'フルーツの高級感を添えて',   name: 'THE GIFT プレミアムフルーツジュース', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/thegift-017_01.jpg' }
       ]
     },
-    '義実家・ご両親|5,000〜10,000円': {
+    'ご両親・親戚|5,000〜10,000円': {
       comment: 'お中元の相場を少し上回る品で、特別な感謝を伝えましょう。お気軽にお問い合わせいただければ、ご予算に合わせたご提案をいたします。',
       prods: []
     },
-    '義実家・ご両親|10,000円〜': {
+    'ご両親・親戚|10,000円〜': {
       comment: '感謝の気持ちをしっかり形にする、とっておきの一品。帝国ホテルのスープ缶詰は、格式ある贈り物として年配の方に特に喜ばれます。',
       prods: [
         { for: '格式ある特別な贈り物に', name: '帝国ホテル スープ缶詰 8缶', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-109/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/kaiyu/th_soup_kaiyu.jpg' }
@@ -1366,9 +1408,10 @@
     document.getElementById('dr-ttl').textContent = dR + ' ｜ ' + dB;
     document.getElementById('dr-txt').textContent = data.comment;
     var prods = data.prods || [];
-    // 商品カード表示/非表示
-    for (var i = 0; i < 3; i++) {
+    // 商品カード表示/非表示 (1〜5)
+    for (var i = 0; i < 5; i++) {
       var card = document.getElementById('rpc-link' + (i+1));
+      if (!card) continue;
       if (prods[i]) {
         card.classList.remove('rpc-hidden');
         card.href = prods[i].url || '#';
@@ -1381,6 +1424,9 @@
         card.classList.add('rpc-hidden');
       }
     }
+    // サブグリッド: No.2〜5が1件もない場合は非表示
+    var subGrid = document.getElementById('dr-sub');
+    if (subGrid) { subGrid.style.display = prods.length > 1 ? 'grid' : 'none'; }
     // 商品がない場合のメッセージ
     var emptyMsg = document.getElementById('dr-empty-msg');
     if (prods.length === 0) {
@@ -1388,7 +1434,7 @@
         emptyMsg = document.createElement('p');
         emptyMsg.id = 'dr-empty-msg';
         emptyMsg.className = 'result-empty-msg';
-        document.getElementById('dr-prods').after(emptyMsg);
+        document.getElementById('rpc-link1').after(emptyMsg);
       }
       emptyMsg.textContent = 'この組み合わせの商品は現在準備中です。お気軽にお問い合わせください。';
       emptyMsg.style.display = 'block';
