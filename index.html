@@ -470,7 +470,10 @@
     }
     @media (max-width: 500px) { .result-prod-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .result-prod-grid { grid-template-columns: 1fr; } }
-    .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; }
+    .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; display: block; text-decoration: none; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
+    .result-prod-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    .result-prod-card.rpc-hidden { display: none; }
+    .result-empty-msg { color: rgba(255,255,255,0.7); text-align: center; padding: 24px 0; font-size: 14px; }
     .rpc-img {
       height: 82px; background: #EBF0F5;
       display: flex; align-items: center; justify-content: center;
@@ -935,30 +938,30 @@
         <div class="diag-result-area">
           <div class="result-comment" id="dr-txt">―</div>
           <div class="result-prod-grid" id="dr-prods">
-            <div class="result-prod-card">
+            <a class="result-prod-card" id="rpc-link1" href="#" target="_blank">
               <div class="rpc-img">📦<span class="rpc-rank">No.1</span></div>
               <div class="rpc-body">
                 <div class="rpc-for" id="rpc-for1">―</div>
                 <div class="rpc-name" id="rpc-name1">―</div>
                 <div class="rpc-price" id="rpc-price1">―</div>
               </div>
-            </div>
-            <div class="result-prod-card">
+            </a>
+            <a class="result-prod-card" id="rpc-link2" href="#" target="_blank">
               <div class="rpc-img">📦<span class="rpc-rank">No.2</span></div>
               <div class="rpc-body">
                 <div class="rpc-for" id="rpc-for2">―</div>
                 <div class="rpc-name" id="rpc-name2">―</div>
                 <div class="rpc-price" id="rpc-price2">―</div>
               </div>
-            </div>
-            <div class="result-prod-card">
+            </a>
+            <a class="result-prod-card" id="rpc-link3" href="#" target="_blank">
               <div class="rpc-img">📦<span class="rpc-rank">No.3</span></div>
               <div class="rpc-body">
                 <div class="rpc-for" id="rpc-for3">―</div>
                 <div class="rpc-name" id="rpc-name3">―</div>
                 <div class="rpc-price" id="rpc-price3">―</div>
               </div>
-            </div>
+            </a>
           </div>
           <a class="result-cta" href="#" id="dr-link">この条件で商品をすべて見る →</a>
         </div>
@@ -1182,52 +1185,156 @@
   var dR = '', dB = '';
 
   var resultData = {
-    '義実家・ご両親': {
-      comment: '定番でありながら上質感のある老舗の品がおすすめです。海苔の詰め合わせや播州そうめんは年配の方に特に喜ばれます。はじめて贈る方にも、毎年贈っている方にも安心してお選びいただけます。',
+    /* ── 義実家・ご両親 ── */
+    '義実家・ご両親|〜3,000円': {
+      comment: '「さすが、よく選んでくれた」と言わせる一品を。揖保乃糸の上質なそうめんや、スターバックスのコーヒーセットは、年配の方にも喜ばれる安心感があります。',
       prods: [
-        { for: '毎年贈っている方に',   name: '国産有明海産 老舗の海苔詰め合わせ', price: '¥3,240 送料無料' },
-        { for: '初めて贈る方に安心',   name: '播州手延べそうめん 特選化粧箱入り',  price: '¥2,980 送料無料' },
-        { for: '料理好きな方に',        name: '職人仕込みの出汁・醤油 料理ギフト', price: '¥3,780 送料無料' }
+        { for: '定番をちょっと上質に',   name: '揖保乃糸 特級そうめん 黒帯 18束',             price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/' },
+        { for: 'おしゃれなスイーツに',   name: 'バウムクーヘン詰め合わせ 12個',               price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/' },
+        { for: 'コーヒー好きの方に',     name: 'スターバックス コーヒー＆パウンドケーキセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/' }
       ]
     },
-    '会社・上司': {
-      comment: 'ビジネスシーンでは、相手に選んでもらえるカタログギフトか、複数人で楽しめる個包装の洋菓子が重宝されます。格式と実用性を兼ね備えた品をお選びください。',
+    '義実家・ご両親|3,000〜5,000円': {
+      comment: '少し奮発して「特別感」を演出したいときに。ゴディバのアイスや菓子匠八の涼菓は、「さすが」と言われる贈り物です。',
       prods: [
-        { for: '格式を重んじる方に',   name: '高島屋監修 カタログギフト 5,000円', price: '¥5,500 送料無料' },
-        { for: 'センスを見せたい方に', name: '老舗焙煎所 スペシャルティコーヒー',  price: '¥4,860 送料無料' },
-        { for: '複数人いる職場に',     name: '国産クラフトビール 飲み比べセット', price: '¥3,996 送料無料' }
+        { for: '涼しげな夏らしい贈り物に',   name: '菓子匠八 涼夏のしずく 14個',       price: '¥3,000 送料無料', url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/' },
+        { for: 'ブランドで差をつけたい方に', name: 'ゴディバ アイスコレクション 6個',   price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-040/' },
+        { for: 'フルーツの高級感を添えて',   name: 'THE GIFT プレミアムフルーツジュース', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/' }
       ]
     },
-    '取引先・お客様': {
-      comment: '取引先への贈答は、会社全体でシェアしやすく、ブランド力が信頼感を添えるものが最適です。個包装で配りやすいものが特に喜ばれます。',
+    '義実家・ご両親|5,000〜10,000円': {
+      comment: 'お中元の相場を少し上回る品で、特別な感謝を伝えましょう。お気軽にお問い合わせいただければ、ご予算に合わせたご提案をいたします。',
+      prods: []
+    },
+    '義実家・ご両親|10,000円〜': {
+      comment: '感謝の気持ちをしっかり形にする、とっておきの一品。帝国ホテルのスープ缶詰は、格式ある贈り物として年配の方に特に喜ばれます。',
       prods: [
-        { for: '信頼を伝えたい方に',   name: '老舗ブランド 個包装洋菓子詰め合わせ', price: '¥5,400 送料無料' },
-        { for: '連名ギフトに最適',     name: '高島屋監修 カタログギフト 8,000円',   price: '¥8,800 送料無料' },
-        { for: '手土産感覚に',         name: '老舗海苔 特選詰め合わせ',             price: '¥4,320 送料無料' }
+        { for: '格式ある特別な贈り物に', name: '帝国ホテル スープ缶詰 8缶', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-109/' }
       ]
     },
-    '子育て世帯': {
-      comment: '子どもから大人まで笑顔になれる、夏らしいギフトがおすすめです。個包装で配りやすく、子どもにも安心して食べさせられるものが人気です。',
+    /* ── 会社・上司 ── */
+    '会社・上司|〜3,000円': {
+      comment: '予算を抑えながらも、きちんとした印象を残せる品を。日本ハムのハムギフトは、定番でありながら幅広い年代に喜ばれる実用的な選択です。',
       prods: [
-        { for: '子どもが大喜びする',   name: '人気アイスブランド 詰め合わせギフト',     price: '¥3,240 送料無料' },
-        { for: '家族全員で消費できる', name: '国産フルーツゼリー 個包装ギフト',         price: '¥2,700 送料無料' },
-        { for: '忙しいパパ・ママに',   name: '国産フルーツジュース 贅沢飲み比べセット', price: '¥3,456 送料無料' }
+        { for: '老舗ブランドで安心感を', name: '丸高海苔 詰め合わせギフト',           price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-509/' },
+        { for: '定番の贈り物に',         name: '日本ハム 選べるハムギフト NH-32',    price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/nipponham-046/' }
       ]
     },
-    '健康を気遣う方': {
-      comment: '無添加・国産素材にこだわったギフトで、相手への思いやりを形にしましょう。「体のことを考えて選んだ」気持ちが伝わる一品をご提案します。',
+    '会社・上司|3,000〜5,000円': {
+      comment: 'センスのよさが伝わる、ちょっと特別な贈り物を。DEAN & DELUCAや帝国ホテル、銀座千疋屋など、品質で勝負するブランドが揃っています。',
       prods: [
-        { for: '健康意識が高い方に',   name: '国産ゆず果汁・ポン酢セット（無添加）', price: '¥4,320 送料無料' },
-        { for: '毎日使えるものを',     name: '職人仕込みの出汁・醤油 料理ギフト',    price: '¥3,780 送料無料' },
-        { for: 'お茶好きな方に',       name: '国産茶葉 特選ギフトセット',            price: '¥3,240 送料無料' }
+        { for: 'こだわりのコーヒー好きに', name: 'DEAN & DELUCA アイスコーヒー 3本セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01273/' },
+        { for: '上質感で選ぶなら',         name: '帝国ホテル カレーセット 6食',            price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-105/' },
+        { for: '洗練されたスイーツを',     name: '銀座千疋屋 プチフルーツタルト 8個',     price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-037/' }
       ]
     },
-    '好みが分からない': {
-      comment: '好みが分からないときは、相手に選んでもらえるカタログギフトか、幅広い年代に受け入れられる老舗の定番品が安心です。失敗なく贈れます。',
+    '会社・上司|5,000〜10,000円': {
+      comment: '相手に選んでもらえる自由度の高いカタログギフトは、好みの違う複数名への贈り物に最適。47CLUBは全国47都道府県の地域グルメが揃う上質な一冊です。',
       prods: [
-        { for: '相手に選んでもらえる', name: '高島屋監修 カタログギフト 5,000円',  price: '¥5,500 送料無料' },
-        { for: '万人受けする定番',     name: '百貨店監修 和洋菓子詰め合わせ',      price: '¥4,860 送料無料' },
-        { for: '老若男女問わず人気',   name: '国産有明海産 老舗の海苔詰め合わせ',  price: '¥3,240 送料無料' }
+        { for: '好みを選んでもらいたい方に', name: '47CLUB カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/' }
+      ]
+    },
+    '会社・上司|10,000円〜': {
+      comment: '贈った瞬間に「格が違う」と伝わる特別な品を。この予算帯は、相手に確かな印象を残す一品をご提案いたします。お気軽にご相談ください。',
+      prods: []
+    },
+    /* ── 取引先・お客様 ── */
+    '取引先・お客様|〜3,000円': {
+      comment: '会社で分けるには個包装がうれしい。ヨックモックやひととえは、職場全体でシェアしやすく、ブランド力が信頼感を添えます。',
+      prods: [
+        { for: '個包装で配りやすい',   name: 'ひととえ スイーツセット',                 price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-2500/' },
+        { for: 'ブランドで印象づける', name: 'ヨックモック シガール 20本',              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01112/' },
+        { for: '全員で楽しめる飲み物', name: 'ドトール リキッドコーヒー詰め合わせ',   price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-058/' }
+      ]
+    },
+    '取引先・お客様|3,000〜5,000円': {
+      comment: '格式と個包装の実用性を両立。ひととえのスイーツは28個入りで大人数のオフィスにもぴったり。贈った瞬間の嬉しさが伝わります。',
+      prods: [
+        { for: '大人数の職場に最適',   name: 'ひととえ スイーツファクトリー 28個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-3000/' },
+        { for: '夏らしいスイーツで',   name: 'ゴロゴロフルーツアイスクリーム 7個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/' }
+      ]
+    },
+    '取引先・お客様|5,000〜10,000円': {
+      comment: 'この予算帯では相手に選んでもらえるカタログギフトが最善策。贈る側のセンスも伝わり、受け取る側の自由度も高まります。お気軽にご相談ください。',
+      prods: []
+    },
+    '取引先・お客様|10,000円〜': {
+      comment: '大切な取引先へ、格式で応える特別なギフト。この予算帯でのおすすめはお気軽にご相談ください。ご予算・用途に合わせてご提案いたします。',
+      prods: []
+    },
+    /* ── 子育て世帯 ── */
+    '子育て世帯|〜3,000円': {
+      comment: '子どもから大人まで笑顔になれる、夏らしいギフトを。凍らせて食べるアイスやウェルチの果汁ジュースは、子どもが大喜びする定番です。',
+      prods: [
+        { for: '子どもが大喜びする', name: 'ザ・スウィーツ シャーベットゼリー 6個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01216/' },
+        { for: 'みんなで食べられる', name: '凍らせて食べるアイスデザート 8個',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-ice001/' },
+        { for: '果汁100%で安心',     name: 'ウェルチ 100%果汁ギフト 22本',          price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_011/' }
+      ]
+    },
+    '子育て世帯|3,000〜5,000円': {
+      comment: '子どもにも安心な素材で、家族みんなが楽しめるギフトを。カルピスや冷たいデザートは、夏の思い出になる一品です。',
+      prods: [
+        { for: '子どもも大人も大好き', name: 'カルピス すこやかギフト 22本',         price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_003/' },
+        { for: '夏のひんやりギフトに', name: 'ザ・スウィーツ フルーツソルベ 8個',   price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-358/' }
+      ]
+    },
+    '子育て世帯|5,000〜10,000円': {
+      comment: '少し奮発して、家族全員が喜ぶ特別なギフトを。この予算帯でのおすすめはお気軽にご相談ください。',
+      prods: []
+    },
+    '子育て世帯|10,000円〜': {
+      comment: '特別な感謝を形に。コールドストーンのプレミアムアイスキャンディは、子どもたちが大喜びする夏の贅沢ギフトです。',
+      prods: [
+        { for: '特別な夏の思い出に', name: 'コールドストーン アイスキャンディ 10本', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-310/' }
+      ]
+    },
+    /* ── 健康を気遣う方 ── */
+    '健康を気遣う方|〜3,000円': {
+      comment: '「体のことを考えて選んだ」気持ちが伝わる一品を。カゴメの国産野菜ジュースやプレミアムフルーツジュースは、健康意識の高い方に喜ばれます。',
+      prods: [
+        { for: '野菜不足が気になる方に',       name: 'カゴメ 野菜生活 国産プレミアムギフト',    price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/' },
+        { for: 'フルーツの自然な甘みを楽しむ', name: 'THE GIFT プレミアムフルーツジュース 6本', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-004/' }
+      ]
+    },
+    '健康を気遣う方|3,000〜5,000円': {
+      comment: '健康への思いやりが伝わる、品質にこだわったギフトを。素材や産地にこだわった上質な飲料ギフトをご提案できます。お気軽にご相談ください。',
+      prods: []
+    },
+    '健康を気遣う方|5,000〜10,000円': {
+      comment: '本格的な健康ギフトで、大切な方への思いやりを形に。毎日飲みたくなる、贅沢な素材の飲み物ギフトをご提案いたします。',
+      prods: []
+    },
+    '健康を気遣う方|10,000円〜': {
+      comment: '最高級の素材にこだわる方へ。希少な産地の野菜ジュースや、健康志向の高級ギフトをご用意できます。お気軽にお問い合わせください。',
+      prods: []
+    },
+    /* ── 好みが分からない ── */
+    '好みが分からない|〜3,000円': {
+      comment: '好みが分からないときは、多くの方に受け入れられる「定番スイーツ」が安心。シュガーバターの木は知名度と信頼感で贈る側の安心感につながります。',
+      prods: [
+        { for: '知名度で安心感を',   name: 'シュガーバターの木 詰め合わせ', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01319/' },
+        { for: '万人受けする洋菓子', name: 'プラスチーズ 詰め合わせ',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-977-set/' }
+      ]
+    },
+    '好みが分からない|3,000〜5,000円': {
+      comment: 'この価格帯なら、ブランドの信頼感で確実に喜ばれる品が揃います。銀座千疋屋のゼリーや高島屋セレクトのヨックモックは、誰に贈っても外しません。',
+      prods: [
+        { for: '上品なゼリーで夏らしく',   name: '銀座千疋屋ゼリー 9個入',            price: '¥4,860 送料無料', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0160/' },
+        { for: '高島屋ブランドで安心',     name: '高島屋セレクト ヨックモック 36個',  price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01115/' },
+        { for: '相手に選んでもらいたい',   name: 'コードシェア セレクトギフト',        price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/code-sset-001/' }
+      ]
+    },
+    '好みが分からない|5,000〜10,000円': {
+      comment: 'この予算なら、高島屋のヨックモックや47CLUBカタログなど、ブランド力と品質で間違いない品をお選びいただけます。',
+      prods: [
+        { for: '大容量で満足感の高いギフトに', name: '高島屋セレクト ヨックモック 52個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01116/' },
+        { for: '相手に選んでもらいたい',       name: '47CLUB カタログギフト',            price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat_47club_002/' }
+      ]
+    },
+    '好みが分からない|10,000円〜': {
+      comment: '好みが分からなくても、相手が自分で選べるカタログギフトなら必ず喜ばれます。DEAN & DELUCAのカタログは、食のこだわりがある方への究極の選択です。',
+      prods: [
+        { for: '相手の好みに合わせて', name: 'DEAN & DELUCA カタログギフト', price: '¥10,000 送料無料', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-dnd-001/' }
       ]
     }
   };
@@ -1250,14 +1357,37 @@
   }
 
   function showResult() {
-    var data = resultData[dR] || resultData['好みが分からない'];
+    var key = dR + '|' + dB;
+    var data = resultData[key] || resultData['好みが分からない|〜3,000円'];
     document.getElementById('dr-ttl').textContent = dR + ' ｜ ' + dB;
     document.getElementById('dr-txt').textContent = data.comment;
+    var prods = data.prods || [];
+    // 商品カード表示/非表示
     for (var i = 0; i < 3; i++) {
-      var p = data.prods[i];
-      document.getElementById('rpc-for'   + (i+1)).textContent = p.for;
-      document.getElementById('rpc-name'  + (i+1)).textContent = p.name;
-      document.getElementById('rpc-price' + (i+1)).textContent = p.price;
+      var card = document.getElementById('rpc-link' + (i+1));
+      if (prods[i]) {
+        card.classList.remove('rpc-hidden');
+        card.href = prods[i].url || '#';
+        document.getElementById('rpc-for'   + (i+1)).textContent = prods[i].for;
+        document.getElementById('rpc-name'  + (i+1)).textContent = prods[i].name;
+        document.getElementById('rpc-price' + (i+1)).textContent = prods[i].price;
+      } else {
+        card.classList.add('rpc-hidden');
+      }
+    }
+    // 商品がない場合のメッセージ
+    var emptyMsg = document.getElementById('dr-empty-msg');
+    if (prods.length === 0) {
+      if (!emptyMsg) {
+        emptyMsg = document.createElement('p');
+        emptyMsg.id = 'dr-empty-msg';
+        emptyMsg.className = 'result-empty-msg';
+        document.getElementById('dr-prods').after(emptyMsg);
+      }
+      emptyMsg.textContent = 'この組み合わせの商品は現在準備中です。お気軽にお問い合わせください。';
+      emptyMsg.style.display = 'block';
+    } else if (emptyMsg) {
+      emptyMsg.style.display = 'none';
     }
     setTimeout(launchConfetti, 120);
   }
