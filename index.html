@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -198,6 +198,9 @@
     @media (max-width: 600px) {
       .rec-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 480px) {
+      .rec-grid { grid-template-columns: 1fr; }
+    }
     .rec-card {
       background: #fff;
       border: 1px solid #D5DAE4;
@@ -322,6 +325,23 @@
     .tarrow { font-size: 14px; color: #C8A84B; }
 
     /* ── SECTION 2: お中元診断（nanaple style） ── */
+    .diag-header-above {
+      background: #1B3060;
+      text-align: center;
+      padding: 44px 28px 28px;
+    }
+    .diag-header-above .sec-ey {
+      color: #6E8FAD;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .sec-ttl-inv { color: #fff !important; }
+    .sec-rl-inv { background: rgba(255,255,255,0.25) !important; }
+    .sec-sub-inv { color: rgba(255,255,255,0.72) !important; }
     .diag-outer {
       background: #1B3060;
       padding: 0 0 44px;
@@ -379,6 +399,7 @@
       padding: 0 28px;
     }
     @media (max-width: 560px) { .diag-cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .diag-cards { grid-template-columns: 1fr; } }
     .diag-card {
       background: #fff;
       border-radius: 8px;
@@ -448,6 +469,7 @@
       gap: 10px; margin-bottom: 22px;
     }
     @media (max-width: 500px) { .result-prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .result-prod-grid { grid-template-columns: 1fr; } }
     .result-prod-card { background: #fff; border-radius: 6px; overflow: hidden; }
     .rpc-img {
       height: 82px; background: #EBF0F5;
@@ -606,6 +628,9 @@
     }
     @media (max-width: 500px) {
       .pcards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .pcards { grid-template-columns: 1fr; }
     }
     .pcard {
       background: #fff;
@@ -781,86 +806,20 @@
 
   <!-- ══ SCROLL NAV ══ -->
   <nav class="snav" aria-label="ページ内ナビゲーション">
-    <a class="snav-item" href="#s-dare">誰に贈る？</a>
     <a class="snav-item" href="#s-diag">お中元診断</a>
     <a class="snav-item" href="#s-rank">ソムリエ厳選</a>
+    <a class="snav-item" href="#s-dare">誰に贈る？</a>
     <a class="snav-item" href="#s-prod">こんな方に</a>
     <a class="snav-item" href="#s-voice">店主より</a>
   </nav>
 
-  <!-- ══════════════════════════════
-       SECTION 1: 誰に贈る？
-  ══════════════════════════════ -->
-  <section id="s-dare">
-    <div class="sec">
-      <span class="sec-ey">DARE NI OKURU?</span>
-      <div class="sec-ttl">誰に贈りますか？</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-      <div class="sec-sub">贈る相手を選ぶと、ソムリエギフトが厳選したギフトをご案内します</div>
-    </div>
-    <div class="rec-grid">
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">01</span><span class="rc-scene">毎年のご挨拶に</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">🏠</div><div class="rc-name">義実家・<br>ご両親へ</div></div>
-        <div class="rc-hint">失礼なく、でも特別感を。年配の方に喜ばれる定番の上質ギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">海苔・佃煮</span><span class="rc-tag">そうめん</span><span class="rc-tag">和菓子</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>28</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">02</span><span class="rc-scene">ビジネスギフトに</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">💼</div><div class="rc-name">会社・上司・<br>取引先へ</div></div>
-        <div class="rc-hint">センスと誠実さが伝わる。品格ある複数人向けギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">カタログ</span><span class="rc-tag">飲料セット</span><span class="rc-tag">洋菓子</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>34</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">03</span><span class="rc-scene">家族みんなで楽しめる</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">👨‍👩‍👧</div><div class="rc-name">子育て世帯・<br>ご家族へ</div></div>
-        <div class="rc-hint">子どもから大人まで笑顔になれる、夏らしいギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">アイスギフト</span><span class="rc-tag">ゼリー</span><span class="rc-tag">ジュース</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>22</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">04</span><span class="rc-scene">気遣いを形に</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">🌿</div><div class="rc-name">健康を気遣う<br>方へ</div></div>
-        <div class="rc-hint">体への思いやりが伝わる。無添加・国産素材のギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">無添加調味料</span><span class="rc-tag">お茶</span><span class="rc-tag">出汁</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>16</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">05</span><span class="rc-scene">一人でも負担なく</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">🏡</div><div class="rc-name">一人暮らしの<br>方へ</div></div>
-        <div class="rc-hint">量が多すぎず使い切れる。一人暮らしに嬉しい小分けギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">個包装菓子</span><span class="rc-tag">缶詰</span><span class="rc-tag">コーヒー</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>18</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">06</span><span class="rc-scene">迷ったときの定番</span></div>
-        <div class="rc-icon-row"><div class="rc-icon">🎁</div><div class="rc-name">好みが<br>分からない方へ</div></div>
-        <div class="rc-hint">万人受けの定番か、相手が選べるカタログギフトを。</div>
-        <div class="rc-tags"><span class="rc-tag">カタログ</span><span class="rc-tag">老舗海苔</span><span class="rc-tag">ハム</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>25</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-    </div>
-
-    <div class="trouble-wrap">
-      <div class="trouble-ttl">💬 こんなお悩みはありませんか？</div>
-      <div class="trouble-list">
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">毎年同じものを贈っていて、今年は変えたい</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">食べ物の好き嫌いが分からなくて困っている</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">予算は決まっているが何を選べばいいか分からない</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">遠方に送るので日持ちするものを探している</span><span class="tarrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <hr class="sec-divider">
-
-  <!-- ══════════════════════════════
-       SECTION 2: お中元診断
-  ══════════════════════════════ -->
-  <section id="s-diag">
-    <div class="diag-outer">
+<section id="s-diag">
+  <div class="diag-header-above">
+    <span class="sec-ey">GIFT SHINDAN</span>
+    <div class="sec-ttl sec-ttl-inv">お中元ギフト診断</div>
+    <div class="sec-rule"><div class="sec-rl sec-rl-inv"></div><div class="sec-rd"></div><div class="sec-rl sec-rl-inv"></div></div>
+    <div class="sec-sub sec-sub-inv">3つの質問に答えるだけで、ぴったりのギフトが見つかります</div>
+  </div>    <div class="diag-outer">
 
       <!-- トップバー -->
       <div class="diag-topbar">
@@ -1013,10 +972,7 @@
 
   <hr class="sec-divider">
 
-  <!-- ══════════════════════════════
-       SECTION 3: ソムリエ厳選ランキング
-  ══════════════════════════════ -->
-  <section id="s-rank">
+<section id="s-rank">
     <div class="sec">
       <span class="sec-ey">SOMMELIER'S CHOICE</span>
       <div class="sec-ttl">ソムリエが選ぶ、相手別ランキング</div>
@@ -1064,6 +1020,71 @@
   </section>
 
   <hr class="sec-divider">
+
+<section id="s-dare">
+    <div class="sec">
+      <span class="sec-ey">DARE NI OKURU?</span>
+      <div class="sec-ttl">誰に贈りますか？</div>
+      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
+      <div class="sec-sub">贈る相手を選ぶと、ソムリエギフトが厳選したギフトをご案内します</div>
+    </div>
+    <div class="rec-grid">
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">01</span><span class="rc-scene">毎年のご挨拶に</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">🏠</div><div class="rc-name">義実家・<br>ご両親へ</div></div>
+        <div class="rc-hint">失礼なく、でも特別感を。年配の方に喜ばれる定番の上質ギフト。</div>
+        <div class="rc-tags"><span class="rc-tag">海苔・佃煮</span><span class="rc-tag">そうめん</span><span class="rc-tag">和菓子</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>28</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">02</span><span class="rc-scene">ビジネスギフトに</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">💼</div><div class="rc-name">会社・上司・<br>取引先へ</div></div>
+        <div class="rc-hint">センスと誠実さが伝わる。品格ある複数人向けギフト。</div>
+        <div class="rc-tags"><span class="rc-tag">カタログ</span><span class="rc-tag">飲料セット</span><span class="rc-tag">洋菓子</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>34</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">03</span><span class="rc-scene">家族みんなで楽しめる</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">👨‍👩‍👧</div><div class="rc-name">子育て世帯・<br>ご家族へ</div></div>
+        <div class="rc-hint">子どもから大人まで笑顔になれる、夏らしいギフト。</div>
+        <div class="rc-tags"><span class="rc-tag">アイスギフト</span><span class="rc-tag">ゼリー</span><span class="rc-tag">ジュース</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>22</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">04</span><span class="rc-scene">気遣いを形に</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">🌿</div><div class="rc-name">健康を気遣う<br>方へ</div></div>
+        <div class="rc-hint">体への思いやりが伝わる。無添加・国産素材のギフト。</div>
+        <div class="rc-tags"><span class="rc-tag">無添加調味料</span><span class="rc-tag">お茶</span><span class="rc-tag">出汁</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>16</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">05</span><span class="rc-scene">一人でも負担なく</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">🏡</div><div class="rc-name">一人暮らしの<br>方へ</div></div>
+        <div class="rc-hint">量が多すぎず使い切れる。一人暮らしに嬉しい小分けギフト。</div>
+        <div class="rc-tags"><span class="rc-tag">個包装菓子</span><span class="rc-tag">缶詰</span><span class="rc-tag">コーヒー</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>18</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+      <a class="rec-card" href="#">
+        <div class="rc-top"><span class="rc-num">06</span><span class="rc-scene">迷ったときの定番</span></div>
+        <div class="rc-icon-row"><div class="rc-icon">🎁</div><div class="rc-name">好みが<br>分からない方へ</div></div>
+        <div class="rc-hint">万人受けの定番か、相手が選べるカタログギフトを。</div>
+        <div class="rc-tags"><span class="rc-tag">カタログ</span><span class="rc-tag">老舗海苔</span><span class="rc-tag">ハム</span></div>
+        <div class="rc-foot"><span class="rc-count"><span>25</span> 商品</span><span class="rc-arrow">→</span></div>
+      </a>
+    </div>
+
+    <div class="trouble-wrap">
+      <div class="trouble-ttl">💬 こんなお悩みはありませんか？</div>
+      <div class="trouble-list">
+        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">毎年同じものを贈っていて、今年は変えたい</span><span class="tarrow">→</span></a>
+        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">食べ物の好き嫌いが分からなくて困っている</span><span class="tarrow">→</span></a>
+        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">予算は決まっているが何を選べばいいか分からない</span><span class="tarrow">→</span></a>
+        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">遠方に送るので日持ちするものを探している</span><span class="tarrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+<hr class="sec-divider">
 
   <!-- ══════════════════════════════
        SECTION 4: こんな方に
