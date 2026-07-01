@@ -36,35 +36,64 @@
       background: #FFF9EE;
     }
 
-    /* ── TOP BAR ── */
-    .topbar {
-      background: #0557AB;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .topbar-logo {
-      color: #F0F4F8;
-      font-size: 19px;
-      letter-spacing: 0.07em;
-      font-weight: 500;
-    }
-    .topbar-logo small {
-      display: block;
-      font-size: 13px;
-      color: rgba(224,232,240,0.7);
-      letter-spacing: 0.06em;
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: #fff;
+      text-align: center;
+      padding: 18px 24px;
+      letter-spacing: 0.22em;
+      font-size: 17px;
       font-weight: 400;
-      margin-top: 2px;
+      color: #1E2A38;
+      border-bottom: 1px solid #E8E8E8;
     }
-    .topbar-badge {
-      font-size: 14px;
-      color: #C8A84B;
-      border: 1px solid #C8A84B;
-      padding: 4px 12px;
-      border-radius: 2px;
-      letter-spacing: 0.1em;
+
+    /* ── 2カラムレイアウト ── */
+    .page-body {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-btn {
+      display: block;
+      background: #fff;
+      color: #1E2A38;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sidebar-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+    }
+    .main-content { min-width: 0; }
+
+    @media (max-width: 700px) {
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 16px;
+        gap: 8px;
+      }
+      .sidebar-btn { flex: 1 1 calc(50% - 8px); font-size: 14px; padding: 12px 14px; }
     }
 
     /* ── HERO ── */
@@ -833,13 +862,20 @@
 <body>
 <div class="page">
 
-  <!-- ══ TOP BAR ══ -->
-  <div class="topbar">
-    <div class="topbar-logo">ソムリエギフト
-      <small>楽天市場店　ギフト専門店</small>
-    </div>
-    <span class="topbar-badge">お中元 2026</span>
-  </div>
+  <!-- ══ PAGE HEADER ══ -->
+  <div class="page-header">SOMMELIER @ GIFT</div>
+
+  <div class="page-body">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <a class="sidebar-btn" href="#s-diag">お中元診断</a>
+    <a class="sidebar-btn" href="#s-rank">贈り相手別ランキング</a>
+    <a class="sidebar-btn" href="#s-dare">あの人をイメージ</a>
+    <a class="sidebar-btn" href="#s-prod">こんなお悩み</a>
+  </aside>
+
+  <div class="main-content">
 
   <!-- ══ HERO ══ -->
   <div class="hero">
@@ -863,14 +899,6 @@
     </div>
   </div>
 
-  <!-- ══ SCROLL NAV ══ -->
-  <nav class="snav" aria-label="ページ内ナビゲーション">
-    <a class="snav-item" href="#s-diag">お中元診断</a>
-    <a class="snav-item" href="#s-rank">ソムリエ厳選</a>
-    <a class="snav-item" href="#s-dare">誰に贈る？</a>
-    <a class="snav-item" href="#s-prod">こんな方に</a>
-    <a class="snav-item" href="#s-voice">店主より</a>
-  </nav>
 
 <section id="s-diag">
   <div class="diag-header-above">
@@ -1243,6 +1271,9 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /main-content -->
+  </div><!-- /page-body -->
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
