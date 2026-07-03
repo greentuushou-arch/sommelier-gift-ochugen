@@ -908,7 +908,58 @@
       margin: 16px auto;
     }
     .footer-copy { font-size: 14px; color: rgba(224,232,240,0.45); letter-spacing: 0.06em; }
-  </style>
+
+    /* ══ 新診断ページ ══ */
+    .dp-hero { background: #0557AB; color: #fff; padding: 56px 40px 48px; text-align: center; }
+    .dp-hero-en { font-size: 13px; letter-spacing: 0.24em; color: rgba(255,255,255,0.55); display: block; margin-bottom: 16px; }
+    .dp-hero-ttl { font-size: 42px; font-weight: 500; line-height: 1.35; margin-bottom: 16px; letter-spacing: 0.03em; }
+    .dp-hero-sub { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.9; }
+    .dp-indicator { display: flex; align-items: center; justify-content: center; padding: 24px; background: #FFCD1C; }
+    .dp-ind-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .dp-ind-dot { width: 38px; height: 38px; border-radius: 50%; border: 2px solid rgba(73,73,73,0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #494949; transition: all 0.3s; }
+    .dp-ind-item.active .dp-ind-dot, .dp-ind-item.done .dp-ind-dot { border-color: #C8A84B; background: #C8A84B; color: #fff; }
+    .dp-ind-lbl { font-size: 12px; color: #494949; letter-spacing: 0.04em; white-space: nowrap; }
+    .dp-ind-line { flex: 1; height: 1px; background: rgba(73,73,73,0.2); min-width: 40px; margin: 0 8px 22px; transition: background 0.3s; }
+    .dp-ind-line.done { background: #C8A84B; }
+    .dp-step { display: none; }
+    .dp-step.show { display: block; }
+    .dp-step-inner { background: #FFCD1C; padding: 32px 32px 44px; }
+    .dp-q-label { font-size: 12px; letter-spacing: 0.22em; color: #494949; display: block; text-align: center; margin-bottom: 10px; }
+    .dp-q-ttl { font-size: 32px; font-weight: 700; color: #494949; text-align: center; margin-bottom: 8px; }
+    .dp-q-sub { font-size: 16px; color: #494949; text-align: center; margin-bottom: 28px; }
+    .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 680px; margin: 0 auto; }
+    .dp-card { background: #fff; border: 2px solid transparent; border-radius: 14px; padding: 24px 14px 20px; text-align: center; cursor: pointer; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .dp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .dp-card.sel { border-color: #C8A84B; background: #FFFDF5; }
+    .dp-card .material-symbols-rounded { font-size: 38px; color: #0557AB; display: block; margin-bottom: 10px; }
+    .dp-card-lbl { font-size: 14px; font-weight: 600; color: #1E2A38; line-height: 1.5; }
+    .dp-back { display: block; margin: 28px auto 0; background: none; border: none; color: #494949; font-size: 15px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; letter-spacing: 0.04em; }
+    .dp-result-header { background: #0557AB; padding: 44px 32px 40px; text-align: center; color: #fff; }
+    .dp-result-label { font-size: 12px; letter-spacing: 0.22em; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+    .dp-result-for { display: inline-block; font-size: 14px; background: rgba(255,255,255,0.15); padding: 5px 18px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.04em; }
+    .dp-result-ttl { font-size: 30px; font-weight: 700; margin-bottom: 14px; }
+    .dp-result-desc { font-size: 16px; line-height: 1.95; color: rgba(255,255,255,0.85); max-width: 560px; margin: 0 auto; }
+    .dp-result-products { background: #FFF9EE; padding: 32px; }
+    .dp-prod-ttl { font-size: 16px; font-weight: 600; color: #1E2A38; margin-bottom: 20px; letter-spacing: 0.04em; text-align: center; }
+    .dp-prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+    .dp-prod-card { background: #fff; border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: transform 0.15s, box-shadow 0.15s; }
+    .dp-prod-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+    .dp-prod-img { aspect-ratio: 1/1; background: #EBF0F5; overflow: hidden; }
+    .dp-prod-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .dp-prod-body { padding: 12px; }
+    .dp-prod-name { font-size: 13px; font-weight: 600; color: #1E2A38; line-height: 1.4; margin-bottom: 5px; }
+    .dp-prod-price { font-size: 13px; color: #335577; font-weight: 500; }
+    .dp-retry { display: block; margin: 0 auto; background: #0557AB; color: #fff; border: none; border-radius: 8px; padding: 15px 40px; font-size: 16px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; }
+    .dp-retry:hover { background: #044899; }
+    @media (max-width: 600px) {
+      .dp-hero-ttl { font-size: 26px; }
+      .dp-q-ttl { font-size: 22px; }
+      .dp-result-ttl { font-size: 22px; }
+      .dp-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .dp-step-inner { padding: 24px 16px 36px; }
+      .dp-prod-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .dp-result-products { padding: 20px 16px; }
+    }  </style>
 </head>
 <body>
 <div class="page">
@@ -926,408 +977,77 @@
 
   <!-- ══ SIDEBAR ══ -->
   <aside class="sidebar" id="sidebar">
-    <a class="sidebar-btn" href="#s-diag">お中元診断</a>
-    <a class="sidebar-btn" href="#s-rank">贈り相手別ランキング</a>
-    <a class="sidebar-btn" href="#s-dare">あの人をイメージ</a>
-    <a class="sidebar-btn" href="#s-prod">こんなお悩み</a>
+    <a class="sidebar-btn" href="#" onclick="dpRetry();return false;">診断をはじめる</a>
+    <a class="sidebar-btn" href="https://www.rakuten.ne.jp/gold/bellevie-harima/" target="_blank">店舗トップへ</a>
   </aside>
 
   <div class="main-content">
 
-  <!-- ══ HERO ══ -->
-  <div class="hero">
-    <div class="hero-sub-line"></div>
-    <span class="hero-en">SUMMER GIFT 2026</span>
-    <div class="hero-title">何を贈るか、<br>迷っていませんか？</div>
-    <div class="hero-copy">
-      ソムリエギフトは、贈る相手に合わせてご提案します。<br>
-      価格ではなく、「選ばれた理由」があるギフトを。
-    </div>
-    <div class="hero-rule">
-      <div class="hero-rule-line"></div>
-      <div class="hero-rule-dot"></div>
-      <div class="hero-rule-line"></div>
-    </div>
-    <div class="hero-tags">
-      <span class="hero-tag">誰に贈る？</span>
-      <span class="hero-tag">お中元診断</span>
-      <span class="hero-tag">ソムリエ厳選</span>
-      <span class="hero-tag">こんな方に</span>
+  <!-- ══ 診断ページ ══ -->
+  <div class="dp-hero">
+    <span class="dp-hero-en">GIFT DIAGNOSIS</span>
+    <h1 class="dp-hero-ttl">ぴったりのお中元、<br>一緒に選びましょう。</h1>
+    <p class="dp-hero-sub">2つの質問に答えるだけで、<br>贈る相手に合ったギフトをご提案します。</p>
+  </div>
+
+  <div class="dp-indicator">
+    <div class="dp-ind-item active" id="dp-ind1"><div class="dp-ind-dot">1</div><div class="dp-ind-lbl">贈る相手</div></div>
+    <div class="dp-ind-line" id="dp-ind-line1"></div>
+    <div class="dp-ind-item" id="dp-ind2"><div class="dp-ind-dot">2</div><div class="dp-ind-lbl">重視すること</div></div>
+    <div class="dp-ind-line" id="dp-ind-line2"></div>
+    <div class="dp-ind-item" id="dp-ind3"><div class="dp-ind-dot">♥</div><div class="dp-ind-lbl">結果</div></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="dp-step show" id="dp-q1">
+    <div class="dp-step-inner">
+      <span class="dp-q-label">QUESTION 1</span>
+      <h2 class="dp-q-ttl">誰に贈りますか？</h2>
+      <p class="dp-q-sub">贈る相手を選んでください。</p>
+      <div class="dp-cards">
+        <div class="dp-card" onclick="dpSel(this,'q1','両親・親戚')"><span class="material-symbols-rounded">home</span><div class="dp-card-lbl">両親・親戚</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','上司・目上の方')"><span class="material-symbols-rounded">business_center</span><div class="dp-card-lbl">上司・目上の方</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','会社・取引先')"><span class="material-symbols-rounded">handshake</span><div class="dp-card-lbl">会社・取引先</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','子育て世帯')"><span class="material-symbols-rounded">family_restroom</span><div class="dp-card-lbl">子育て世帯</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','お友達')"><span class="material-symbols-rounded">group</span><div class="dp-card-lbl">お友達</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','お世話になった方')"><span class="material-symbols-rounded">favorite</span><div class="dp-card-lbl">お世話になった方</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','一人暮らしの方')"><span class="material-symbols-rounded">apartment</span><div class="dp-card-lbl">一人暮らしの方</div></div>
+      </div>
     </div>
   </div>
 
-
-<section id="s-diag">
-  <div class="diag-header-above">
-    <span class="sec-ey">GIFT SHINDAN</span>
-    <div class="sec-ttl sec-ttl-inv">お中元ギフト診断</div>
-    <div class="sec-rule"><div class="sec-rl sec-rl-inv"></div><div class="sec-rd"></div><div class="sec-rl sec-rl-inv"></div></div>
-    <div class="sec-sub sec-sub-inv">贈るお相手、ご予算でぴったりをご提案！</div>
-  </div>    <div class="diag-outer">
-
-      <!-- トップバー -->
-      <div class="diag-topbar">
-        <span class="diag-topbar-lbl">DIAGNOSIS <span>お中元ギフト診断</span></span>
-        <span class="diag-step-lbl" id="diag-step-lbl">Step 1</span>
+  <!-- Q2 -->
+  <div class="dp-step" id="dp-q2">
+    <div class="dp-step-inner">
+      <span class="dp-q-label">QUESTION 2</span>
+      <h2 class="dp-q-ttl">何を重視しますか？</h2>
+      <p class="dp-q-sub">気持ちに近いものを選んでください。</p>
+      <div class="dp-cards">
+        <div class="dp-card" onclick="dpSel(this,'q2','絶対に失敗したくない')"><span class="material-symbols-rounded">verified</span><div class="dp-card-lbl">絶対に失敗したくない</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q2','家族みんなで楽しんでほしい')"><span class="material-symbols-rounded">celebrate</span><div class="dp-card-lbl">家族みんなで楽しんでほしい</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q2','健康を気遣いたい')"><span class="material-symbols-rounded">spa</span><div class="dp-card-lbl">健康を気遣いたい</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q2','センスが良いと思われたい')"><span class="material-symbols-rounded">auto_awesome</span><div class="dp-card-lbl">センスが良いと思われたい</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q2','特別感を届けたい')"><span class="material-symbols-rounded">stars</span><div class="dp-card-lbl">特別感を届けたい</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q2','気を遣わせずに贈りたい')"><span class="material-symbols-rounded">card_giftcard</span><div class="dp-card-lbl">気を遣わせずに贈りたい</div></div>
       </div>
-
-      <!-- プログレス -->
-      <div class="diag-prog">
-        <div class="dp-step">
-          <div class="dp-circle active" id="pc1">1</div>
-          <div class="dp-lbl active" id="pl1">贈る相手</div>
-        </div>
-        <div class="dp-line" id="dl1"></div>
-        <div class="dp-step">
-          <div class="dp-circle" id="pc2">2</div>
-          <div class="dp-lbl" id="pl2">ご予算</div>
-        </div>
-        <div class="dp-line" id="dl2"></div>
-        <div class="dp-step">
-          <div class="dp-circle" id="pc3">♥</div>
-          <div class="dp-lbl" id="pl3">結果</div>
-        </div>
-      </div>
-
-      <!-- ── STEP 1: 誰に贈る ── -->
-      <div class="diag-step show" id="ds1">
-        <div class="diag-q-area">
-          <span class="diag-q-label">QUESTION 1</span>
-          <div class="diag-q-text">誰に贈りますか？</div>
-          <div class="diag-q-sub">贈る相手を選んでください。</div>
-        </div>
-        <div class="diag-cards">
-          <div class="diag-card" onclick="dCardSel(this,'q1','ご両親・親戚')">
-            <div class="dc-icon"><span class="material-symbols-rounded">home</span></div>
-            <div class="dc-title">ご両親・親戚</div>
-            <div class="dc-desc">毎年のご挨拶に。定番の上質ギフト。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card" onclick="dCardSel(this,'q1','会社・上司')">
-            <div class="dc-icon"><span class="material-symbols-rounded">business_center</span></div>
-            <div class="dc-title">会社・上司へ</div>
-            <div class="dc-desc">センスと誠実さが伝わる品格ある一品。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card" onclick="dCardSel(this,'q1','取引先・お客様')">
-            <div class="dc-icon"><span class="material-symbols-rounded">handshake</span></div>
-            <div class="dc-title">取引先・お客様</div>
-            <div class="dc-desc">信頼と感謝を込めたビジネスギフト。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card" onclick="dCardSel(this,'q1','子育て世帯')">
-            <div class="dc-icon"><span class="material-symbols-rounded">family_restroom</span></div>
-            <div class="dc-title">子育て世帯へ</div>
-            <div class="dc-desc">家族みんなで楽しめる夏らしいギフト。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card" onclick="dCardSel(this,'q1','健康を気遣う方')">
-            <div class="dc-icon"><span class="material-symbols-rounded">spa</span></div>
-            <div class="dc-title">健康を気遣う方</div>
-            <div class="dc-desc">無添加・国産素材で思いやりを形に。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card" onclick="dCardSel(this,'q1','好みが分からない')">
-            <div class="dc-icon"><span class="material-symbols-rounded">redeem</span></div>
-            <div class="dc-title">好みが分からない</div>
-            <div class="dc-desc">外れなく贈れる、万人受けの定番品。</div>
-            <span class="dc-choose">選ぶ →</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── STEP 2: 予算 ── -->
-      <div class="diag-step" id="ds2">
-        <div class="diag-q-area">
-          <span class="diag-q-label">QUESTION 2</span>
-          <div class="diag-q-text">ご予算を教えてください。</div>
-          <div class="diag-q-sub">送料込みの合計目安でお選びください。</div>
-        </div>
-        <div class="diag-cards-2">
-          <div class="diag-card-b" onclick="dCardSel(this,'q2','〜3,000円')">
-            <div class="dcb-price">〜3,000円</div>
-            <div class="dcb-label">気軽なご挨拶に</div>
-            <span class="dcb-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card-b" onclick="dCardSel(this,'q2','3,000〜5,000円')">
-            <div class="dcb-price">3,000〜5,000円</div>
-            <div class="dcb-label">定番の価格帯</div>
-            <span class="dcb-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card-b" onclick="dCardSel(this,'q2','5,000〜10,000円')">
-            <div class="dcb-price">5,000〜10,000円</div>
-            <div class="dcb-label">特別感のある一品</div>
-            <span class="dcb-choose">選ぶ →</span>
-          </div>
-          <div class="diag-card-b" onclick="dCardSel(this,'q2','10,000円〜')">
-            <div class="dcb-price">10,000円〜</div>
-            <div class="dcb-label">格式あるギフトに</div>
-            <span class="dcb-choose">選ぶ →</span>
-          </div>
-        </div>
-        <div class="diag-nav">
-          <span class="diag-back-link" onclick="dBack(1)">← 贈る相手を変える</span>
-        </div>
-      </div>
-
-      <!-- ── STEP 3: 結果 ── -->
-      <div class="diag-step" id="ds3">
-        <div class="diag-q-area" style="padding-bottom:24px">
-          <div class="result-complete">♥ 診断完了</div>
-          <div class="result-ttl-main" id="dr-ttl">―</div>
-        </div>
-        <div class="diag-result-area">
-          <div class="result-comment" id="dr-txt">―</div>
-          <!-- No.1 ヒーローカード -->
-          <a class="result-hero-card rpc-hidden" id="rpc-link1" href="#" target="_blank">
-            <div class="rhc-img"><img id="rpc-img1" src="" alt=""><span class="rhc-rank">No.1 ソムリエおすすめ</span></div>
-            <div class="rhc-body">
-              <div class="rpc-for" id="rpc-for1">―</div>
-              <div class="rpc-name rpc-name-lg" id="rpc-name1">―</div>
-              <div class="rpc-price" id="rpc-price1">―</div>
-            </div>
-          </a>
-          <!-- No.2〜5 サブグリッド 2×2 -->
-          <div class="result-sub-grid" id="dr-sub">
-            <a class="result-prod-card rpc-hidden" id="rpc-link2" href="#" target="_blank">
-              <div class="rpc-img"><img id="rpc-img2" src="" alt=""><span class="rpc-rank">No.2</span></div>
-              <div class="rpc-body">
-                <div class="rpc-for" id="rpc-for2">―</div>
-                <div class="rpc-name" id="rpc-name2">―</div>
-                <div class="rpc-price" id="rpc-price2">―</div>
-              </div>
-            </a>
-            <a class="result-prod-card rpc-hidden" id="rpc-link3" href="#" target="_blank">
-              <div class="rpc-img"><img id="rpc-img3" src="" alt=""><span class="rpc-rank">No.3</span></div>
-              <div class="rpc-body">
-                <div class="rpc-for" id="rpc-for3">―</div>
-                <div class="rpc-name" id="rpc-name3">―</div>
-                <div class="rpc-price" id="rpc-price3">―</div>
-              </div>
-            </a>
-            <a class="result-prod-card rpc-hidden" id="rpc-link4" href="#" target="_blank">
-              <div class="rpc-img"><img id="rpc-img4" src="" alt=""><span class="rpc-rank">No.4</span></div>
-              <div class="rpc-body">
-                <div class="rpc-for" id="rpc-for4">―</div>
-                <div class="rpc-name" id="rpc-name4">―</div>
-                <div class="rpc-price" id="rpc-price4">―</div>
-              </div>
-            </a>
-            <a class="result-prod-card rpc-hidden" id="rpc-link5" href="#" target="_blank">
-              <div class="rpc-img"><img id="rpc-img5" src="" alt=""><span class="rpc-rank">No.5</span></div>
-              <div class="rpc-body">
-                <div class="rpc-for" id="rpc-for5">―</div>
-                <div class="rpc-name" id="rpc-name5">―</div>
-                <div class="rpc-price" id="rpc-price5">―</div>
-              </div>
-            </a>
-          </div>
-          <a class="result-cta" href="#" id="dr-link">この条件で商品をすべて見る →</a>
-        </div>
-        <div class="diag-nav" style="padding-bottom:8px">
-          <span class="diag-back-link" onclick="dBack(1)">← 最初からやり直す</span>
-        </div>
-      </div>
-
+      <button class="dp-back" onclick="dpBack()">← 前の質問に戻る</button>
     </div>
-  </section>
+  </div>
 
-  <hr class="sec-divider">
-
-<section id="s-rank">
-    <div class="sec">
-      <span class="sec-ey">SOMMELIER'S CHOICE</span>
-      <div class="sec-ttl">贈り相手別のおすすめランキング</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-      <div class="sec-sub">人気順ではなく、ソムリエギフトが本当に喜ばれるものだけを厳選</div>
+  <!-- 結果 -->
+  <div class="dp-step" id="dp-result">
+    <div class="dp-result-header">
+      <p class="dp-result-label">RESULT</p>
+      <p class="dp-result-for" id="dp-result-for">―</p>
+      <h2 class="dp-result-ttl" id="dp-result-ttl">―</h2>
+      <p class="dp-result-desc" id="dp-result-desc">―</p>
     </div>
-    <div class="rtabs-wrap">
-      <div class="rtabs">
-        <div class="rtab active" onclick="switchR('family',this)">義実家・ご両親</div>
-        <div class="rtab" onclick="switchR('boss',this)">上司・目上の方</div>
-        <div class="rtab" onclick="switchR('kids',this)">子育て世帯</div>
-        <div class="rtab" onclick="switchR('biz',this)">取引先</div>
-      </div>
+    <div class="dp-result-products">
+      <p class="dp-prod-ttl">ソムリエギフトおすすめ商品</p>
+      <div class="dp-prod-grid" id="dp-prod-grid"></div>
+      <button class="dp-retry" onclick="dpRetry()">もう一度診断する</button>
     </div>
-
-    <!-- 義実家 -->
-    <div class="rsec show" id="rk-family">
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">毎年贈っている方に</span><div class="ri-name">国産有明海産 老舗の海苔詰め合わせ</div><div class="ri-somm">格式ある老舗の品は、年配の方に「選んでくれた」気持ちが伝わります。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">初めて贈る方に安心</span><div class="ri-name">播州手延べそうめん 特選化粧箱入り</div><div class="ri-somm">地域ブランドの特別感と、夏の定番という安心感が両立します。</div><div class="ri-foot"><span class="ri-price">¥2,980 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">料理好きな方に</span><div class="ri-name">職人仕込みの出汁・醤油 料理ギフトセット</div><div class="ri-somm">料理をされるご両親には、毎日使えるこだわりの調味料が喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,780 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n">4</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">健康を気遣いたい方に</span><div class="ri-name">国産ゆず果汁・ポン酢セット（無添加）</div><div class="ri-somm">体への気遣いが伝わる一品。思いやりを感じてもらえます。</div><div class="ri-foot"><span class="ri-price">¥4,320 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n">5</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">好みが分からない方に</span><div class="ri-name">百貨店監修 和洋菓子詰め合わせ</div><div class="ri-somm">幅広い年代に受け入れられる、安心と信頼のブランド力。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <a class="r-more" href="#">義実家・ご両親向けランキングをすべて見る（10商品）→</a>
-    </div>
-    <!-- 上司 -->
-    <div class="rsec" id="rk-boss">
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="https://shop.r10s.jp/bellevie-harima/cabinet/catalog001/wagyuen/wag_s5.jpg" alt="和牛専門カタログギフト和牛宛" loading="lazy"></div><div class="ri-info"><span class="ri-tag">毎年贈っている方に</span><div class="ri-name">和牛専門カタログギフト和牛宛</div><div class="ri-somm">日本各地のブランド和牛を厳選！松阪牛・神戸牛・米沢牛など、人気の四大和牛をはじめ、お好みの和牛をお選びいただけるギフト</div><div class="ri-foot"><span class="ri-price">詳細はページで確認</span><a class="ri-link" href="https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/" target="_blank">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">センスを見せたい方に</span><div class="ri-name">老舗焙煎所 スペシャルティコーヒーギフト</div><div class="ri-somm">コーヒー好きな上司への贈り物として、選ぶセンスが際立ちます。</div><div class="ri-foot"><span class="ri-price">¥4,860 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">複数人で楽しめる職場に</span><div class="ri-name">国産クラフトビール 飲み比べセット</div><div class="ri-somm">職場全体で楽しめるビールセットは、場を和ませる贈り物です。</div><div class="ri-foot"><span class="ri-price">¥3,996 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <a class="r-more" href="#">上司・目上の方向けランキングをすべて見る（10商品）→</a>
-    </div>
-    <!-- 子育て -->
-    <div class="rsec" id="rk-kids">
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">子どもが大喜びする</span><div class="ri-name">人気アイスブランド 詰め合わせギフト</div><div class="ri-somm">夏に届くアイスは子どもも親も笑顔になれる定番ギフト。</div><div class="ri-foot"><span class="ri-price">¥3,240 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">家族全員で消費できる</span><div class="ri-name">国産フルーツゼリー 個包装ギフト</div><div class="ri-somm">子どもから大人まで楽しめて、個包装なので配りやすいのも好評。</div><div class="ri-foot"><span class="ri-price">¥2,700 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n3">3</span><span class="ri-medal">銅</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">忙しいパパ・ママに</span><div class="ri-name">国産フルーツジュース 贅沢飲み比べセット</div><div class="ri-somm">子どもにも安心な無添加ジュースセット。親御さんにも喜ばれます。</div><div class="ri-foot"><span class="ri-price">¥3,456 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <a class="r-more" href="#">子育て世帯向けランキングをすべて見る（10商品）→</a>
-    </div>
-    <!-- 取引先 -->
-    <div class="rsec" id="rk-biz">
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n1">1</span><span class="ri-medal">金</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">信頼を伝えたい方に</span><div class="ri-name">老舗ブランド 個包装洋菓子 詰め合わせ</div><div class="ri-somm">会社全体でシェアしやすく、ブランド力が信頼感を添えます。</div><div class="ri-foot"><span class="ri-price">¥5,400 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <div class="ri"><div class="ri-img"><div class="ri-nc"><span class="ri-n n2">2</span><span class="ri-medal">銀</span></div><img src="" alt="" loading="lazy"></div><div class="ri-info"><span class="ri-tag">連名ギフトに最適</span><div class="ri-name">高島屋監修 カタログギフト（8,000円コース）</div><div class="ri-somm">取引先への連名のお中元はカタログが最善。相手の自由度が高まります。</div><div class="ri-foot"><span class="ri-price">¥8,800 送料無料</span><a class="ri-link" href="#">詳細を見る →</a></div></div></div>
-      <a class="r-more" href="#">取引先向けランキングをすべて見る（10商品）→</a>
-    </div>
-  </section>
-
-  <hr class="sec-divider">
-
-<section id="s-dare">
-    <div class="sec">
-      <span class="sec-ey">DARE NI OKURU?</span>
-      <div class="sec-ttl">「あの人」をイメージして選ぶ</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-      <div class="sec-sub">相手の「タイプ」から探すと、ぴったりのギフトが見つかります</div>
-    </div>
-    <div class="rec-grid">
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">01</span><span class="rc-scene">センスで選ぶなら</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">auto_awesome</span></div><div class="rc-name">おしゃれな<br>あの人へ</div></div>
-        <div class="rc-hint">パッケージから喜ばれる。見た目も中身もこだわりたい方へのスタイリッシュなギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">ゴディバ</span><span class="rc-tag">スタバ</span><span class="rc-tag">DEAN&amp;DELUCA</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>12</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">02</span><span class="rc-scene">量より質で選ぶ</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">apartment</span></div><div class="rc-name">一人暮らしの<br>あの人へ</div></div>
-        <div class="rc-hint">多すぎず、使い切れる量で上質に。一人暮らしに嬉しい、小分けギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">個包装</span><span class="rc-tag">コーヒー</span><span class="rc-tag">小分け菓子</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>18</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">03</span><span class="rc-scene">スイーツ好きに</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">cake</span></div><div class="rc-name">甘い物に<br>目が無いあの人へ</div></div>
-        <div class="rc-hint">「これ、知ってる！」と喜んでもらえる。こだわりスイーツのギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">バウムクーヘン</span><span class="rc-tag">ゼリー</span><span class="rc-tag">タルト</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>22</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">04</span><span class="rc-scene">晩酌のお供に</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">local_bar</span></div><div class="rc-name">お酒好きな<br>あの人へ</div></div>
-        <div class="rc-hint">一日の終わりをちょっと贅沢に。お酒と一緒に楽しめるグルメギフト。</div>
-        <div class="rc-tags"><span class="rc-tag">おつまみ</span><span class="rc-tag">肉・ハム</span><span class="rc-tag">珍味</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>16</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">05</span><span class="rc-scene">食にこだわる方に</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">restaurant</span></div><div class="rc-name">グルメな<br>あの人へ</div></div>
-        <div class="rc-hint">知っていても、もらって嬉しい上質食材。食の目利きが唸る一品。</div>
-        <div class="rc-tags"><span class="rc-tag">帝国ホテル</span><span class="rc-tag">銀座千疋屋</span><span class="rc-tag">出汁・調味料</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>20</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-      <a class="rec-card" href="#">
-        <div class="rc-top"><span class="rc-num">06</span><span class="rc-scene">気軽に贈りたい</span></div>
-        <div class="rc-icon-row"><div class="rc-icon"><span class="material-symbols-rounded">card_giftcard</span></div><div class="rc-name">ほんの気持ちの<br>お中元プチギフト</div></div>
-        <div class="rc-hint">「大げさにしたくないけど、気持ちは伝えたい」そんな方にぴったりの一品。</div>
-        <div class="rc-tags"><span class="rc-tag">〜2,000円</span><span class="rc-tag">ミニギフト</span><span class="rc-tag">お菓子</span></div>
-        <div class="rc-foot"><span class="rc-count"><span>14</span> 商品</span><span class="rc-arrow">→</span></div>
-      </a>
-    </div>
-
-    <div class="trouble-wrap">
-      <div class="trouble-ttl">💬 こんなお悩みはありませんか？</div>
-      <div class="trouble-list">
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">毎年同じものを贈っていて、今年は変えたい</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">食べ物の好き嫌いが分からなくて困っている</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">予算は決まっているが何を選べばいいか分からない</span><span class="tarrow">→</span></a>
-        <a class="trouble-item" href="#"><div class="tq">Q</div><span class="ttext">遠方に送るので日持ちするものを探している</span><span class="tarrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-<hr class="sec-divider">
-
-  <!-- ══════════════════════════════
-       SECTION 4: こんな方に
-  ══════════════════════════════ -->
-  <section id="s-prod">
-    <div class="sec">
-      <span class="sec-ey">FIND YOUR GIFT</span>
-      <div class="sec-ttl">「こんな方へ」で選ぶギフト</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-    </div>
-    <div class="prod-intro">
-      商品ひとつひとつに、ソムリエギフトが「誰に向いているか」を明記しました。<br>
-      贈る相手を思い浮かべながら選んでください。
-    </div>
-
-    <!-- 義実家 -->
-    <div class="pgroup">
-      <div class="pgroup-lbl">🏠 義実家・ご両親 おすすめ</div>
-      <div class="pcards">
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">定番No.1</span></div><div class="pc-body"><div class="pc-for">毎年贈っている方・<br>はじめての方に</div><div class="pc-name">老舗海苔 詰め合わせ</div><div class="pc-price">¥3,240<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">夏の定番</span></div><div class="pc-body"><div class="pc-for">料理好きな<br>ご両親に</div><div class="pc-name">播州そうめん 特選箱</div><div class="pc-price">¥2,980<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">健康ギフト</span></div><div class="pc-body"><div class="pc-for">健康を気遣う<br>お義母さんに</div><div class="pc-name">無添加ポン酢セット</div><div class="pc-price">¥4,320<span class="pc-free">送料無料</span></div></div></a>
-      </div>
-    </div>
-
-    <!-- 子育て -->
-    <div class="pgroup">
-      <div class="pgroup-lbl">👨‍👩‍👧 子育て世帯 おすすめ</div>
-      <div class="pcards">
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">子どもが喜ぶ</span></div><div class="pc-body"><div class="pc-for">小さな子どもが<br>いる家庭に</div><div class="pc-name">アイスギフトセット</div><div class="pc-price">¥3,240<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">個包装で便利</span></div><div class="pc-body"><div class="pc-for">家族みんなで<br>楽しめる</div><div class="pc-name">フルーツゼリー詰め合わせ</div><div class="pc-price">¥2,700<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">無添加</span></div><div class="pc-body"><div class="pc-for">子どもにも<br>安心して飲ませたい</div><div class="pc-name">国産フルーツジュース</div><div class="pc-price">¥3,456<span class="pc-free">送料無料</span></div></div></a>
-      </div>
-    </div>
-
-    <!-- 会社 -->
-    <div class="pgroup">
-      <div class="pgroup-lbl">💼 会社・上司・取引先 おすすめ</div>
-      <div class="pcards">
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">格式ある一品</span></div><div class="pc-body"><div class="pc-for">格式を重んじる<br>目上の方に</div><div class="pc-name">カタログギフト 5,000円</div><div class="pc-price">¥5,500<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">センスが光る</span></div><div class="pc-body"><div class="pc-for">コーヒー好きな<br>上司・先輩に</div><div class="pc-name">スペシャルティコーヒー</div><div class="pc-price">¥4,860<span class="pc-free">送料無料</span></div></div></a>
-        <a class="pcard" href="#"><div class="pc-img">📦<span class="pc-badge">職場でシェア</span></div><div class="pc-body"><div class="pc-for">職場全体で<br>楽しんでほしい</div><div class="pc-name">洋菓子 個包装詰め合わせ</div><div class="pc-price">¥5,400<span class="pc-free">送料無料</span></div></div></a>
-      </div>
-    </div>
-  </section>
-
-  <hr class="sec-divider">
-
-  <!-- ══════════════════════════════
-       SECTION 5: 店主より
-  ══════════════════════════════ -->
-  <section id="s-voice">
-    <div class="sec">
-      <span class="sec-ey">FROM SOMMELIER GIFT</span>
-      <div class="sec-ttl">店主より</div>
-      <div class="sec-rule"><div class="sec-rl"></div><div class="sec-rd"></div><div class="sec-rl"></div></div>
-    </div>
-    <div class="sv">
-      <div class="sv-hd">
-        <div class="sv-av">🍷</div>
-        <div>
-          <div class="sv-name">ソムリエギフト　店主より</div>
-          <div class="sv-role">楽天市場店　ギフト専門店</div>
-        </div>
-      </div>
-      <div class="sv-txt">
-        「何を贈ればいいか分からない」というのが、お中元でいちばん多いお悩みです。
-        私たちがこの店を続けているのは、その迷いに答え続けたいから。
-        価格で選ばれる店ではなく、迷ったときに思い出してもらえる店でありたいと思っています。
-        ご不明な点があれば、何でもお気軽にご相談ください。
-      </div>
-    </div>
-    <div class="cta-banner">
-      <div class="cta-seal">🍷</div>
-      <div>
-        <span class="cta-lbl">SOMMELIER GIFT</span>
-        <div class="cta-ttl">迷ったら、まずはお中元診断を。<br>3問でぴったりのギフトが見つかります。</div>
-        <a class="cta-link" href="#s-diag">お中元診断を試してみる →</a>
-      </div>
-    </div>
-  </section>
+  </div>
 
   </div><!-- /main-content -->
   </div><!-- /page-body -->
@@ -1348,369 +1068,106 @@
     var btn = document.getElementById('hamburger');
     var sidebar = document.getElementById('sidebar');
     var overlay = document.getElementById('sidebar-overlay');
-    function close() {
-      btn.classList.remove('open');
-      sidebar.classList.remove('open');
-      overlay.classList.remove('show');
-    }
+    function close() { btn.classList.remove('open'); sidebar.classList.remove('open'); overlay.classList.remove('show'); }
     btn.addEventListener('click', function() {
-      var isOpen = sidebar.classList.contains('open');
-      if (isOpen) { close(); } else {
-        btn.classList.add('open');
-        sidebar.classList.add('open');
-        overlay.classList.add('show');
-      }
+      sidebar.classList.contains('open') ? close() : (btn.classList.add('open'), sidebar.classList.add('open'), overlay.classList.add('show'));
     });
     overlay.addEventListener('click', close);
-    sidebar.querySelectorAll('.sidebar-btn').forEach(function(a) {
-      a.addEventListener('click', close);
-    });
+    sidebar.querySelectorAll('.sidebar-btn').forEach(function(a) { a.addEventListener('click', close); });
   })();
 
   /* ── 診断ロジック ── */
-  var dR = '', dB = '';
+  var dpQ1 = '', dpQ2 = '';
 
-  var resultData = {
-    /* ── ご両親・親戚 ── */
-    'ご両親・親戚|〜3,000円': {
-      comment: '「さすが、よく選んでくれた」と言わせる一品を。揖保乃糸の上質なそうめんや、スターバックスのコーヒーセットは、年配の方にも喜ばれる安心感があります。',
-      prods: [
-        { for: 'やっぱり夏はこれ！定番の逸品',  name: 'やっぱり夏はそうめん！手延べ素麺揖保乃糸',              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/',       img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' },
-        { for: '見てかわいい・食べて美味しい',  name: '贅沢フルーツの水ようかん',                              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/',      img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
-        { for: '個包装で配りやすい',            name: 'キャラメルがしみ込んだバームクーヘン♪個包装も嬉しい！', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s15.jpg' },
-        { for: 'お家でスタバ気分♪',            name: 'お家でスタバ気分♪スターバックスコーヒーとパウンドケーキのセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/starbucks/sbpc3re2_s1b.jpg' },
-        { for: 'ヘルシーな夏ギフトに',          name: '飛騨高山ファクトリーの「すこやかドレッシング」ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/hidatakayama_0002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/0629/gift2/sukoyakad4_s1a.jpg' }
+  var dpCategoryData = {
+    '定番安心ギフト': {
+      desc: 'きちんと感があり、失礼なく贈れるお中元をお探しの方へ。上司や取引先、お世話になった方にも選びやすい、間違いのない定番ギフトをご提案します。',
+      products: [
+        { name: '和牛専門カタログギフト 和牛宛', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/catalog001/wagyuen/wag_s5.jpg' },
+        { name: 'やっぱり夏はそうめん！手延べ素麺 揖保乃糸', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' }
       ]
     },
-    'ご両親・親戚|3,000〜5,000円': {
-      comment: '少し奮発して「特別感」を演出したいときに。ゴディバのアイスや菓子匠八の涼菓は、「さすが」と言われる贈り物です。',
-      prods: [
-        { for: '涼しげな夏らしい贈り物に',   name: '菓子匠八 涼夏のしずく 14個',       price: '¥3,000 送料無料',    url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/sp23s-00270_01.jpg' },
-        { for: 'ブランドで差をつけたい方に', name: 'ゴディバ アイスコレクション 6個',    price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-040/',     img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/info/att_gdv.jpg' },
-        { for: 'フルーツの高級感を添えて',   name: 'THE GIFT プレミアムフルーツジュース', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/thegift-017_01.jpg' }
+    '家族で楽しむギフト': {
+      desc: '箱を開けた瞬間、家族みんなで楽しめるお中元を。お子さまのいるご家庭や、ご親戚への贈り物におすすめです。',
+      products: [
+        { name: '贅沢フルーツの水ようかん', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
+        { name: 'キャラメルがしみ込んだバームクーヘン 個包装', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s15.jpg' }
       ]
     },
-    'ご両親・親戚|5,000〜10,000円': {
-      comment: 'お中元の相場を少し上回る品で、特別な感謝を伝えましょう。お気軽にお問い合わせいただければ、ご予算に合わせたご提案をいたします。',
-      prods: []
-    },
-    'ご両親・親戚|10,000円〜': {
-      comment: '感謝の気持ちをしっかり形にする、とっておきの一品。帝国ホテルのスープ缶詰は、格式ある贈り物として年配の方に特に喜ばれます。',
-      prods: [
-        { for: '格式ある特別な贈り物に', name: '帝国ホテル スープ缶詰 8缶', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-109/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/kaiyu/th_soup_kaiyu.jpg' }
+    '健康を気遣うギフト': {
+      desc: '暑い季節を元気に過ごしてほしい。そんな気持ちが伝わる、からだにやさしいお中元を集めました。',
+      products: [
+        { name: '飛騨高山ファクトリーの「すこやかドレッシング」ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/hidatakayama_0002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/0629/gift2/sukoyakad4_s1a.jpg' }
       ]
     },
-    /* ── 会社・上司 ── */
-    '会社・上司|〜3,000円': {
-      comment: '予算を抑えながらも、きちんとした印象を残せる品を。日本ハムのハムギフトは、定番でありながら幅広い年代に喜ばれる実用的な選択です。',
-      prods: [
-        { for: '老舗ブランドで安心感を', name: '丸高海苔 詰め合わせギフト',        price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-509/',   img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/marutaka-509_01.jpg' },
-        { for: '定番の贈り物に',         name: '日本ハム 選べるハムギフト NH-32', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/nipponham-046/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/nihonham/26s/nh32_nh342_w.jpg' }
+    'センスで選ぶギフト': {
+      desc: '見た目のおしゃれさやブランド感も大切にしたい方へ。贈った相手に「センスがいいね」と思ってもらえるギフトをご提案します。',
+      products: [
+        { name: 'お家でスタバ気分♪スターバックスコーヒーとパウンドケーキのセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/starbucks/sbpc3re2_s1b.jpg' }
       ]
     },
-    '会社・上司|3,000〜5,000円': {
-      comment: 'センスのよさが伝わる、ちょっと特別な贈り物を。DEAN & DELUCAや帝国ホテル、銀座千疋屋など、品質で勝負するブランドが揃っています。',
-      prods: [
-        { for: 'こだわりのコーヒー好きに', name: 'DEAN & DELUCA アイスコーヒー 3本セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01273/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-01273_01.jpg' },
-        { for: '上質感で選ぶなら',         name: '帝国ホテル カレーセット 6食',            price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-105/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/rank/sha-105_rank.jpg' },
-        { for: '洗練されたスイーツを',     name: '銀座千疋屋 プチフルーツタルト 8個',     price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-037/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/sbygpft_spec.jpg' }
+    '特別感のあるご褒美ギフト': {
+      desc: '日頃の感謝を少し特別に伝えたい方へ。自分ではなかなか買わない、もらって嬉しいご褒美感のあるお中元を集めました。',
+      products: [
+        { name: '和牛専門カタログギフト 和牛宛', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/catalog001/wagyuen/wag_s5.jpg' }
       ]
     },
-    '会社・上司|5,000〜10,000円': {
-      comment: '相手に選んでもらえる自由度の高いカタログギフトは、好みの違う複数名への贈り物に最適。47CLUBは全国47都道府県の地域グルメが揃う上質な一冊です。',
-      prods: [
-        { for: '好みを選んでもらいたい方に', name: '47CLUB カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/wagyuen/wag_01.jpg' }
-      ]
-    },
-    '会社・上司|10,000円〜': {
-      comment: '贈った瞬間に「格が違う」と伝わる特別な品を。この予算帯は、相手に確かな印象を残す一品をご提案いたします。お気軽にご相談ください。',
-      prods: []
-    },
-    /* ── 取引先・お客様 ── */
-    '取引先・お客様|〜3,000円': {
-      comment: '会社で分けるには個包装がうれしい。ヨックモックやひととえは、職場全体でシェアしやすく、ブランド力が信頼感を添えます。',
-      prods: [
-        { for: '個包装で配りやすい',   name: 'ひととえ スイーツセット',              price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-2500/',  img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/sf_pc05.jpg' },
-        { for: 'ブランドで印象づける', name: 'ヨックモック シガール 20本',            price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01112/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-01112_01.jpg' },
-        { for: '全員で楽しめる飲み物', name: 'ドトール リキッドコーヒー詰め合わせ', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-058/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/dtrdr30_top.jpg' }
-      ]
-    },
-    '取引先・お客様|3,000〜5,000円': {
-      comment: '格式と個包装の実用性を両立。ひととえのスイーツは28個入りで大人数のオフィスにもぴったり。贈った瞬間の嬉しさが伝わります。',
-      prods: [
-        { for: '大人数の職場に最適',   name: 'ひととえ スイーツファクトリー 28個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-3000/',  img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/sf04_pc07.jpg' },
-        { for: '夏らしいスイーツで',   name: 'ゴロゴロフルーツアイスクリーム 7個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01479_01b.jpg' }
-      ]
-    },
-    '取引先・お客様|5,000〜10,000円': {
-      comment: 'この予算帯では相手に選んでもらえるカタログギフトが最善策。贈る側のセンスも伝わり、受け取る側の自由度も高まります。お気軽にご相談ください。',
-      prods: []
-    },
-    '取引先・お客様|10,000円〜': {
-      comment: '大切な取引先へ、格式で応える特別なギフト。この予算帯でのおすすめはお気軽にご相談ください。ご予算・用途に合わせてご提案いたします。',
-      prods: []
-    },
-    /* ── 子育て世帯 ── */
-    '子育て世帯|〜3,000円': {
-      comment: '子どもから大人まで笑顔になれる、夏らしいギフトを。凍らせて食べるアイスやウェルチの果汁ジュースは、子どもが大喜びする定番です。',
-      prods: [
-        { for: '子どもが大喜びする', name: 'ザ・スウィーツ シャーベットゼリー 6個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01216/',   img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01216_01.jpg' },
-        { for: 'みんなで食べられる', name: '凍らせて食べるアイスデザート 8個',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-ice001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/hitteic_top.jpg' },
-        { for: '果汁100%で安心',     name: 'ウェルチ 100%果汁ギフト 22本',          price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_011/',   img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/calpis/ws30s_01.jpg' }
-      ]
-    },
-    '子育て世帯|3,000〜5,000円': {
-      comment: '子どもにも安心な素材で、家族みんなが楽しめるギフトを。カルピスや冷たいデザートは、夏の思い出になる一品です。',
-      prods: [
-        { for: '子どもも大人も大好き', name: 'カルピス すこやかギフト 22本',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01251058051m01.jpg' },
-        { for: '夏のひんやりギフトに', name: 'ザ・スウィーツ フルーツソルベ 8個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-358/',    img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/sha-358_01.jpg' }
-      ]
-    },
-    '子育て世帯|5,000〜10,000円': {
-      comment: '少し奮発して、家族全員が喜ぶ特別なギフトを。この予算帯でのおすすめはお気軽にご相談ください。',
-      prods: []
-    },
-    '子育て世帯|10,000円〜': {
-      comment: '特別な感謝を形に。コールドストーンのプレミアムアイスキャンディは、子どもたちが大喜びする夏の贅沢ギフトです。',
-      prods: [
-        { for: '特別な夏の思い出に', name: 'コールドストーン アイスキャンディ 10本', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-310/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/sha-310_01.jpg' }
-      ]
-    },
-    /* ── 健康を気遣う方 ── */
-    '健康を気遣う方|〜3,000円': {
-      comment: '「体のことを考えて選んだ」気持ちが伝わる一品を。カゴメの国産野菜ジュースやプレミアムフルーツジュースは、健康意識の高い方に喜ばれます。',
-      prods: [
-        { for: '野菜不足が気になる方に',       name: 'カゴメ 野菜生活 国産プレミアムギフト',    price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/',   img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/kagome-007_01.jpg' },
-        { for: 'フルーツの自然な甘みを楽しむ', name: 'THE GIFT プレミアムフルーツジュース 6本', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-004/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/pfj_01.jpg' }
-      ]
-    },
-    '健康を気遣う方|3,000〜5,000円': {
-      comment: '健康への思いやりが伝わる、品質にこだわったギフトを。素材や産地にこだわった上質な飲料ギフトをご提案できます。お気軽にご相談ください。',
-      prods: []
-    },
-    '健康を気遣う方|5,000〜10,000円': {
-      comment: '本格的な健康ギフトで、大切な方への思いやりを形に。毎日飲みたくなる、贅沢な素材の飲み物ギフトをご提案いたします。',
-      prods: []
-    },
-    '健康を気遣う方|10,000円〜': {
-      comment: '最高級の素材にこだわる方へ。希少な産地の野菜ジュースや、健康志向の高級ギフトをご用意できます。お気軽にお問い合わせください。',
-      prods: []
-    },
-    /* ── 好みが分からない ── */
-    '好みが分からない|〜3,000円': {
-      comment: '好みが分からないときは、多くの方に受け入れられる「定番スイーツ」が安心。シュガーバターの木は知名度と信頼感で贈る側の安心感につながります。',
-      prods: [
-        { for: '知名度で安心感を',   name: 'シュガーバターの木 詰め合わせ', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01319/',  img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01319ss_01.jpg' },
-        { for: '万人受けする洋菓子', name: 'プラスチーズ 詰め合わせ',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-977-set/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/pcheese_1.jpg' }
-      ]
-    },
-    '好みが分からない|3,000〜5,000円': {
-      comment: 'この価格帯なら、ブランドの信頼感で確実に喜ばれる品が揃います。銀座千疋屋のゼリーや高島屋セレクトのヨックモックは、誰に贈っても外しません。',
-      prods: [
-        { for: '上品なゼリーで夏らしく',   name: '銀座千疋屋ゼリー 9個入',           price: '¥4,860 送料無料',   url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0160/',  img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/ginzacake/201511/ginzazeri_02b_box_n.jpg' },
-        { for: '高島屋ブランドで安心',     name: '高島屋セレクト ヨックモック 36個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01115/',         img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-01115_01.jpg' },
-        { for: '相手に選んでもらいたい',   name: 'コードシェア セレクトギフト',       price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/code-sset-001/',     img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-01115_01.jpg' }
-      ]
-    },
-    '好みが分からない|5,000〜10,000円': {
-      comment: 'この予算なら、高島屋のヨックモックや47CLUBカタログなど、ブランド力と品質で間違いない品をお選びいただけます。',
-      prods: [
-        { for: '大容量で満足感の高いギフトに', name: '高島屋セレクト ヨックモック 52個', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01116/',      img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-01116_01.jpg' },
-        { for: '相手に選んでもらいたい',       name: '47CLUB カタログギフト',            price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat_47club_002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/47club/47club_002_01.jpg' }
-      ]
-    },
-    '好みが分からない|10,000円〜': {
-      comment: '好みが分からなくても、相手が自分で選べるカタログギフトなら必ず喜ばれます。DEAN & DELUCAのカタログは、食のこだわりがある方への究極の選択です。',
-      prods: [
-        { for: '相手の好みに合わせて', name: 'DEAN & DELUCA カタログギフト', price: '¥10,000 送料無料', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-dnd-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/dad/a/cat-dnd-001_01.jpg' }
+    '気軽に贈れるプチ中元': {
+      desc: 'ちょっとした感謝を、気を遣わせずに届けたい方へ。友人やご近所、ママ友にも贈りやすい、気軽なお中元ギフトをご提案します。',
+      products: [
+        { name: 'キャラメルがしみ込んだバームクーヘン 個包装', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s15.jpg' }
       ]
     }
   };
 
-  function dCardSel(el, grp, val) {
-    var parent = el.parentNode;
-    parent.querySelectorAll('.diag-card, .diag-card-b').forEach(function(c){ c.classList.remove('sel'); });
+  function dpGetCategory(q1, q2) {
+    var formal = ['上司・目上の方','会社・取引先','お世話になった方'];
+    if (q2 === '絶対に失敗したくない') return '定番安心ギフト';
+    if (q2 === '家族みんなで楽しんでほしい') return '家族で楽しむギフト';
+    if (q2 === '健康を気遣いたい') return '健康を気遣うギフト';
+    if (q2 === 'センスが良いと思われたい') return 'センスで選ぶギフト';
+    if (q2 === '特別感を届けたい') return '特別感のあるご褒美ギフト';
+    if (q2 === '気を遣わせずに贈りたい') return formal.indexOf(q1) !== -1 ? '定番安心ギフト' : '気軽に贈れるプチ中元';
+    return '定番安心ギフト';
+  }
+
+  function dpSetStep(n) {
+    ['dp-q1','dp-q2','dp-result'].forEach(function(id,i){ document.getElementById(id).classList.toggle('show', i===n-1); });
+    ['dp-ind1','dp-ind2','dp-ind3'].forEach(function(id,i){ var el=document.getElementById(id); el.classList.toggle('active',i===n-1); el.classList.toggle('done',i<n-1); });
+    ['dp-ind-line1','dp-ind-line2'].forEach(function(id,i){ document.getElementById(id).classList.toggle('done',i<n-1); });
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function dpSel(el, q, val) {
+    el.parentNode.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel'); });
     el.classList.add('sel');
-    if (grp === 'q1') { dR = val; setTimeout(function(){ dGoStep(2); }, 280); }
-    else              { dB = val; setTimeout(function(){ dGoStep(3); }, 280); }
+    if (q==='q1') { dpQ1=val; setTimeout(function(){ dpSetStep(2); }, 280); }
+    else { dpQ2=val; setTimeout(function(){ dpShowResult(); }, 280); }
   }
 
-  function dGoStep(n) {
-    document.querySelectorAll('.diag-step').forEach(function(s){ s.classList.remove('show'); });
-    document.getElementById('ds' + n).classList.add('show');
-    updProg(n);
-    document.getElementById('diag-step-lbl').textContent = n === 3 ? '結果' : 'Step ' + n;
-    if (n === 3) { showResult(); }
-    document.getElementById('s-diag').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  function dpBack() { dpSetStep(1); }
 
-  function showResult() {
-    var key = dR + '|' + dB;
-    var data = resultData[key] || resultData['好みが分からない|〜3,000円'];
-    document.getElementById('dr-ttl').textContent = dR + ' ｜ ' + dB;
-    document.getElementById('dr-txt').textContent = data.comment;
-    var prods = data.prods || [];
-    // 商品カード表示/非表示 (1〜5)
-    for (var i = 0; i < 5; i++) {
-      var card = document.getElementById('rpc-link' + (i+1));
-      if (!card) continue;
-      if (prods[i]) {
-        card.classList.remove('rpc-hidden');
-        card.href = prods[i].url || '#';
-        document.getElementById('rpc-for'   + (i+1)).textContent = prods[i].for;
-        document.getElementById('rpc-name'  + (i+1)).textContent = prods[i].name;
-        document.getElementById('rpc-price' + (i+1)).textContent = prods[i].price;
-        var imgEl = document.getElementById('rpc-img' + (i+1));
-        if (imgEl) { imgEl.src = prods[i].img || ''; imgEl.alt = prods[i].name; }
-      } else {
-        card.classList.add('rpc-hidden');
-      }
-    }
-    // サブグリッド: No.2〜5が1件もない場合は非表示
-    var subGrid = document.getElementById('dr-sub');
-    if (subGrid) { subGrid.style.display = prods.length > 1 ? 'grid' : 'none'; }
-    // 商品がない場合のメッセージ
-    var emptyMsg = document.getElementById('dr-empty-msg');
-    if (prods.length === 0) {
-      if (!emptyMsg) {
-        emptyMsg = document.createElement('p');
-        emptyMsg.id = 'dr-empty-msg';
-        emptyMsg.className = 'result-empty-msg';
-        document.getElementById('rpc-link1').after(emptyMsg);
-      }
-      emptyMsg.textContent = 'この組み合わせの商品は現在準備中です。お気軽にお問い合わせください。';
-      emptyMsg.style.display = 'block';
-    } else if (emptyMsg) {
-      emptyMsg.style.display = 'none';
-    }
-    setTimeout(launchConfetti, 120);
-  }
-
-  function launchConfetti() {
-    var canvas = document.createElement('canvas');
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
-    document.body.appendChild(canvas);
-    var ctx = canvas.getContext('2d');
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    var colors = ['#C8A84B','#0557AB','#EBF0F5','#ffffff','#6E8FAD','#F5F0DC','#1B3060','#D4B84A','#B8C8D8'];
-    var shapes = ['rect','rect','rect','circle'];
-    var parts  = [];
-    var TOTAL  = 160;
-
-    /* 左右2箇所からクラッカーを撃つ */
-    var origins = [
-      { x: canvas.width * 0.25, y: canvas.height * 0.42, angleMin: -130, angleMax: -40 },
-      { x: canvas.width * 0.75, y: canvas.height * 0.42, angleMin: -140, angleMax: -50 }
-    ];
-
-    origins.forEach(function(o) {
-      for (var i = 0; i < TOTAL / 2; i++) {
-        var deg   = o.angleMin + Math.random() * (o.angleMax - o.angleMin);
-        var rad   = deg * Math.PI / 180;
-        var speed = Math.random() * 14 + 6;
-        parts.push({
-          x:        o.x,
-          y:        o.y,
-          vx:       Math.cos(rad) * speed,
-          vy:       Math.sin(rad) * speed,
-          rot:      Math.random() * 360,
-          rotV:     (Math.random() - 0.5) * 14,
-          color:    colors[Math.floor(Math.random() * colors.length)],
-          shape:    shapes[Math.floor(Math.random() * shapes.length)],
-          w:        Math.random() * 10 + 5,
-          h:        Math.random() * 5  + 3,
-          r:        Math.random() * 4  + 2,
-          alpha:    1,
-          gravity:  0.28 + Math.random() * 0.14,
-          drag:     0.97 + Math.random() * 0.02
-        });
-      }
+  function dpShowResult() {
+    var cat = dpGetCategory(dpQ1, dpQ2);
+    var data = dpCategoryData[cat];
+    document.getElementById('dp-result-for').textContent = dpQ1 + ' ｜ ' + dpQ2;
+    document.getElementById('dp-result-ttl').textContent = cat;
+    document.getElementById('dp-result-desc').textContent = data.desc;
+    var grid = document.getElementById('dp-prod-grid');
+    grid.innerHTML = '';
+    data.products.forEach(function(p) {
+      var a = document.createElement('a');
+      a.className = 'dp-prod-card'; a.href = p.url; a.target = '_blank';
+      a.innerHTML = '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div><div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>';
+      grid.appendChild(a);
     });
-
-    var start = Date.now();
-    var DURATION = 2800;
-
-    function tick() {
-      var elapsed = Date.now() - start;
-      if (elapsed > DURATION + 400) {
-        document.body.removeChild(canvas);
-        return;
-      }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      var fade = Math.max(0, 1 - elapsed / DURATION);
-
-      parts.forEach(function(p) {
-        p.x   += p.vx;
-        p.y   += p.vy;
-        p.vy  += p.gravity;
-        p.vx  *= p.drag;
-        p.rot += p.rotV;
-        p.alpha = Math.max(0, fade * (1 - Math.max(0, p.y - canvas.height * 0.9) / (canvas.height * 0.1)));
-
-        if (p.alpha <= 0) return;
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot * Math.PI / 180);
-        ctx.fillStyle = p.color;
-        if (p.shape === 'circle') {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        } else {
-          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-        }
-        ctx.restore();
-      });
-
-      requestAnimationFrame(tick);
-    }
-    tick();
+    dpSetStep(3);
   }
 
-  function dBack(n) {
-    document.querySelectorAll('.diag-step').forEach(function(s){ s.classList.remove('show'); });
-    document.getElementById('ds' + n).classList.add('show');
-    updProg(n);
-    document.getElementById('diag-step-lbl').textContent = 'Step ' + n;
-    if (n === 1) {
-      dR = ''; dB = '';
-      document.querySelectorAll('.diag-card, .diag-card-b').forEach(function(c){ c.classList.remove('sel'); });
-    }
-    document.getElementById('s-diag').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function updProg(n) {
-    for (var i = 1; i <= 3; i++) {
-      var c = document.getElementById('pc' + i);
-      var l = document.getElementById('pl' + i);
-      var lineAfter = document.getElementById('dl' + i);
-      c.classList.remove('active','done');
-      l.classList.remove('active','done');
-      if (lineAfter) lineAfter.classList.remove('done');
-      if (i < n) {
-        c.classList.add('done');
-        l.classList.add('done');
-        c.textContent = (i === 3) ? '♥' : '✓';
-        if (lineAfter) lineAfter.classList.add('done');
-      } else if (i === n) {
-        c.classList.add('active');
-        l.classList.add('active');
-        c.textContent = (i === 3) ? '♥' : i;
-      } else {
-        c.textContent = (i === 3) ? '♥' : i;
-      }
-    }
-  }
-
-  /* ── ランキング タブ ── */
-  function switchR(id, tab) {
-    document.querySelectorAll('.rsec').forEach(function(s){ s.classList.remove('show'); });
-    document.getElementById('rk-' + id).classList.add('show');
-    document.querySelectorAll('.rtab').forEach(function(t){ t.classList.remove('active'); });
-    tab.classList.add('active');
+  function dpRetry() {
+    dpQ1=''; dpQ2='';
+    document.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel'); });
+    dpSetStep(1);
   }
 </script>
 </body>
