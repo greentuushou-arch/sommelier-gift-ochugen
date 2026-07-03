@@ -944,7 +944,7 @@
     .dp-hero-en { font-size: 12px; letter-spacing: 0.28em; color: rgba(255,255,255,0.7); display: block; margin-bottom: 12px; }
     .dp-hero-ttl { font-size: 38px; font-weight: 700; line-height: 1.4; margin-bottom: 14px; letter-spacing: 0.04em; }
     .dp-hero-sub { font-size: 15px; color: rgba(255,255,255,0.9); line-height: 2; }
-    .dp-indicator { display: flex; align-items: center; justify-content: center; padding: 24px; background: #9AEEEF; }
+    .dp-indicator { display: flex; align-items: center; justify-content: center; padding: 24px; background: #f4f4f4; }
     .dp-ind-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .dp-ind-dot { width: 38px; height: 38px; border-radius: 50%; border: 2px solid rgba(73,73,73,0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: #494949; transition: all 0.3s; }
     .dp-ind-item.active .dp-ind-dot, .dp-ind-item.done .dp-ind-dot { border-color: #19A1A3; background: #19A1A3; color: #fff; }
@@ -963,17 +963,40 @@
       from { transform: translateX(80px); opacity: 0; }
       to   { transform: translateX(0); opacity: 1; }
     }
-    /* Q2は薄いミント色で差別化 */
+    /* ── カラフルカード ── */
+    .dp-card { background: #19A1A3; border-color: transparent; }
+    .dp-card .material-symbols-rounded { color: rgba(255,255,255,0.92); }
+    .dp-card-lbl { color: #fff; }
+    .dp-cards .dp-card:nth-child(2) { background: #E14441; }
+    .dp-cards .dp-card:nth-child(3) { background: #41DFE1; }
+    .dp-cards .dp-card:nth-child(4) { background: #EC8583; }
+    .dp-cards .dp-card:nth-child(5) { background: #9AEEEF; }
+    .dp-cards .dp-card:nth-child(5) .material-symbols-rounded,
+    .dp-cards .dp-card:nth-child(5) .dp-card-lbl { color: #19A1A3; }
+    .dp-cards .dp-card:nth-child(6) { background: #E14441; }
+    .dp-cards .dp-card:nth-child(7) { background: #41DFE1; }
+    .dp-card:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    .dp-card.sel { background: #fff !important; border: 3px solid #E14441 !important; transform: scale(1.06) !important; box-shadow: 0 10px 32px rgba(0,0,0,0.18) !important; }
+    .dp-card.sel .material-symbols-rounded { color: #19A1A3 !important; }
+    .dp-card.sel .dp-card-lbl { color: #1E2A38 !important; }
+    /* スタガー登場アニメーション */
+    .dp-card { opacity: 0; transform: translateY(22px); }
+    .dp-card.card-in { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.15s; }
+    /* フルスクリーンリップル */
+    #dp-ripple { display: none; position: fixed; width: 12px; height: 12px; border-radius: 50%; z-index: 998; pointer-events: none; transition: none; opacity: 1; }
+    #dp-ripple.dp-ripple-go { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); transform: translate(-50%,-50%) scale(280); }
+    #dp-ripple.dp-ripple-out { transition: opacity 0.35s ease; opacity: 0; }
+    /* Q2 indicator色 */
     #dp-q2 .dp-step-inner { background: #ffffff; }
-    #dp-q2 .dp-ind-item.active .dp-ind-dot { background: #0A7A76; border-color: #0A7A76; }
-    .dp-step-inner { background: #9AEEEF; padding: 32px 32px 44px; }
+    #dp-q2 .dp-ind-item.active .dp-ind-dot { background: #E14441; border-color: #E14441; }
+    .dp-step-inner { background: #ffffff; padding: 32px 32px 44px; }
     .dp-q-label { font-size: 12px; letter-spacing: 0.22em; color: #494949; display: block; text-align: center; margin-bottom: 10px; }
     .dp-q-ttl { font-size: 32px; font-weight: 700; color: #494949; text-align: center; margin-bottom: 8px; }
     .dp-q-sub { font-size: 16px; color: #494949; text-align: center; margin-bottom: 28px; }
     .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 680px; margin: 0 auto; }
-    .dp-card { background: #fff; border: 2px solid transparent; border-radius: 14px; padding: 24px 14px 20px; text-align: center; cursor: pointer; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .dp-card { background: #19A1A3; border: 2px solid transparent; border-radius: 14px; padding: 24px 14px 20px; text-align: center; cursor: pointer; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
     .dp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-    .dp-card.sel { border-color: #E14441; background: #FFFDF5; }
+    .dp-card.sel { border-color: #fff; background: #fff; transform: scale(1.06); box-shadow: 0 10px 32px rgba(0,0,0,0.18); }
     .dp-card .material-symbols-rounded { font-size: 38px; color: #19A1A3; display: block; margin-bottom: 10px; }
     .dp-card-lbl { font-size: 14px; font-weight: 600; color: #1E2A38; line-height: 1.5; }
     .dp-back { display: block; margin: 28px auto 0; background: none; border: none; color: #494949; font-size: 15px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; letter-spacing: 0.04em; }
@@ -1100,6 +1123,7 @@
     </div>
   </div>
 
+  <div id="dp-ripple"></div>
   <!-- 紙吹雪 canvas -->
   <canvas id="dp-confetti" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;display:none;"></canvas>
 
@@ -1233,13 +1257,54 @@
         nextEl.classList.add('show');
         nextEl.classList.add('entering');
         updateIndicators();
+        var nextId = steps[n - 1];
+        if (nextId !== 'dp-result') dpStagger(nextId);
         setTimeout(function(){ nextEl.classList.remove('entering'); }, 300);
       }, 280);
     } else {
       if (nextEl) { nextEl.classList.add('show'); }
       updateIndicators();
+      var nextId = steps[n - 1];
+      if (nextId !== 'dp-result') dpStagger(nextId);
     }
     window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* ── リップル ── */
+  function dpRipple(el, color, callback) {
+    var r = document.getElementById('dp-ripple');
+    var rect = el.getBoundingClientRect();
+    r.style.left = (rect.left + rect.width / 2) + 'px';
+    r.style.top  = (rect.top  + rect.height/ 2) + 'px';
+    r.style.transform = 'translate(-50%,-50%) scale(1)';
+    r.style.background = color;
+    r.style.opacity = '1';
+    r.style.transition = 'none';
+    r.style.display = 'block';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        r.classList.add('dp-ripple-go');
+        setTimeout(function() {
+          callback();
+          setTimeout(function() {
+            r.classList.add('dp-ripple-out');
+            setTimeout(function() {
+              r.style.display = 'none';
+              r.classList.remove('dp-ripple-go','dp-ripple-out');
+            }, 380);
+          }, 80);
+        }, 480);
+      });
+    });
+  }
+
+  /* ── カードスタガー登場 ── */
+  function dpStagger(stepId) {
+    var cards = document.querySelectorAll('#' + stepId + ' .dp-card');
+    cards.forEach(function(c) { c.classList.remove('card-in'); });
+    cards.forEach(function(c, i) {
+      setTimeout(function() { c.classList.add('card-in'); }, 60 + i * 75);
+    });
   }
 
   var dpFamilyQ1 = ['両親・親戚','お友達','お世話になった方'];
@@ -1256,8 +1321,13 @@
   function dpSel(el, q, val) {
     el.parentNode.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel'); });
     el.classList.add('sel');
-    if (q==='q1') { dpQ1=val; setTimeout(function(){ dpFilterQ2(); dpSetStep(2); }, 280); }
-    else { dpQ2=val; setTimeout(function(){ dpShowResult(); }, 280); }
+    if (q === 'q1') {
+      dpQ1 = val;
+      dpRipple(el, '#41DFE1', function() { dpFilterQ2(); dpSetStep(2); });
+    } else {
+      dpQ2 = val;
+      dpRipple(el, '#E14441', function() { dpShowResult(); });
+    }
   }
 
   function dpBack() { dpSetStep(1); }
@@ -1341,9 +1411,12 @@
 
   function dpRetry() {
     dpQ1=''; dpQ2='';
-    document.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel'); });
+    document.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel','card-in'); });
     dpSetStep(1);
   }
+
+  /* 初回Q1スタガー */
+  dpStagger('dp-q1');
 </script>
 </body>
 </html>
