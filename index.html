@@ -1316,6 +1316,9 @@
     } else {
       moreWrap.style.display = 'none';
     }
+    var single = document.getElementById('dp-prod-single');
+    single.style.visibility = 'hidden';
+    single.style.opacity    = '0';
     dpToggleHero(false);
     dpSetStep(3);
     setTimeout(dpGiftBoxReveal, 400);
