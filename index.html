@@ -1138,10 +1138,21 @@
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
+  var dpFamilyQ1 = ['両親・親戚','お友達','お世話になった方'];
+
+  function dpFilterQ2() {
+    var show = dpFamilyQ1.indexOf(dpQ1) !== -1;
+    document.querySelectorAll('#dp-q2 .dp-card').forEach(function(c) {
+      if (c.getAttribute('onclick') && c.getAttribute('onclick').indexOf('家族みんなで楽しんでほしい') !== -1) {
+        c.style.display = show ? '' : 'none';
+      }
+    });
+  }
+
   function dpSel(el, q, val) {
     el.parentNode.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel'); });
     el.classList.add('sel');
-    if (q==='q1') { dpQ1=val; setTimeout(function(){ dpSetStep(2); }, 280); }
+    if (q==='q1') { dpQ1=val; setTimeout(function(){ dpFilterQ2(); dpSetStep(2); }, 280); }
     else { dpQ2=val; setTimeout(function(){ dpShowResult(); }, 280); }
   }
 
