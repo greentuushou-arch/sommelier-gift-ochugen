@@ -1332,6 +1332,13 @@
 
   function dpBack() { dpSetStep(1); }
 
+  function dpToggleHero(show) {
+    var hero = document.querySelector('.dp-hero');
+    var ind  = document.querySelector('.dp-indicator');
+    if (hero) hero.style.display = show ? '' : 'none';
+    if (ind)  ind.style.display  = show ? '' : 'none';
+  }
+
   function dpShowResult() {
     var cat = dpGetCategory(dpQ1, dpQ2);
     var data = dpCategoryData[cat];
@@ -1361,6 +1368,7 @@
     } else {
       moreWrap.style.display = 'none';
     }
+    dpToggleHero(false);
     dpSetStep(3);
     setTimeout(dpLaunchConfetti, 320);
   }
@@ -1415,6 +1423,7 @@
   function dpRetry() {
     dpQ1=''; dpQ2='';
     document.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel','card-in'); });
+    dpToggleHero(true);
     dpSetStep(1);
   }
 
