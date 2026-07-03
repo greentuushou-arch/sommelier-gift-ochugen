@@ -41,16 +41,26 @@
 
     /* ── PAGE HEADER ── */
     .page-header {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1000px;
+      z-index: 400;
       background: #fff;
       text-align: center;
-      padding: 18px 24px;
+      padding: 13px 24px;
       border-bottom: 1px solid #E8E8E8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .page-header img {
-      height: 36px;
+      height: 25px;
       width: auto;
       display: inline-block;
     }
+    /* fixed header の高さ分だけ下げる */
+    .page { padding-top: 52px; }
 
     /* ── 2カラムレイアウト ── */
     .page-body {
