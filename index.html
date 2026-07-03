@@ -1296,6 +1296,7 @@
     document.getElementById('dp-comment-text').textContent = data.comment;
     var p = data.products[0];
     var single = document.getElementById('dp-prod-single');
+    single.style.display = 'none';
     single.innerHTML = '<a class="dp-prod-single-card" href="'+p.url+'" target="_blank">'
       + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
       + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>'
@@ -1316,9 +1317,6 @@
     } else {
       moreWrap.style.display = 'none';
     }
-    var single = document.getElementById('dp-prod-single');
-    single.style.visibility = 'hidden';
-    single.style.opacity    = '0';
     dpToggleHero(false);
     dpSetStep(3);
     setTimeout(dpGiftBoxReveal, 400);
@@ -1329,8 +1327,6 @@
     var outer   = document.getElementById('dp-giftbox-outer');
     var lid     = document.getElementById('dp-box-lid');
     var single  = document.getElementById('dp-prod-single');
-    single.style.visibility = 'hidden';
-    single.style.opacity    = '0';
     stage.classList.add('show');
     setTimeout(function() { outer.classList.add('shake'); }, 400);
     setTimeout(function() { outer.classList.remove('shake'); }, 900);
@@ -1339,7 +1335,7 @@
     setTimeout(function() {
       stage.classList.remove('show');
       lid.classList.remove('open');
-      single.style.visibility = '';
+      single.style.display    = '';
       single.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
       single.style.transform  = 'translateY(24px) scale(0.95)';
       single.style.opacity    = '0';
@@ -1436,7 +1432,7 @@
     stage.classList.remove('show');
     outer.classList.remove('shake');
     lid.classList.remove('open');
-    single.style.visibility = '';
+    single.style.display    = 'none';
     single.style.opacity    = '';
     single.style.transform  = '';
     single.style.transition = '';
