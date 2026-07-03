@@ -951,6 +951,11 @@
     .dp-prod-body { padding: 12px; }
     .dp-prod-name { font-size: 15px; font-weight: 600; color: #1E2A38; line-height: 1.4; margin-bottom: 5px; }
     .dp-prod-price { font-size: 15px; color: #335577; font-weight: 500; }
+    .dp-prod-btns { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 4px 0 28px; }
+    .dp-btn-buy { display: block; width: 100%; max-width: 360px; text-align: center; background: #19A1A3; color: #fff; border-radius: 8px; padding: 15px 24px; font-size: 18px; font-weight: 600; letter-spacing: 0.06em; transition: background 0.15s; text-decoration: none; }
+    .dp-btn-buy:hover { background: #148082; }
+    .dp-btn-next { width: 100%; max-width: 360px; background: #fff; color: #19A1A3; border: 2px solid #19A1A3; border-radius: 8px; padding: 13px 24px; font-size: 18px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s, color 0.15s; }
+    .dp-btn-next:hover { background: #19A1A3; color: #fff; }
     .dp-retry { display: block; margin: 0 auto; background: #E14441; color: #fff; border: none; border-radius: 8px; padding: 15px 40px; font-size: 18px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; }
     .dp-retry:hover { background: #C43230; }
     /* ── ギフトボックス演出 ── */
@@ -1100,13 +1105,13 @@
       </div>
       <div id="dp-prod-single" style="position:relative;">
       </div>
+      <div class="dp-prod-btns">
+        <a id="dp-btn-buy" class="dp-btn-buy" href="#" target="_blank">この商品を見に行く</a>
+        <button id="dp-btn-next" class="dp-btn-next" onclick="dpNextProduct()" style="display:none;">他には？</button>
+      </div>
       <div class="dp-result-comment">
         <div class="dp-comment-avatar">店主</div>
         <p class="dp-comment-text" id="dp-comment-text">―</p>
-      </div>
-      <div id="dp-prod-more" style="display:none;">
-        <p class="dp-prod-ttl" style="margin-top:8px;">その他のおすすめ</p>
-        <div class="dp-prod-grid" id="dp-prod-grid"></div>
       </div>
       <button class="dp-retry" onclick="dpRetry()">もう一度診断する</button>
     </div>
@@ -1127,7 +1132,7 @@
 <script>
 
   /* ── 診断ロジック ── */
-  var dpQ1 = '', dpQ2 = '';
+  var dpQ1 = '', dpQ2 = '', dpProdIndex = 0, dpProdList = [];
 
   var dpCategoryData = {
     '定番安心ギフト': {
@@ -1294,29 +1299,17 @@
     document.getElementById('dp-result-ttl').textContent = cat;
     document.getElementById('dp-result-desc').textContent = data.desc;
     document.getElementById('dp-comment-text').textContent = data.comment;
-    var p = data.products[0];
+    dpProdList  = data.products;
+    dpProdIndex = 0;
+    var p = dpProdList[0];
     var single = document.getElementById('dp-prod-single');
     single.style.display = 'none';
     single.innerHTML = '<a class="dp-prod-single-card" href="'+p.url+'" target="_blank">'
       + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
       + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>'
       + '</a>';
-    var rest = data.products.slice(1);
-    var moreWrap = document.getElementById('dp-prod-more');
-    var grid = document.getElementById('dp-prod-grid');
-    if (rest.length > 0) {
-      grid.innerHTML = '';
-      rest.forEach(function(q) {
-        var a = document.createElement('a');
-        a.className = 'dp-prod-card'; a.href = q.url; a.target = '_blank';
-        a.innerHTML = '<div class="dp-prod-img"><img src="'+q.img+'" alt="'+q.name+'" loading="lazy"></div>'
-          + '<div class="dp-prod-body"><div class="dp-prod-name">'+q.name+'</div><div class="dp-prod-price">'+q.price+'</div></div>';
-        grid.appendChild(a);
-      });
-      moreWrap.style.display = '';
-    } else {
-      moreWrap.style.display = 'none';
-    }
+    document.getElementById('dp-btn-buy').href = p.url;
+    document.getElementById('dp-btn-next').style.display = dpProdList.length > 1 ? '' : 'none';
     dpToggleHero(false);
     dpSetStep(3);
     setTimeout(dpGiftBoxReveal, 400);
@@ -1345,6 +1338,24 @@
       }); });
       setTimeout(dpLaunchConfetti, 350);
     }, 2100);
+  }
+
+  function dpNextProduct() {
+    dpProdIndex++;
+    var p = dpProdList[dpProdIndex];
+    if (!p) return;
+    var single = document.getElementById('dp-prod-single');
+    single.style.transition = 'opacity 0.25s ease';
+    single.style.opacity = '0';
+    setTimeout(function() {
+      single.innerHTML = '<a class="dp-prod-single-card" href="'+p.url+'" target="_blank">'
+        + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
+        + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>'
+        + '</a>';
+      document.getElementById('dp-btn-buy').href = p.url;
+      document.getElementById('dp-btn-next').style.display = dpProdIndex < dpProdList.length - 1 ? '' : 'none';
+      single.style.opacity = '1';
+    }, 260);
   }
 
   function dpLaunchConfetti() {
@@ -1436,6 +1447,8 @@
     single.style.opacity    = '';
     single.style.transform  = '';
     single.style.transition = '';
+    dpProdIndex = 0; dpProdList = [];
+    document.getElementById('dp-btn-next').style.display = 'none';
     dpToggleHero(true);
     dpSetStep(1);
   }
