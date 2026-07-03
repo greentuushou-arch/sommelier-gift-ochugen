@@ -1345,8 +1345,10 @@
     var p = dpProdList[dpProdIndex];
     if (!p) return;
     var single = document.getElementById('dp-prod-single');
-    single.style.transition = 'opacity 0.25s ease';
+    var btns   = document.querySelector('.dp-prod-btns');
+    single.style.transition = 'opacity 0.2s ease';
     single.style.opacity = '0';
+    btns.style.display = 'none';
     setTimeout(function() {
       single.innerHTML = '<a class="dp-prod-single-card" href="'+p.url+'" target="_blank">'
         + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
@@ -1354,8 +1356,39 @@
         + '</a>';
       document.getElementById('dp-btn-buy').href = p.url;
       document.getElementById('dp-btn-next').style.display = dpProdIndex < dpProdList.length - 1 ? '' : 'none';
-      single.style.opacity = '1';
-    }, 260);
+      single.style.display = 'none';
+      single.style.opacity = '';
+      single.style.transition = '';
+      dpGiftBoxRevealNext(btns);
+    }, 220);
+  }
+
+  function dpGiftBoxRevealNext(btns) {
+    var stage = document.getElementById('dp-giftbox-stage');
+    var outer = document.getElementById('dp-giftbox-outer');
+    var lid   = document.getElementById('dp-box-lid');
+    var single = document.getElementById('dp-prod-single');
+    outer.classList.remove('shake');
+    lid.classList.remove('open');
+    stage.classList.add('show');
+    setTimeout(function() { outer.classList.add('shake'); }, 300);
+    setTimeout(function() { outer.classList.remove('shake'); }, 750);
+    setTimeout(function() { outer.classList.add('shake'); }, 850);
+    setTimeout(function() { lid.classList.add('open'); }, 1300);
+    setTimeout(function() {
+      stage.classList.remove('show');
+      lid.classList.remove('open');
+      single.style.display    = '';
+      single.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      single.style.transform  = 'translateY(24px) scale(0.95)';
+      single.style.opacity    = '0';
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        single.style.opacity   = '1';
+        single.style.transform = 'translateY(0) scale(1)';
+      }); });
+      btns.style.display = '';
+      setTimeout(dpLaunchConfetti, 350);
+    }, 1900);
   }
 
   function dpLaunchConfetti() {
