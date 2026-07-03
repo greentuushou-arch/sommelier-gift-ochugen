@@ -953,6 +953,19 @@
     .dp-ind-line.done { background: #C8A84B; }
     .dp-step { display: none; }
     .dp-step.show { display: block; }
+    .dp-step.exiting { display: block; animation: dpSlideOut 0.28s ease forwards; pointer-events: none; }
+    .dp-step.entering { display: block; animation: dpSlideIn 0.28s ease forwards; }
+    @keyframes dpSlideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to   { transform: translateX(-80px); opacity: 0; }
+    }
+    @keyframes dpSlideIn {
+      from { transform: translateX(80px); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+    /* Q2は薄いミント色で差別化 */
+    #dp-q2 .dp-step-inner { background: #D4F5F2; }
+    #dp-q2 .dp-ind-item.active .dp-ind-dot { background: #0A7A76; border-color: #0A7A76; }
     .dp-step-inner { background: #FFF5B0; padding: 32px 32px 44px; }
     .dp-q-label { font-size: 12px; letter-spacing: 0.22em; color: #494949; display: block; text-align: center; margin-bottom: 10px; }
     .dp-q-ttl { font-size: 32px; font-weight: 700; color: #494949; text-align: center; margin-bottom: 8px; }
@@ -1172,9 +1185,30 @@
   }
 
   function dpSetStep(n) {
-    ['dp-q1','dp-q2','dp-result'].forEach(function(id,i){ document.getElementById(id).classList.toggle('show', i===n-1); });
-    ['dp-ind1','dp-ind2','dp-ind3'].forEach(function(id,i){ var el=document.getElementById(id); el.classList.toggle('active',i===n-1); el.classList.toggle('done',i<n-1); });
-    ['dp-ind-line1','dp-ind-line2'].forEach(function(id,i){ document.getElementById(id).classList.toggle('done',i<n-1); });
+    var steps = ['dp-q1','dp-q2','dp-result'];
+    var currentEl = null;
+    steps.forEach(function(id){ if(document.getElementById(id).classList.contains('show')) currentEl = document.getElementById(id); });
+    var nextEl = document.getElementById(steps[n-1]);
+
+    function updateIndicators() {
+      ['dp-ind1','dp-ind2','dp-ind3'].forEach(function(id,i){ var el=document.getElementById(id); el.classList.toggle('active',i===n-1); el.classList.toggle('done',i<n-1); });
+      ['dp-ind-line1','dp-ind-line2'].forEach(function(id,i){ document.getElementById(id).classList.toggle('done',i<n-1); });
+    }
+
+    if (currentEl && currentEl !== nextEl) {
+      currentEl.classList.add('exiting');
+      currentEl.classList.remove('show');
+      setTimeout(function() {
+        currentEl.classList.remove('exiting');
+        nextEl.classList.add('show');
+        nextEl.classList.add('entering');
+        updateIndicators();
+        setTimeout(function(){ nextEl.classList.remove('entering'); }, 300);
+      }, 280);
+    } else {
+      if (nextEl) { nextEl.classList.add('show'); }
+      updateIndicators();
+    }
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
