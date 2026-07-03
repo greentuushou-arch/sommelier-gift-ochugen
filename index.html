@@ -1065,7 +1065,6 @@
     <div class="dp-result-products">
       <p class="dp-prod-ttl dp-prod-ttl-main">ぴったりの一品はこちら</p>
       <div id="dp-prod-single" style="position:relative;">
-        <canvas id="dp-local-confetti" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;display:none;"></canvas>
       </div>
       <div class="dp-result-comment">
         <div class="dp-comment-avatar">店主</div>
@@ -1290,7 +1289,12 @@
 
   function dpLaunchConfetti() {
     var wrap = document.getElementById('dp-prod-single');
-    var canvas = document.getElementById('dp-local-confetti');
+    var old = wrap.querySelector('.dp-confetti-canvas');
+    if (old) old.remove();
+    var canvas = document.createElement('canvas');
+    canvas.className = 'dp-confetti-canvas';
+    canvas.style.cssText = 'position:absolute;pointer-events:none;z-index:10;';
+    wrap.appendChild(canvas);
     var W = wrap.offsetWidth;
     var H = wrap.offsetHeight;
     var PAD = 100;
@@ -1300,7 +1304,6 @@
     canvas.style.height = (H + PAD * 2) + 'px';
     canvas.style.left = -PAD + 'px';
     canvas.style.top  = -PAD + 'px';
-    canvas.style.display = 'block';
     var ctx = canvas.getContext('2d');
     var colors = ['#19A1A3','#ffd133','#41DFE1','#E14441','#EC8583','#fff','#9AEEEF'];
     var particles = [];
@@ -1354,7 +1357,7 @@
       });
       frame++;
       if (alive && frame < 160) { requestAnimationFrame(animate); }
-      else { ctx.clearRect(0, 0, CW, CH); canvas.style.display = 'none'; canvas.style.left = '0'; canvas.style.top = '0'; }
+      else { canvas.remove(); }
     }
     animate();
   }
