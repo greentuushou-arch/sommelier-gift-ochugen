@@ -953,6 +953,24 @@
     .dp-prod-price { font-size: 15px; color: #335577; font-weight: 500; }
     .dp-retry { display: block; margin: 0 auto; background: #E14441; color: #fff; border: none; border-radius: 8px; padding: 15px 40px; font-size: 18px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; }
     .dp-retry:hover { background: #C43230; }
+    /* ── ギフトボックス演出 ── */
+    #dp-giftbox-stage { display: none; justify-content: center; align-items: flex-end; padding: 40px 0 48px; perspective: 700px; }
+    #dp-giftbox-stage.show { display: flex; }
+    .dp-giftbox-outer { position: relative; width: 160px; }
+    @keyframes dpBoxShake { 0%,100%{transform:rotate(0)} 20%{transform:rotate(-4deg)} 40%{transform:rotate(4deg)} 60%{transform:rotate(-3deg)} 80%{transform:rotate(3deg)} }
+    .dp-giftbox-outer.shake { animation: dpBoxShake 0.45s ease; }
+    .dp-bow { position: absolute; top: -38px; left: 50%; transform: translateX(-50%); width: 64px; height: 36px; z-index: 3; }
+    .dp-bow-l, .dp-bow-r { position: absolute; width: 30px; height: 24px; background: #ffd133; border-radius: 50%; top: 6px; }
+    .dp-bow-l { left: 0; transform: rotate(-25deg); }
+    .dp-bow-r { right: 0; transform: rotate(25deg); }
+    .dp-bow-c { position: absolute; width: 16px; height: 16px; background: #ffd133; border-radius: 50%; top: 10px; left: 50%; transform: translateX(-50%); z-index: 2; }
+    .dp-box-lid { position: relative; width: 172px; height: 52px; background: #E14441; border-radius: 6px 6px 0 0; margin-left: -6px; transform-origin: top center; z-index: 2; }
+    @keyframes dpLidOpen { 0%{transform:rotateX(0);opacity:1} 100%{transform:rotateX(-140deg);opacity:0} }
+    .dp-box-lid.open { animation: dpLidOpen 0.5s cubic-bezier(0.4,0,0.2,1) forwards; }
+    .dp-lid-ribbon { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 16px; height: 100%; background: #ffd133; }
+    .dp-box-body { position: relative; width: 160px; height: 140px; background: #E14441; border-radius: 0 0 8px 8px; overflow: hidden; }
+    .dp-body-ribbon-v { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 16px; height: 100%; background: #ffd133; }
+    .dp-body-ribbon-h { position: absolute; top: 0; left: 0; width: 100%; height: 16px; background: #ffd133; }
     /* 1商品カード */
     #dp-prod-single { display: flex; justify-content: center; margin-bottom: 28px; }
     .dp-prod-single-card { max-width: 300px; width: 100%; background: #fff; border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 6px 28px rgba(0,0,0,0.13); transition: transform 0.15s, box-shadow 0.15s; display: block; }
@@ -1064,6 +1082,22 @@
     </div>
     <div class="dp-result-products">
       <p class="dp-prod-ttl dp-prod-ttl-main">ぴったりの一品はこちら</p>
+      <div id="dp-giftbox-stage">
+        <div class="dp-giftbox-outer" id="dp-giftbox-outer">
+          <div class="dp-bow">
+            <div class="dp-bow-l"></div>
+            <div class="dp-bow-r"></div>
+            <div class="dp-bow-c"></div>
+          </div>
+          <div class="dp-box-lid" id="dp-box-lid">
+            <div class="dp-lid-ribbon"></div>
+          </div>
+          <div class="dp-box-body">
+            <div class="dp-body-ribbon-v"></div>
+            <div class="dp-body-ribbon-h"></div>
+          </div>
+        </div>
+      </div>
       <div id="dp-prod-single" style="position:relative;">
       </div>
       <div class="dp-result-comment">
@@ -1284,7 +1318,34 @@
     }
     dpToggleHero(false);
     dpSetStep(3);
-    setTimeout(dpLaunchConfetti, 320);
+    setTimeout(dpGiftBoxReveal, 200);
+  }
+
+  function dpGiftBoxReveal() {
+    var stage   = document.getElementById('dp-giftbox-stage');
+    var outer   = document.getElementById('dp-giftbox-outer');
+    var lid     = document.getElementById('dp-box-lid');
+    var single  = document.getElementById('dp-prod-single');
+    single.style.visibility = 'hidden';
+    single.style.opacity    = '0';
+    stage.classList.add('show');
+    setTimeout(function() { outer.classList.add('shake'); }, 400);
+    setTimeout(function() { outer.classList.remove('shake'); }, 900);
+    setTimeout(function() { outer.classList.add('shake'); }, 1000);
+    setTimeout(function() { lid.classList.add('open'); }, 1500);
+    setTimeout(function() {
+      stage.classList.remove('show');
+      lid.classList.remove('open');
+      single.style.visibility = '';
+      single.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      single.style.transform  = 'translateY(24px) scale(0.95)';
+      single.style.opacity    = '0';
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        single.style.opacity   = '1';
+        single.style.transform = 'translateY(0) scale(1)';
+      }); });
+      setTimeout(dpLaunchConfetti, 350);
+    }, 2100);
   }
 
   function dpLaunchConfetti() {
@@ -1365,6 +1426,17 @@
   function dpRetry() {
     dpQ1=''; dpQ2='';
     document.querySelectorAll('.dp-card').forEach(function(c){ c.classList.remove('sel','card-in'); });
+    var stage  = document.getElementById('dp-giftbox-stage');
+    var outer  = document.getElementById('dp-giftbox-outer');
+    var lid    = document.getElementById('dp-box-lid');
+    var single = document.getElementById('dp-prod-single');
+    stage.classList.remove('show');
+    outer.classList.remove('shake');
+    lid.classList.remove('open');
+    single.style.visibility = '';
+    single.style.opacity    = '';
+    single.style.transform  = '';
+    single.style.transition = '';
     dpToggleHero(true);
     dpSetStep(1);
   }
