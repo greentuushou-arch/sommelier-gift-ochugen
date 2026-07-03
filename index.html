@@ -1321,6 +1321,7 @@
     var lid     = document.getElementById('dp-box-lid');
     var single  = document.getElementById('dp-prod-single');
     stage.classList.add('show');
+    stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setTimeout(function() { outer.classList.add('shake'); }, 400);
     setTimeout(function() { outer.classList.remove('shake'); }, 900);
     setTimeout(function() { outer.classList.add('shake'); }, 1000);
