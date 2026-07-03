@@ -1118,6 +1118,10 @@
         <div class="dp-comment-avatar">店主</div>
         <p class="dp-comment-text" id="dp-comment-text">―</p>
       </div>
+      <div id="dp-prod-more" style="display:none;">
+        <p class="dp-prod-ttl" style="margin-top:8px;">その他のおすすめ</p>
+        <div class="dp-prod-grid" id="dp-prod-grid"></div>
+      </div>
       <button class="dp-retry" onclick="dpRetry()">もう一度診断する</button>
     </div>
   </div>
@@ -1271,6 +1275,22 @@
       + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
       + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>'
       + '</a>';
+    var rest = data.products.slice(1);
+    var moreWrap = document.getElementById('dp-prod-more');
+    var grid = document.getElementById('dp-prod-grid');
+    if (rest.length > 0) {
+      grid.innerHTML = '';
+      rest.forEach(function(q) {
+        var a = document.createElement('a');
+        a.className = 'dp-prod-card'; a.href = q.url; a.target = '_blank';
+        a.innerHTML = '<div class="dp-prod-img"><img src="'+q.img+'" alt="'+q.name+'" loading="lazy"></div>'
+          + '<div class="dp-prod-body"><div class="dp-prod-name">'+q.name+'</div><div class="dp-prod-price">'+q.price+'</div></div>';
+        grid.appendChild(a);
+      });
+      moreWrap.style.display = '';
+    } else {
+      moreWrap.style.display = 'none';
+    }
     dpSetStep(3);
     setTimeout(dpLaunchConfetti, 320);
   }
