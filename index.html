@@ -62,14 +62,12 @@
     /* fixed header の高さ分だけ下げる */
     .page { padding-top: 52px; }
 
-    /* ── 2カラムレイアウト ── */
+    /* ── レイアウト ── */
     .page-body {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      align-items: start;
       width: 100%;
     }
     .sidebar {
+      display: none !important;
       position: sticky;
       top: 0;
       min-height: 100vh;
@@ -991,11 +989,6 @@
 
   <div class="page-body">
 
-  <!-- ══ SIDEBAR ══ -->
-  <aside class="sidebar" id="sidebar">
-    <a class="sidebar-btn" href="#" onclick="dpRetry();return false;">診断をはじめる</a>
-    <a class="sidebar-btn" href="https://www.rakuten.ne.jp/gold/bellevie-harima/" target="_blank">店舗トップへ</a>
-  </aside>
 
   <div class="main-content">
 
