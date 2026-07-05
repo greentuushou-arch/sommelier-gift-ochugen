@@ -1525,6 +1525,7 @@
     dpRenderAlso(0);
     dpToggleHero(false);
     dpSetStep(3);
+    window.scrollTo({ top: 0, behavior: 'instant' });
     setTimeout(dpGiftBoxReveal, 400);
   }
 
@@ -1737,7 +1738,8 @@
     document.getElementById('dp-also-section').style.display = 'none';
     dpToggleHero(true);
     dpSetStep(1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var pb = document.querySelector('.page-body');
+    if (pb) pb.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   /* 初回Q1スタガー */
