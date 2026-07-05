@@ -1017,31 +1017,31 @@
       .dp-prod-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .dp-result-products { padding: 20px 16px; }
     }
-    /* ── かんたん検索���クション ── */
-    .gs-section { background: #f5f5f0; padding: 48px 24px; }
+    /* ── かんたん検索セクション ── */
+    .gs-section { background: linear-gradient(135deg, #3399cc 0%, #19A1A3 100%); padding: 52px 24px; }
     .gs-inner { max-width: 760px; margin: 0 auto; }
-    .gs-ttl { font-size: 22px; font-weight: 700; color: #1E2A38; text-align: center; margin-bottom: 32px; letter-spacing: 0.04em; }
-    .gs-ttl span { display: inline-block; border-bottom: 3px solid #19A1A3; padding-bottom: 6px; }
-    /* ドロップダウン検索 */
-    .gs-selects { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .gs-ttl { font-size: 22px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 28px; letter-spacing: 0.06em; }
+    .gs-ttl::before, .gs-ttl::after { content: '── '; opacity: 0.5; }
+    /* 検索カード */
+    .gs-card { background: rgba(255,255,255,0.15); border-radius: 16px; padding: 24px; margin-bottom: 28px; }
+    .gs-selects { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
     .gs-select-wrap { flex: 1; min-width: 140px; position: relative; }
-    .gs-select-wrap::after { content: '▼'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
-    .gs-select { width: 100%; padding: 12px 32px 12px 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; appearance: none; background: #fff; color: #1E2A38; cursor: pointer; }
-    .gs-select:focus { outline: none; border-color: #19A1A3; }
-    .gs-select:disabled { background: #f0f0f0; color: #aaa; cursor: not-allowed; }
-    .gs-cross { color: #aaa; font-size: 18px; font-weight: 700; flex-shrink: 0; }
-    .gs-btn { display: block; width: 100%; padding: 14px; background: #19A1A3; color: #fff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; margin-bottom: 32px; }
-    .gs-btn:hover { background: #138e90; }
-    .gs-btn:disabled { background: #ccc; cursor: not-allowed; }
-    /* キーワード */
-    .gs-sub-ttl { font-size: 13px; font-weight: 700; color: #888; margin-bottom: 10px; letter-spacing: 0.1em; }
+    .gs-select-wrap::after { content: '▼'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #19A1A3; pointer-events: none; }
+    .gs-select { width: 100%; padding: 12px 32px 12px 14px; border: none; border-radius: 8px; font-size: 15px; appearance: none; background: #fff; color: #1E2A38; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .gs-select:focus { outline: 2px solid rgba(255,255,255,0.8); }
+    .gs-select:disabled { background: rgba(255,255,255,0.5); color: #aaa; cursor: not-allowed; }
+    .gs-cross { color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700; flex-shrink: 0; }
+    .gs-btn { display: block; width: 100%; padding: 14px; background: #EC8583; color: #fff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.08em; transition: background 0.15s, transform 0.1s; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+    .gs-btn:hover { background: #d96f6d; transform: translateY(-1px); }
+    .gs-btn:disabled { background: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); cursor: not-allowed; box-shadow: none; }
+    /* キーワード・予算 */
+    .gs-sub-ttl { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 10px; letter-spacing: 0.14em; }
     .gs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .gs-tag { padding: 6px 14px; background: #fff; border: 1px solid #19A1A3; border-radius: 20px; font-size: 13px; color: #19A1A3; text-decoration: none; transition: background 0.15s, color 0.15s; }
-    .gs-tag:hover { background: #19A1A3; color: #fff; }
-    /* 予算 */
+    .gs-tag { padding: 7px 16px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; font-size: 13px; color: #fff; text-decoration: none; transition: background 0.15s; }
+    .gs-tag:hover { background: rgba(255,255,255,0.35); }
     .gs-prices { display: flex; flex-wrap: wrap; gap: 8px; }
-    .gs-price { padding: 8px 16px; background: #fff; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; color: #1E2A38; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
-    .gs-price:hover { border-color: #19A1A3; color: #19A1A3; }
+    .gs-price { padding: 8px 16px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.4); border-radius: 6px; font-size: 14px; color: #fff; text-decoration: none; transition: background 0.15s; }
+    .gs-price:hover { background: rgba(255,255,255,0.35); }
     @media (max-width: 600px) {
       .gs-section { padding: 36px 16px; }
       .gs-ttl { font-size: 18px; }
@@ -1174,8 +1174,9 @@
   <!-- ══ かんたん検索 ══ -->
   <section class="gs-section">
     <div class="gs-inner">
-      <p class="gs-ttl"><span>ピッタリ！が見つかる　かんたん検索</span></p>
+      <p class="gs-ttl">お好みの条件から探す！</p>
 
+      <div class="gs-card">
       <div class="gs-selects">
         <div class="gs-select-wrap">
           <select id="gs-price" class="gs-select">
@@ -1209,6 +1210,7 @@
         </div>
       </div>
       <button id="gs-search-btn" class="gs-btn" disabled>検索する</button>
+      </div><!-- /gs-card -->
 
       <p class="gs-sub-ttl">キーワードから探す</p>
       <div class="gs-tags">
