@@ -1534,7 +1534,6 @@
     var lid     = document.getElementById('dp-box-lid');
     var single  = document.getElementById('dp-prod-single');
     stage.classList.add('show');
-    stage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setTimeout(function() { outer.classList.add('shake'); }, 400);
     setTimeout(function() { outer.classList.remove('shake'); }, 900);
     setTimeout(function() { outer.classList.add('shake'); }, 1000);
@@ -1738,6 +1737,7 @@
     document.getElementById('dp-also-section').style.display = 'none';
     dpToggleHero(true);
     dpSetStep(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   /* 初回Q1スタガー */
