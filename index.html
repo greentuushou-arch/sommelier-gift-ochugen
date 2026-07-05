@@ -1724,7 +1724,7 @@
       var min  = opt.dataset.min || '';
       var max  = opt.dataset.max || '';
       var item = itemEl.value || 'お中元+夏ギフト';
-      var url  = 'https://search.rakuten.co.jp/search/mall/' + item + '/?sf=1&sid=215297';
+      var url  = 'https://search.rakuten.co.jp/search/mall/' + item.replace(/\+/g, '%20') + '/?sf=1&sid=215297';
       if (min) url += '&min=' + min;
       if (max) url += '&max=' + max;
       window.open(url, '_blank');
