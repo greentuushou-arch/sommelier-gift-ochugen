@@ -1390,7 +1390,6 @@
     var data = dpCategoryData[cat];
     document.getElementById('dp-result-for').textContent = dpQ1 + ' ｜ ' + dpQ2;
     document.getElementById('dp-result-ttl').textContent = cat;
-    document.getElementById('dp-result-desc').textContent = data.desc;
     document.getElementById('dp-comment-text').textContent = data.comment;
     var order = data.orderByQ1 && data.orderByQ1[dpQ1];
     dpProdList  = order ? order.map(function(i){ return data.products[i]; }) : data.products.slice();
