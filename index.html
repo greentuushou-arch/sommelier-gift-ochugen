@@ -1017,6 +1017,22 @@
       .dp-prod-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .dp-result-products { padding: 20px 16px; }
     }
+    /* ── カテゴリセクション ── */
+    .cat-section { background: #FFF9EE; padding: 52px 24px; }
+    .cat-inner { max-width: 900px; margin: 0 auto; }
+    .cat-ttl { font-size: 22px; font-weight: 700; color: #1E2A38; text-align: center; margin-bottom: 32px; letter-spacing: 0.06em; }
+    .cat-ttl::before, .cat-ttl::after { content: ''; display: inline-block; width: 36px; height: 2px; background: #19A1A3; vertical-align: middle; margin: 0 12px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .cat-item a { display: block; text-decoration: none; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.10); transition: transform 0.15s, box-shadow 0.15s; background: #fff; }
+    .cat-item a:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.16); }
+    .cat-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .cat-item span { display: block; text-align: center; font-size: 13px; font-weight: 700; color: #1E2A38; padding: 8px 4px 10px; background: #fff; }
+    @media (max-width: 600px) {
+      .cat-section { padding: 36px 16px; }
+      .cat-ttl { font-size: 18px; }
+      .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .cat-item span { font-size: 11px; padding: 6px 4px 8px; }
+    }
     /* ── かんたん検索セクション ── */
     .gs-section { background: linear-gradient(135deg, #3399cc 0%, #19A1A3 100%); padding: 52px 24px; }
     .gs-inner { max-width: 760px; margin: 0 auto; }
@@ -1170,6 +1186,27 @@
 
   </div><!-- /main-content -->
   </div><!-- /page-body -->
+
+  <!-- ══ カテゴリーから探す ══ -->
+  <section class="cat-section">
+    <div class="cat-inner">
+      <p class="cat-ttl">カテゴリーから探す</p>
+      <div class="cat-grid">
+        <div class="cat-item"><a href="#cat_selection"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_selection.jpg" alt="おすすめ" loading="lazy"><span>おすすめ</span></a></div>
+        <div class="cat-item"><a href="#cat_somen"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_somen.jpg" alt="そうめん" loading="lazy"><span>そうめん</span></a></div>
+        <div class="cat-item"><a href="#cat_ice"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_ice.jpg" alt="アイス" loading="lazy"><span>アイス</span></a></div>
+        <div class="cat-item"><a href="#cat_jelly"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_jelly.jpg" alt="ゼリー・水羊羹" loading="lazy"><span>ゼリー・水羊羹</span></a></div>
+        <div class="cat-item"><a href="#cat_softdrink"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_softdrink.jpg" alt="ソフトドリンク" loading="lazy"><span>ソフトドリンク</span></a></div>
+        <div class="cat-item"><a href="#cat_drink"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_drink.jpg" alt="コーヒー・飲料" loading="lazy"><span>コーヒー・飲料</span></a></div>
+        <div class="cat-item"><a href="#cat_sweets"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_sweets.jpg" alt="洋菓子・和菓子" loading="lazy"><span>洋菓子・和菓子</span></a></div>
+        <div class="cat-item"><a href="#cat_ham"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_ham.jpg" alt="ハム・お肉" loading="lazy"><span>ハム・お肉</span></a></div>
+        <div class="cat-item"><a href="#cat_gourmet"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_gourmet.jpg" alt="惣菜・グルメ" loading="lazy"><span>惣菜・グルメ</span></a></div>
+        <div class="cat-item"><a href="#cat_seasoning"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_seasoning.jpg" alt="調味料・油" loading="lazy"><span>調味料・油</span></a></div>
+        <div class="cat-item"><a href="#cat_catalog"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_catalog.jpg" alt="カタログギフト" loading="lazy"><span>カタログギフト</span></a></div>
+        <div class="cat-item"><a href="#cat_soap"><img src="https://image.rakuten.co.jp/bellevie-harima/cabinet/c/sg/cat_soap.jpg" alt="タオル・洗剤" loading="lazy"><span>タオル・洗剤</span></a></div>
+      </div>
+    </div>
+  </section>
 
   <!-- ══ かんたん検索 ══ -->
   <section class="gs-section">
