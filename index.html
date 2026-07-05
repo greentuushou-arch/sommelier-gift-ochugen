@@ -1016,7 +1016,40 @@
       .dp-step-inner { padding: 24px 16px 36px; }
       .dp-prod-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .dp-result-products { padding: 20px 16px; }
-    }  </style>
+    }
+    /* ── かんたん検索���クション ── */
+    .gs-section { background: #f5f5f0; padding: 48px 24px; }
+    .gs-inner { max-width: 760px; margin: 0 auto; }
+    .gs-ttl { font-size: 22px; font-weight: 700; color: #1E2A38; text-align: center; margin-bottom: 32px; letter-spacing: 0.04em; }
+    .gs-ttl span { display: inline-block; border-bottom: 3px solid #19A1A3; padding-bottom: 6px; }
+    /* ドロップダウン検索 */
+    .gs-selects { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .gs-select-wrap { flex: 1; min-width: 140px; position: relative; }
+    .gs-select-wrap::after { content: '▼'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
+    .gs-select { width: 100%; padding: 12px 32px 12px 14px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; appearance: none; background: #fff; color: #1E2A38; cursor: pointer; }
+    .gs-select:focus { outline: none; border-color: #19A1A3; }
+    .gs-select:disabled { background: #f0f0f0; color: #aaa; cursor: not-allowed; }
+    .gs-cross { color: #aaa; font-size: 18px; font-weight: 700; flex-shrink: 0; }
+    .gs-btn { display: block; width: 100%; padding: 14px; background: #19A1A3; color: #fff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; margin-bottom: 32px; }
+    .gs-btn:hover { background: #138e90; }
+    .gs-btn:disabled { background: #ccc; cursor: not-allowed; }
+    /* キーワード */
+    .gs-sub-ttl { font-size: 13px; font-weight: 700; color: #888; margin-bottom: 10px; letter-spacing: 0.1em; }
+    .gs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .gs-tag { padding: 6px 14px; background: #fff; border: 1px solid #19A1A3; border-radius: 20px; font-size: 13px; color: #19A1A3; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .gs-tag:hover { background: #19A1A3; color: #fff; }
+    /* 予算 */
+    .gs-prices { display: flex; flex-wrap: wrap; gap: 8px; }
+    .gs-price { padding: 8px 16px; background: #fff; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; color: #1E2A38; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+    .gs-price:hover { border-color: #19A1A3; color: #19A1A3; }
+    @media (max-width: 600px) {
+      .gs-section { padding: 36px 16px; }
+      .gs-ttl { font-size: 18px; }
+      .gs-selects { flex-direction: column; }
+      .gs-cross { display: none; }
+      .gs-select-wrap { width: 100%; }
+    }
+    </style>
 </head>
 <body>
 <div class="page">
@@ -1137,6 +1170,62 @@
 
   </div><!-- /main-content -->
   </div><!-- /page-body -->
+
+  <!-- ══ かんたん検索 ══ -->
+  <section class="gs-section">
+    <div class="gs-inner">
+      <p class="gs-ttl"><span>ピッタリ！が見つかる　かんたん検索</span></p>
+
+      <div class="gs-selects">
+        <div class="gs-select-wrap">
+          <select id="gs-price" class="gs-select">
+            <option value="">予算を選ぶ</option>
+            <option value="" data-min="1"    data-max="2999" >3,000円未満</option>
+            <option value="" data-min="3000" data-max="3999" >3,000円〜3,999円</option>
+            <option value="" data-min="4000" data-max="4999" >4,000円〜4,999円</option>
+            <option value="" data-min="5000" data-max="5999" >5,000円〜5,999円</option>
+            <option value="" data-min="6000" data-max="9999" >6,000円〜9,999円</option>
+            <option value="" data-min="10000" data-max="19999">10,000円〜19,999円</option>
+          </select>
+        </div>
+        <span class="gs-cross">×</span>
+        <div class="gs-select-wrap">
+          <select id="gs-item" class="gs-select" disabled>
+            <option value="">アイテムを選ぶ</option>
+            <option value="お中元+ハム+ギフト+送料無料">ハム</option>
+            <option value="お中元+肉">肉・肉加工品</option>
+            <option value="お中元+海鮮">海鮮・水産加工品</option>
+            <option value="お中元+洋菓子">洋菓子</option>
+            <option value="お中元+和菓子">和菓子</option>
+            <option value="お中元+アイス">アイスクリーム</option>
+            <option value="お中元+麺類">麺類</option>
+            <option value="お中元+惣菜+グルメ">惣菜・グルメ</option>
+            <option value="お中元+ジュース">ジュース</option>
+            <option value="お中元+コーヒー">コーヒー</option>
+            <option value="お中元+ビール+酒">ビール・お酒</option>
+            <option value="タオル+日用品">タオル・日用品</option>
+            <option value="お中元+カタログギフト">カタログギフト</option>
+          </select>
+        </div>
+      </div>
+      <button id="gs-search-btn" class="gs-btn" disabled>検索する</button>
+
+      <p class="gs-sub-ttl">キーワードから探す</p>
+      <div class="gs-tags">
+        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフト/?sf=1&sid=215297" target="_blank">#お中元 夏ギフト</a>
+        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+そうめん/?sf=1&sid=215297" target="_blank">#そうめんギフト</a>
+        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+アイス/?sf=1&sid=215297" target="_blank">#お中元 アイス</a>
+      </div>
+
+      <p class="gs-sub-ttl">予算から探す</p>
+      <div class="gs-prices">
+        <a class="gs-price" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフト/?max=2999&sid=215297" target="_blank">3,000円未満</a>
+        <a class="gs-price" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフト/?max=3999&min=3000&sid=215297" target="_blank">3,000円〜4,000円</a>
+        <a class="gs-price" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフト/?max=4999&min=4000&sid=215297" target="_blank">4,000円〜5,000円</a>
+        <a class="gs-price" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフ���/?min=5000&sid=215297" target="_blank">5,000円以上</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer">
@@ -1621,6 +1710,31 @@
 
   /* 初回Q1スタガー */
   dpStagger('dp-q1');
+
+  /* ── かんたん検索 ── */
+  (function() {
+    var priceEl = document.getElementById('gs-price');
+    var itemEl  = document.getElementById('gs-item');
+    var btnEl   = document.getElementById('gs-search-btn');
+
+    priceEl.addEventListener('change', function() {
+      var hasPrice = priceEl.selectedIndex > 0;
+      itemEl.disabled = !hasPrice;
+      if (!hasPrice) { itemEl.selectedIndex = 0; }
+      btnEl.disabled = !hasPrice;
+    });
+
+    btnEl.addEventListener('click', function() {
+      var opt  = priceEl.options[priceEl.selectedIndex];
+      var min  = opt.dataset.min || '';
+      var max  = opt.dataset.max || '';
+      var item = itemEl.value || 'お中元+夏ギフト';
+      var url  = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(item) + '/?sf=1&sid=215297';
+      if (min) url += '&min=' + min;
+      if (max) url += '&max=' + max;
+      window.open(url, '_blank');
+    });
+  })();
 </script>
 </body>
 </html>
