@@ -1140,68 +1140,112 @@
       desc: 'きちんと感があり、失礼なく贈れるお中元をお探しの方へ。上司や取引先、お世話になった方にも選びやすい、間違いのない定番ギフトをご提案します。',
       comment: '迷ったときは「定番」が一番です。どんな方にも喜ばれる品を、自信を持ってお届けします。長年のお中元で培った経験から選んだ、ソムリエギフト一押しの一品です。',
       products: [
-        { name: '手延べ素麺 揖保乃糸ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_s30/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/sd30.jpg' },
-        { name: 'スターボリ 大瓶セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/star_b_006/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/stbori_02_50.jpg' },
-        { name: 'スターボリ 小瓶セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/star_b_007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/stbori_02_20.jpg' },
-        { name: 'スイーツギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01115/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets5/food-01115_s1_ss.jpg' },
-        { name: '手延べそうめんギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ito-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/ito/itowg23_img1.jpg' },
-        { name: '今治至福タオルギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/iwamoto_shihuku_004/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/imabarisihukutowel/shifuku50_s1kari.jpg' },
-        { name: 'カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/code-00009/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/codec/cpt_s00009_2.jpg' },
-        { name: 'ドリンクギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-058/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/food-058_s1.jpg' }
-      ]
+        /* 0 */ { name: '手延べ素麺 揖保乃糸ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_s30/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/sd30.jpg' },
+        /* 1 */ { name: 'スターボリ 大瓶セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/star_b_006/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/stbori_02_50.jpg' },
+        /* 2 */ { name: 'スターボリ 小瓶セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/star_b_007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/stbori_02_20.jpg' },
+        /* 3 */ { name: 'スイーツギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01115/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets5/food-01115_s1_ss.jpg' },
+        /* 4 */ { name: '手延べそうめんギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ito-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/ito/itowg23_img1.jpg' },
+        /* 5 */ { name: '今治至福タオルギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/iwamoto_shihuku_004/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/imabarisihukutowel/shifuku50_s1kari.jpg' },
+        /* 6 */ { name: 'カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/code-00009/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/codec/cpt_s00009_2.jpg' },
+        /* 7 */ { name: 'ドリンクギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-058/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/food-058_s1.jpg' }
+      ],
+      orderByQ1: {
+        '上司・目上の方':   [5,6,0,1,7,3,4,2],
+        '会社・取引先':     [6,5,0,7,1,3,4,2],
+        'お世話になった方': [5,0,6,7,1,3,4,2],
+        '両親・親戚':       [0,1,7,4,3,2,5,6],
+        'お友達':           [3,7,1,0,2,4,5,6],
+        '子育て世帯':       [3,7,1,2,0,4,5,6],
+        '一人暮らしの方':   [6,3,2,7,0,4,5,1]
+      }
     },
     '家族で楽しむギフト': {
       desc: '箱を開けた瞬間、家族みんなで楽しめるお中元を。お子さまのいるご家庭や、ご親戚への贈り物におすすめです。',
       comment: '家族で囲んで食べるギフトは、それ自体が夏の思い出になります。大人も子どもも笑顔になれる、みんなで楽しめる一品をお選びしました。',
       products: [
-        { name: 'カルピス・ウェルチジュースセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_011/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/calpis/welchs1_07s.jpg' },
-        { name: 'スイーツギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01319/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets6/food-01319ss_s2.jpg' },
-        { name: 'キャラメルがしみ込んだバームクーヘン', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s3.jpg' },
-        { name: 'スイーツセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-3000/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/sf_s06.jpg' },
-        { name: 'スイーツギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/food-01479_s2b.jpg' },
-        { name: '贅沢フルーツの水ようかん', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
-        { name: 'カルピスギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_003/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/summer/products/01251058051m01.jpg' }
-      ]
+        /* 0 */ { name: 'カルピス・ウェルチジュースセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_011/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/calpis/welchs1_07s.jpg' },
+        /* 1 */ { name: 'スイーツギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01319/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets6/food-01319ss_s2.jpg' },
+        /* 2 */ { name: 'キャラメルがしみ込んだバームクーヘン', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5291/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/mrnn_s3.jpg' },
+        /* 3 */ { name: 'スイーツセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-3000/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/sf_s06.jpg' },
+        /* 4 */ { name: 'スイーツギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/food-01479_s2b.jpg' },
+        /* 5 */ { name: '贅沢フルーツの水ようかん', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s2.jpg' },
+        /* 6 */ { name: 'カルピスギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_003/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/summer/products/01251058051m01.jpg' }
+      ],
+      orderByQ1: {
+        '両親・親戚':       [5,2,0,6,1,3,4],
+        '子育て世帯':       [0,6,2,1,3,4,5],
+        'お友達':           [2,1,0,3,4,5,6],
+        '上司・目上の方':   [5,0,2,6,1,3,4],
+        'お世話になった方': [5,2,0,1,3,4,6],
+        '一人暮らしの方':   [2,6,1,0,3,4,5]
+      }
     },
     '健康を気遣うギフト': {
       desc: '暑い季節を元気に過ごしてほしい。そんな気持ちが伝わる、からだにやさしいお中元を集めました。',
       comment: '「元気でいてほしい」という気持ちを、ギフトで伝えませんか。体を気遣う品は、贈られた方の心にもじんわり温かく届きます。',
       products: [
-        { name: 'ファンケル青汁ジュースセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-004/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/pfj_s2.jpg' },
-        { name: '天野実業 フリーズドライセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/amano-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food2/amano-002_s1all.jpg' },
-        { name: '健康食品ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01407/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food6/food-01407_s11.jpg' },
-        { name: 'カゴメ 野菜ジュースギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/kagome-007_s5.jpg' },
-        { name: '手延べ素麺 揖保乃糸（あおば）', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' },
-        { name: '健康ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-973/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food5/food-971_s5.jpg' },
-        { name: '丸高醸造 調味料ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_229/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/yutori/chomiryo4_15.jpg' }
-      ]
+        /* 0 */ { name: 'ファンケル青汁ジュースセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-004/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/pfj_s2.jpg' },
+        /* 1 */ { name: '天野実業 フリーズドライセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/amano-002/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food2/amano-002_s1all.jpg' },
+        /* 2 */ { name: '健康食品ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01407/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food6/food-01407_s11.jpg' },
+        /* 3 */ { name: 'カゴメ 野菜ジュースギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/kagome-007_s5.jpg' },
+        /* 4 */ { name: '手延べ素麺 揖保乃糸（あおば）', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' },
+        /* 5 */ { name: '健康ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-973/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food5/food-971_s5.jpg' },
+        /* 6 */ { name: '丸高醸造 調味料ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_229/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/yutori/chomiryo4_15.jpg' }
+      ],
+      orderByQ1: {
+        '上司・目上の方':   [0,3,2,5,4,6,1],
+        '会社・取引先':     [0,3,2,1,5,6,4],
+        'お世話になった方': [0,2,3,5,6,4,1],
+        '両親・親戚':       [3,0,4,2,5,6,1],
+        'お友達':           [3,0,6,2,1,4,5],
+        '子育て世帯':       [3,0,4,2,1,5,6],
+        '一人暮らしの方':   [6,1,0,3,2,4,5]
+      }
     },
     'センスで選ぶギフト': {
       desc: '見た目のおしゃれさやブランド感も大切にしたい方へ。贈った相手に「センスがいいね」と思ってもらえるギフトをご提案します。',
       comment: '「このギフトを選んだ人、センスいいなあ」と思ってもらえる一品を選びました。話題にもなりやすく、会話のきっかけにもなります。',
       products: [
-        { name: 'スイーツギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01435/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/food-01435_s10.jpg' },
-        { name: 'ドリンクギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01273/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/food-01273_s11.jpg' },
-        { name: 'チーズ詰合せギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-977-set/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food6/pcheese_s16.jpg' },
-        { name: '丸高醸造 調味料セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-420/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food4/marutaka-420_s2.jpg' },
-        { name: 'サマーギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/summer/products/sp23s-00270_s2.jpg' },
-        { name: 'チョコレートギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-310/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/sha-310_s9.jpg' },
-        { name: 'インテリア雑貨ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-01713/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/others4/goods-01713_s5.jpg' },
-        { name: 'ジェームズマーティン ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-801/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/jamesmartin/goods-801_s15.jpg' },
-        { name: 'カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-dnd-001/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/catalog001/dad/a/cat-dnd-001_s5.jpg' }
-      ]
+        /* 0 */ { name: 'スイーツギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01435/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/food-01435_s10.jpg' },
+        /* 1 */ { name: 'ドリンクギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01273/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/drink/food-01273_s11.jpg' },
+        /* 2 */ { name: 'チーズ詰合せギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-977-set/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food6/pcheese_s16.jpg' },
+        /* 3 */ { name: '丸高醸造 調味料セット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-420/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food4/marutaka-420_s2.jpg' },
+        /* 4 */ { name: 'サマーギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/summer/products/sp23s-00270_s2.jpg' },
+        /* 5 */ { name: 'チョコレートギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-310/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets7/sha-310_s9.jpg' },
+        /* 6 */ { name: 'インテリア雑貨ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-01713/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/others4/goods-01713_s5.jpg' },
+        /* 7 */ { name: 'ジェームズマーティン ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-801/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/product/jamesmartin/goods-801_s15.jpg' },
+        /* 8 */ { name: 'カタログギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-dnd-001/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/catalog001/dad/a/cat-dnd-001_s5.jpg' }
+      ],
+      orderByQ1: {
+        '上司・目上の方':   [7,2,8,0,1,3,4,5,6],
+        '会社・取引先':     [8,7,2,3,0,1,4,5,6],
+        'お世話になった方': [7,2,0,3,1,4,5,6,8],
+        '両親・親戚':       [0,5,1,2,3,4,6,7,8],
+        'お友達':           [5,0,1,2,3,4,6,7,8],
+        '子育て世帯':       [0,5,1,2,4,3,6,7,8],
+        '一人暮らしの方':   [1,5,0,6,2,3,4,7,8]
+      }
     },
     '特別感のあるご褒美ギフト': {
       desc: '日頃の感謝を少し特別に伝えたい方へ。自分ではなかなか買わない、もらって嬉しいご褒美感のあるお中元を集めました。',
       comment: '「いつもありがとう」の気持ちを、少し贅沢な形で届けてください。自分ではなかなか手が届かないからこそ、贈られたときの喜びもひとしおです。',
       products: [
-        { name: '帝国ホテル カレーセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-105/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/teikoku_hotel/thcurry6_s1a.jpg' },
-        { name: 'GODIVA チョコレートギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-040/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets6/godiva-040_s2.jpg' },
-        { name: '京楽 和菓子ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-038/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/kyouraku/sha-038_s2.jpg' },
-        { name: '高級調味料ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-515/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/seasoning/food-514_s_img2.jpg' },
-        { name: 'THE GIFT プレミアムセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food4/thegift-018_s1.jpg' },
-        { name: 'みなとや お茶漬けギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/chazuke-001/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food/minato_s1a.jpg' }
-      ]
+        /* 0 */ { name: '帝国ホテル カレーセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-105/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/teikoku_hotel/thcurry6_s1a.jpg' },
+        /* 1 */ { name: 'GODIVA チョコレートギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-040/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/sweets6/godiva-040_s2.jpg' },
+        /* 2 */ { name: '京楽 和菓子ギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-038/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/kyouraku/sha-038_s2.jpg' },
+        /* 3 */ { name: '高級調味料ギフトセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/food-515/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/seasoning/food-514_s_img2.jpg' },
+        /* 4 */ { name: 'THE GIFT プレミアムセット', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food4/thegift-018_s1.jpg' },
+        /* 5 */ { name: 'みなとや お茶漬けギフト', price: '詳細はページで確認', url: 'https://item.rakuten.co.jp/bellevie-harima/chazuke-001/', img: 'https://shop.r10s.jp/bellevie-harima/cabinet/food/food/minato_s1a.jpg' }
+      ],
+      orderByQ1: {
+        '上司・目上の方':   [0,4,1,3,2,5],
+        '会社・取引先':     [4,0,1,3,2,5],
+        'お世話になった方': [0,1,4,3,2,5],
+        '両親・親戚':       [1,5,0,2,3,4],
+        'お友達':           [1,0,5,2,3,4],
+        '子育て世帯':       [1,0,2,5,3,4],
+        '一人暮らしの方':   [1,5,3,0,2,4]
+      }
     },
     '気軽に贈れるプチ中元': {
       desc: 'ちょっとした感謝を、気を遣わせずに届けたい方へ。友人やご近所、ママ友にも贈りやすい、気軽なお中元ギフトをご提案します。',
@@ -1330,7 +1374,8 @@
     document.getElementById('dp-result-ttl').textContent = cat;
     document.getElementById('dp-result-desc').textContent = data.desc;
     document.getElementById('dp-comment-text').textContent = data.comment;
-    dpProdList  = data.products;
+    var order = data.orderByQ1 && data.orderByQ1[dpQ1];
+    dpProdList  = order ? order.map(function(i){ return data.products[i]; }) : data.products.slice();
     dpProdIndex = 0;
     var p = dpProdList[0];
     var single = document.getElementById('dp-prod-single');
