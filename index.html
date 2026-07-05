@@ -1071,7 +1071,7 @@
 <div class="page">
 
   <!-- ══ PAGE HEADER ══ -->
-  <div class="page-header"><a href="#" onclick="dpRetry();return false;"><img src="logo.svg" alt="SOMMELIER@GIFT"></a></div>
+  <div class="page-header"><a href="#" onclick="dpRetryTop();return false;"><img src="logo.svg" alt="SOMMELIER@GIFT"></a></div>
 
   <!-- ハンバーガーボタン（スマホのみ表示） -->
 
@@ -1717,6 +1717,11 @@
       else { canvas.remove(); }
     }
     animate();
+  }
+
+  function dpRetryTop() {
+    dpRetry();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function dpRetry() {
