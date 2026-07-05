@@ -1031,8 +1031,8 @@
     .gs-select:focus { outline: 2px solid rgba(255,255,255,0.8); }
     .gs-select:disabled { background: rgba(255,255,255,0.5); color: #aaa; cursor: not-allowed; }
     .gs-cross { color: rgba(255,255,255,0.8); font-size: 20px; font-weight: 700; flex-shrink: 0; }
-    .gs-btn { display: block; width: 100%; padding: 14px; background: #EC8583; color: #fff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.08em; transition: background 0.15s, transform 0.1s; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
-    .gs-btn:hover { background: #d96f6d; transform: translateY(-1px); }
+    .gs-btn { display: block; width: 100%; padding: 14px; background: #E14441; color: #fff; font-size: 16px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.08em; transition: background 0.15s, transform 0.1s; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+    .gs-btn:hover { background: #c73533; transform: translateY(-1px); }
     .gs-btn:disabled { background: rgba(255,255,255,0.3); color: rgba(255,255,255,0.6); cursor: not-allowed; box-shadow: none; }
     /* キーワード・予算 */
     .gs-sub-ttl { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 10px; letter-spacing: 0.14em; }
@@ -1211,13 +1211,6 @@
       </div>
       <button id="gs-search-btn" class="gs-btn" disabled>検索する</button>
       </div><!-- /gs-card -->
-
-      <p class="gs-sub-ttl">キーワードから探す</p>
-      <div class="gs-tags">
-        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+夏ギフト/?sf=1&sid=215297" target="_blank">#お中元 夏ギフト</a>
-        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+そうめん/?sf=1&sid=215297" target="_blank">#そうめんギフト</a>
-        <a class="gs-tag" href="https://search.rakuten.co.jp/search/mall/お中元+アイス/?sf=1&sid=215297" target="_blank">#お中元 アイス</a>
-      </div>
 
       <p class="gs-sub-ttl">予算から探す</p>
       <div class="gs-prices">
@@ -1731,7 +1724,7 @@
       var min  = opt.dataset.min || '';
       var max  = opt.dataset.max || '';
       var item = itemEl.value || 'お中元+夏ギフト';
-      var url  = 'https://search.rakuten.co.jp/search/mall/' + encodeURIComponent(item) + '/?sf=1&sid=215297';
+      var url  = 'https://search.rakuten.co.jp/search/mall/' + item + '/?sf=1&sid=215297';
       if (min) url += '&min=' + min;
       if (max) url += '&max=' + max;
       window.open(url, '_blank');
