@@ -957,7 +957,8 @@
     .dp-btn-buy:hover { background: #148082; }
     .dp-btn-next { width: 100%; max-width: 360px; background: #fff; color: #19A1A3; border: 2px solid #19A1A3; border-radius: 8px; padding: 13px 24px; font-size: 18px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s, color 0.15s; }
     .dp-btn-next:hover { background: #19A1A3; color: #fff; }
-    .dp-retry { display: block; margin: 0 auto; background: #E14441; color: #fff; border: none; border-radius: 8px; padding: 15px 40px; font-size: 18px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s; }
+    .dp-retry { display: block; width: 100%; max-width: 300px; background: transparent; color: #19A1A3; border: 2px solid #19A1A3; border-radius: 8px; padding: 13px 40px; font-size: 16px; font-weight: 600; cursor: pointer; letter-spacing: 0.06em; transition: background 0.15s, color 0.15s; }
+    .dp-retry:hover { background: #19A1A3; color: #fff; }
     .dp-retry:hover { background: #C43230; }
     /* ── ギフトボックス演出 ── */
     #dp-giftbox-stage { display: none; justify-content: center; align-items: flex-end; padding: 40px 0 48px; perspective: 700px; }
@@ -1171,6 +1172,7 @@
       </div>
       <div class="dp-prod-btns">
         <a id="dp-btn-buy" class="dp-btn-buy" href="#" target="_blank">この商品を見に行く</a>
+        <button class="dp-retry" onclick="dpRetry()">もう一度診断する</button>
       </div>
       <div id="dp-also-section" class="dp-also-section" style="display:none;">
         <p class="dp-also-ttl">この条件に合ったソムリエギフトチョイス！こちらもcheck</p>
@@ -1180,7 +1182,6 @@
         <div class="dp-comment-avatar">店主</div>
         <p class="dp-comment-text" id="dp-comment-text">―</p>
       </div>
-      <button class="dp-retry" onclick="dpRetry()">もう一度診断する</button>
     </div>
   </div>
 
