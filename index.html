@@ -1480,7 +1480,12 @@
     dpToggleHero(false);
     dpSetStep(3);
     var rh = document.querySelector('.dp-result-header');
-    if (rh) rh.scrollIntoView({ behavior: 'instant', block: 'start' });
+    if (rh) {
+      var header = document.querySelector('.page-header');
+      var headerH = header ? header.offsetHeight : 0;
+      var top = rh.getBoundingClientRect().top + window.pageYOffset - headerH;
+      window.scrollTo({ top: top, behavior: 'instant' });
+    }
     setTimeout(dpGiftBoxReveal, 400);
   }
 
