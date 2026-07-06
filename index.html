@@ -116,61 +116,21 @@
     }
 
     /* ── HERO ── */
-    .hero {
-      background: #0557AB;
-      padding: 48px 28px 52px;
-      text-align: center;
-    }
-    .hero-sub-line {
-      width: 32px;
-      height: 1px;
-      background: #C8A84B;
-      margin: 0 auto 18px;
-    }
-    .hero-en {
-      font-size: 14px;
-      letter-spacing: 0.26em;
-      color: #C8A84B;
+    .hero-img-wrap {
       display: block;
-      margin-bottom: 12px;
+      width: 100%;
+      line-height: 0;
     }
-    .hero-title {
-      color: #F0F4F8;
-      font-size: 64px;
-      font-weight: 500;
-      letter-spacing: 0.07em;
-      line-height: 1.45;
-      margin-bottom: 12px;
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .hero-copy {
-      color: rgba(224,232,240,0.82);
-      font-size: 18px;
-      line-height: 2;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-    }
-    .hero-rule {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 22px;
-    }
-    .hero-rule-line { width: 44px; height: 1px; background: rgba(200,168,75,0.5); }
-    .hero-rule-dot  { width: 5px; height: 5px; background: #C8A84B; transform: rotate(45deg); }
-    .hero-tags {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .hero-tag {
-      font-size: 15px;
-      color: #C8A84B;
-      border: 1px solid rgba(200,168,75,0.6);
-      padding: 5px 14px;
-      border-radius: 2px;
-      letter-spacing: 0.05em;
+    .hero-img-pc { display: block; }
+    .hero-img-sp { display: none; }
+    @media (max-width: 768px) {
+      .hero-img-pc { display: none; }
+      .hero-img-sp { display: block; }
     }
 
     /* ── SCROLL NAV ── */
@@ -1082,16 +1042,9 @@
   <div class="main-content">
 
   <!-- ══ 診断ページ ══ -->
-  <div class="dp-hero">
-    <div class="dp-hero-inner">
-      <div class="dp-hero-img">
-        <img src="sg2025_title.png" alt="ソムリエ@ギフトのお中元">
-      </div>
-      <div class="dp-hero-text">
-        <h1 class="dp-hero-ttl">ぴったりのお中元<br>一緒に選びましょう。</h1>
-        <p class="dp-hero-sub">2つの質問に答えるだけで、<br>贈る相手に合ったギフトをご提案します。</p>
-      </div>
-    </div>
+  <div class="hero-img-wrap">
+    <img src="fv-pc.jpg" alt="ソムリエ@ギフトのお中元" class="hero-img-pc">
+    <img src="fv-sp.jpg" alt="ソムリエ@ギフトのお中元" class="hero-img-sp">
   </div>
 
   <div class="dp-indicator">
