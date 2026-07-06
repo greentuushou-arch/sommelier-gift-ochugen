@@ -1479,7 +1479,8 @@
     dpRenderAlso(0);
     dpToggleHero(false);
     dpSetStep(3);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    var pb = document.querySelector('.page-body');
+    if (pb) pb.scrollIntoView({ behavior: 'instant', block: 'start' });
     setTimeout(dpGiftBoxReveal, 400);
   }
 
