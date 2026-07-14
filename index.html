@@ -1065,10 +1065,9 @@
         <div class="dp-card" onclick="dpSel(this,'q1','両親・親戚')"><img class="dp-card-illust" src="001.png" alt="両親・親戚"><div class="dp-card-lbl">両親・親戚</div></div>
         <div class="dp-card" onclick="dpSel(this,'q1','上司・目上の方')"><img class="dp-card-illust" src="002.png" alt="上司・目上の方"><div class="dp-card-lbl">上司・目上の方</div></div>
         <div class="dp-card" onclick="dpSel(this,'q1','会社・取引先')"><img class="dp-card-illust" src="003.png" alt="会社・取引先"><div class="dp-card-lbl">会社・取引先</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q1','子育て世帯')"><img class="dp-card-illust" src="004.png" alt="子育て世帯"><div class="dp-card-lbl">子育て世帯</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','子育て世代')"><img class="dp-card-illust" src="004.png" alt="子育て世代"><div class="dp-card-lbl">子育て世代</div></div>
         <div class="dp-card" onclick="dpSel(this,'q1','お友達')"><img class="dp-card-illust" src="005.png" alt="お友達"><div class="dp-card-lbl">お友達</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q1','お世話になった方')"><img class="dp-card-illust" src="006.png" alt="お世話になった方"><div class="dp-card-lbl">お世話になった方</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q1','一人暮らしの方')"><img class="dp-card-illust" src="007.png" alt="一人暮らしの方"><div class="dp-card-lbl">一人暮らしの方</div></div>
+        <div class="dp-card" onclick="dpSel(this,'q1','一人暮らしの方')"><img class="dp-card-illust" src="006.png" alt="一人暮らしの方"><div class="dp-card-lbl">一人暮らしの方</div></div>
       </div>
     </div>
   </div>
@@ -1079,14 +1078,7 @@
       <span class="dp-q-label">QUESTION 2</span>
       <h2 class="dp-q-ttl">何を重視しますか？</h2>
       <p class="dp-q-sub">気持ちに近いものを選んでください。</p>
-      <div class="dp-cards">
-        <div class="dp-card" onclick="dpSel(this,'q2','絶対に失敗したくない')"><span class="material-symbols-rounded">verified</span><div class="dp-card-lbl">絶対に失敗したくない</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q2','家族みんなで楽しんでほしい')"><span class="material-symbols-rounded">sentiment_very_satisfied</span><div class="dp-card-lbl">家族みんなで楽しんでほしい</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q2','健康を気遣いたい')"><span class="material-symbols-rounded">spa</span><div class="dp-card-lbl">健康を気遣いたい</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q2','センスが良いと思われたい')"><span class="material-symbols-rounded">auto_awesome</span><div class="dp-card-lbl">センスが良いと思われたい</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q2','特別感を届けたい')"><span class="material-symbols-rounded">stars</span><div class="dp-card-lbl">特別感を届けたい</div></div>
-        <div class="dp-card" onclick="dpSel(this,'q2','気を遣わせずに贈りたい')"><span class="material-symbols-rounded">card_giftcard</span><div class="dp-card-lbl">気を遣わせずに贈りたい</div></div>
-      </div>
+      <div class="dp-cards" id="dp-q2-cards"></div>
       <button class="dp-back" onclick="dpBack()">← 前の質問に戻る</button>
     </div>
   </div>
@@ -1227,6 +1219,347 @@
   /* ── 診断ロジック ── */
   var dpQ1 = '', dpQ2 = '', dpProdIndex = 0, dpProdList = [];
 
+  var dpQ2Options = {
+    '両親・親戚':     ['絶対に失敗したくない','家族みんなでたのしんでほしい','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい'],
+    '上司・目上の方': ['絶対に失敗したくない','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい'],
+    '会社・取引先':   ['絶対に失敗したくない','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい'],
+    '子育て世代':     ['絶対に失敗したくない','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい'],
+    'お友達':         ['絶対に失敗したくない','家族みんなでたのしんでほしい','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい'],
+    '一人暮らしの方': ['絶対に失敗したくない','健康を気遣いたい','センスが良いと思われたい','特別感を届けたい','気を遣わせずに贈りたい']
+  };
+
+  var dpQ2Icons = {
+    '絶対に失敗したくない':         'verified',
+    '家族みんなでたのしんでほしい': 'sentiment_very_satisfied',
+    '健康を気遣いたい':             'spa',
+    'センスが良いと思われたい':     'auto_awesome',
+    '特別感を届けたい':             'stars',
+    '気を遣わせずに贈りたい':       'card_giftcard'
+  };
+
+  var dpCategoryComments = {
+    '定番安心ギフト':         'どんな方にも喜ばれる定番の品を、自信を持ってお届けします。長年の経験から選んだ、ソムリエギフト一押しの一品です。',
+    '家族で楽しむギフト':     '家族みんなで囲める楽しい贈り物を選びました。開けた瞬間から笑顔があふれる、そんな一品をお届けします。',
+    '健康を気遣うギフト':     '「元気でいてほしい」という気持ちを、ギフトで伝えませんか。体を気遣う品は、贈られた方の心にもじんわり温かく届きます。',
+    'センスで選ぶギフト':     '「このギフトを選んだ人、センスいいなあ」と思ってもらえる一品を選びました。話題にもなりやすく、会話のきっかけにもなります。',
+    '特別感のあるご褒美ギフト': '「いつもありがとう」の気持ちを、少し贅沢な形で届けてください。自分ではなかなか手が届かないからこそ、贈られたときの喜びもひとしおです。',
+    '気軽に贈れるプチ中元':   '「大げさじゃなく、でも気持ちはしっかり伝えたい」そんなときにぴったりの一品です。受け取った方が気を遣いすぎない、ちょうどよいギフトを選びました。'
+  };
+
+  var dpProductData = {
+    '両親・親戚': {
+      '絶対に失敗したくない': [
+        { name: '銀座鈴屋 氷華ものがたり 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-412/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/sha-412_s1.jpg' },
+        { name: '銀座千疋屋 銀座ゼリーB 9個入り', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0160/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/ginzazeri_s1a_703.jpg' },
+        { name: '高島屋 国産ストレート果汁100％ 5本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01119/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-01119_s1.jpg' },
+        { name: 'ネスカフェ アイスコーヒー 6本入り', url: 'https://item.rakuten.co.jp/bellevie-harima/sp26s-00380/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/sp26s-00380_s1.jpg' },
+        { name: '柿安 極松阪牛しぐれ煮 A5ランク使用', url: 'https://item.rakuten.co.jp/bellevie-harima/kakiyasu-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/kakiyasu/kakiyasu-001_s1.jpg' },
+        { name: '藤光海風堂 白宝詰合せ かまぼこ・ちくわ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-088/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food2/fjmhh30_s1a.jpg' },
+        { name: 'プレミアムカタログギフトTHE GOLD', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-gold-002-set/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/point20/cat-gold-002-set_s1.jpg' }
+      ],
+      '家族みんなでたのしんでほしい': [
+        { name: '銀座千疋屋 フルーツタルトアイス 10個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-040/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/sbygfti_s1a.jpg' },
+        { name: 'GODIVA ムースショコラ 10個入', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-015/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/godiva-015_s1.jpg' },
+        { name: 'ひととえ ピッコロドルチェ 15個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01463/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01463_s1all.jpg' },
+        { name: 'ひととえ 凍らせて食べるアイス 12個', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-ice002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/hitteic15_s1a.jpg' },
+        { name: 'のみくらべサイダー ギフトセット 9本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-720/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-720_s126.jpg' },
+        { name: 'ひととえ 凍らせて食べるフルーツ大福9個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01388/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01388_s1.jpg' },
+        { name: 'ドトール アイスコーヒー&ゼリー詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-059/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0702/sg_s1/food-059_s1.jpg' },
+        { name: '博多若杉 牛もつ鍋セット 3〜4人前', url: 'https://item.rakuten.co.jp/bellevie-harima/waka-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/wksg2_s1a.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: 'ユーハイム バウムクーヘン 12個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-931/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0507/gift2/food-931_s1.jpg' },
+        { name: '揖保乃糸 新物 特級 黒帯 18束', url: 'https://item.rakuten.co.jp/bellevie-harima/tabu_a30/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/ibonoito/st30.jpg' },
+        { name: 'カゴメ 野菜生活 国産プレミアム 14本', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/kagome-007_s1.jpg' },
+        { name: 'モロゾフ ファンシーデザート12個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-514/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/marutaka-514_s1all.jpg' },
+        { name: '平田牧場 金華豚・三元豚味噌漬けセット', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-338/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-338_s1.jpg' },
+        { name: 'カスターニャ パウンドケーキ詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-332/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-332_s1.jpg' },
+        { name: '鎌田醤油 だし醤油500ml 4本セット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-975/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food5/food-975_s1.jpg' },
+        { name: 'アマノフーズ 味噌汁ギフトセット 16食', url: 'https://item.rakuten.co.jp/bellevie-harima/amano-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food2/amano-002_s1.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: 'ごろごろ果実のリッチミルクアイス 7個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01479_s.jpg' },
+        { name: 'ブールミッシュ 焼き菓子セット 16個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-271-b/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/boul30_s1a.jpg' },
+        { name: '三喜屋珈琲 リキッドコーヒー詰合せ 3本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01471/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01471_s1.jpg' },
+        { name: 'モロゾフ 凍らせてシャーベット 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_233/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka_233_sb.jpg' },
+        { name: 'リーガロイヤルホテル 焼き菓子 20個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5327/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/rihga_hotel/ad-sweets-5327_s1.jpg' },
+        { name: 'DEAN＆DELUCA ゼリー 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01434/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01434_s1.jpg' },
+        { name: '松本秋義 まっくろ煮豚×まっしろ煮豚', url: 'https://item.rakuten.co.jp/bellevie-harima/tomo-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/akiyoshi/akiyoshi1_s1a.jpg' },
+        { name: '栗久 曲げわっぱ 徳利・ぐいのみセット', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-106/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/others2/kkmw3_s1.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: 'スターバックス ドリップ アイスコーヒー', url: 'https://item.rakuten.co.jp/bellevie-harima/star-b-010/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/star-b-010_s1.jpg' },
+        { name: 'DEAN＆DELUCA コーヒー&ゼリー', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01435/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01435_s1a.jpg' },
+        { name: '榮太樓總本鋪 あんみつ 4個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-090/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/gift2/food-090_s1.jpg' },
+        { name: '京都センチュリーホテル アイス 7個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-031/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/sha-031_s1.jpg' },
+        { name: '山陽盃酒造 大吟醸 播州一献【清酒】', url: 'https://item.rakuten.co.jp/bellevie-harima/sanyo_003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/bansyu_ikkon/bansyu_tobin_s1.jpg' },
+        { name: '銀座菊廼舎 冨貴寄 和風クッキー＆干菓子', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-442/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-442_s1.jpg' },
+        { name: '社長のいか塩辛 極 200g×2個', url: 'https://item.rakuten.co.jp/bellevie-harima/fuji-017/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/shiokara_s1a.jpg' },
+        { name: '栗原はるみ ゆとりのキッチン調味料 6本', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_230/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/yutori/yutori6_s1a.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: 'メイユール 今治フェイスタオル 2枚', url: 'https://item.rakuten.co.jp/bellevie-harima/meilleur-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/meilleur/mei_ba22_s1a.jpg' },
+        { name: '河内駿河屋 京鶴ようかん 3種 4本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-138/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/food-138_s1.jpg' },
+        { name: '銀座花のれん 醤油揚げせんべい 20枚', url: 'https://item.rakuten.co.jp/bellevie-harima/ginza-hana-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/gh_ags25_s1a.jpg' },
+        { name: 'ひととえ 贅沢フルーツの水ようかん 9個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01226/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-01226_s1.jpg' },
+        { name: 'グルメカタログギフト 彩璃 千鳥文コース', url: 'https://item.rakuten.co.jp/bellevie-harima/10000178/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/irori/irori48_s1a.jpg' },
+        { name: '京寿楽庵 涼の雫 ゼリー詰合せ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/kjra-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/kjraj20_s1a.jpg' },
+        { name: '日本ハム 本格派 選べるハムギフト', url: 'https://item.rakuten.co.jp/bellevie-harima/nipponham-046/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/nihonham/26s/nh32_nh342_sa.jpg' }
+      ]
+    },
+    '上司・目上の方': {
+      '絶対に失敗したくない': [
+        { name: 'アンリ フィナンシェ&マドレーヌ16個', url: 'https://item.rakuten.co.jp/bellevie-harima/suzette-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/henri/henri1000_s1a.jpg' },
+        { name: 'GODIVA ゴディバアイス 10個入', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-013/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/godivacitcp_s1a.jpg' },
+        { name: 'AGFちょっと贅沢なアイスコーヒー 3本', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-421/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01261060032m02.jpg' },
+        { name: '丸福珈琲店 アイスコーヒー 4本セット', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5179/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/marfice4_s1a.jpg' },
+        { name: '涼の雫 ゼリー詰め合わせ 9個入', url: 'https://item.rakuten.co.jp/bellevie-harima/kjra-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/kjraj30_s1a.jpg' },
+        { name: 'code℃ バスタオル＆フェイスタオル', url: 'https://item.rakuten.co.jp/bellevie-harima/code-00003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/codec/cpt50_s1.jpg' },
+        { name: 'カタログギフト 和牛苑 光コース', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-wag-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/wagyuen/cat-wag-002_s1.jpg' },
+        { name: 'カーム 厳選こだわり調味料 7点セット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-502/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/food-502_s1.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: '高島屋 国産ストレート果汁100％ 4本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01118/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-01118_s1.jpg' },
+        { name: 'ホシフルーツ フローズンフルーツジュレ8個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5331/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/ad-sweets-5331_s1.jpg' },
+        { name: '小布施堂 栗鹿ノ子ミニ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-443/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-443_s1.jpg' },
+        { name: '銀座千疋屋 マンゴードリンク 2本入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_5101/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/sby_drinkm_s1a.jpg' },
+        { name: 'まいにちのこめ油 国産 900g 5本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01407/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/food-01407_s1.jpg' },
+        { name: '赤城屋 上州和牛ローストビーフ 450g', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-357/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-357_s1.jpg' },
+        { name: 'たかはたファームジャム&ドレッシング6種', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-068/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/tf5_s1a.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: '揖保乃糸 金胡麻 13束', url: 'https://item.rakuten.co.jp/bellevie-harima/takata-kg-30/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/ibonoito/kingoma13_s1a.jpg' },
+        { name: 'ガレーチョコレートアイスパルフェ 6個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5254/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/galcip_s1a.jpg' },
+        { name: '紀州梅 夢葵 彩の舞 16粒', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_178/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/umeboshi/iro16_s1a.jpg' },
+        { name: '菓匠八 涼夏のしずく詰合せ 14個', url: 'https://item.rakuten.co.jp/bellevie-harima/sp23s-00270/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0702/sg_s1/sp23s-00270_s1.jpg' },
+        { name: 'グラモウディーズマカロン 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/hattrick-007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/alacam/macaron_s1a.jpg' },
+        { name: '辻が花 お茶漬最中&お吸い物 9食入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-038/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/point5/kt_csm80_s10801b.jpg' },
+        { name: 'ジェームズマーティン ギフトセットC', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-802/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/jamesmartin/goods-802_s1.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: '銀座千疋屋 銀座フルーツ大福 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-038/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/sbygfdf_s1a.jpg' },
+        { name: '帝国ホテル スープ缶詰合せ 5缶', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-107/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/teikoku_hotel/ths6_s1a.jpg' },
+        { name: '四万十ドラマ 焼きモンブラン 12個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-447/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-447_s1.jpg' },
+        { name: 'GODIVA ムースショコラ 13個入', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-016/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/godiva-016_s1.jpg' },
+        { name: '宇佐もん工房 海鮮丼の素 詰合せ 8食入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-344/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-344_s1.jpg' },
+        { name: '銀座千疋屋 ゼリー詰合せC 16個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0160/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/ginzazeri_s1a_703.jpg' },
+        { name: 'code℃ カタログギフト&焼き菓子', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-sweets-set-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/codec/catsweets-002_s1.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: 'カスターニャ パウンドケーキ詰合せ 2種', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-332/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-332_s1.jpg' },
+        { name: 'なだ万カステラとプリンセット', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5110/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/nadaman/nadaswe_sc_s1a.jpg' },
+        { name: 'グルメカタログギフト おとなの週末', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-shumatsu-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/shumatsu_s1.jpg' },
+        { name: '本高砂屋 エコルセ 72枚入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-273-b/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/ekrs20_s1a.jpg' },
+        { name: 'ひととえ 3層デザートジュレパフェ12個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-077/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/hjp15_s1a.jpg' }
+      ]
+    },
+    '会社・取引先': {
+      '絶対に失敗したくない': [
+        { name: 'シュガーバターサンドの木 24個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01235/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01235_s1.jpg' },
+        { name: '京都センチュリーホテルアイス 18個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-032/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/sha-032_s1.jpg' },
+        { name: 'ウェルチ 100％果汁ギフト 22本入', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_011/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/calpis/welchs1_07s.jpg' },
+        { name: 'ひととえ スイーツファクトリー 28個入', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-3000/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/sf28_s1a.jpg' },
+        { name: '法善寺あられ 海鮮あられミックス 1缶', url: 'https://item.rakuten.co.jp/bellevie-harima/food-734/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food3/food-734_s1.jpg' },
+        { name: '森の庭 焦がしキャラメルバーム 18個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5293/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/mrnn20_s1.jpg' },
+        { name: 'ユーハイム フルーツゼリー 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-506/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-506_s1all.jpg' },
+        { name: '井桁堂 ダックワーズセット 24個入', url: 'https://item.rakuten.co.jp/bellevie-harima/igtd-012/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/igtda24_s1a.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: '丸福珈琲店 ドリップコーヒー 30パック', url: 'https://item.rakuten.co.jp/bellevie-harima/food-996/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-996_s1.jpg' },
+        { name: '鹿鳴館 果実生まれの恵みのしずく 66個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-805/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/food-805_s1.jpg' },
+        { name: '帝国ホテル スープ・カレー缶詰 12食入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-110/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/teikoku_hotel/ths15_s1a.jpg' },
+        { name: 'カゴメ 野菜生活 国産プレミアム 22本', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/kagome-007_s1.jpg' },
+        { name: '草加葵の倉 海千楽 海鮮おかき 28個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-476/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-476_s1.jpg' },
+        { name: '京料理六盛 国産うなとろセット 3人前', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01213/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/gift2/food-01213_s1.jpg' },
+        { name: '飛騨高山ファクトリー ドレッシング 7本', url: 'https://item.rakuten.co.jp/bellevie-harima/hidatakayama_0005/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/sukoyakad7_s1a.jpg' },
+        { name: 'カゴメ 小容量 野菜飲料ギフト 27本入', url: 'https://item.rakuten.co.jp/bellevie-harima/kagome-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01251056067m02.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: '凍らせて食べるフルーツソルベ 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-418/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01251044026m02.jpg' },
+        { name: 'サダハル・アオキ 焼き菓子詰合せ320g', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-309/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/marutaka-309_s1.jpg' },
+        { name: '三喜屋珈琲 アイスコーヒー詰合せ 3本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01472/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01472_s1.jpg' },
+        { name: 'ピエール・エルメ マカロン 15個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5400/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/ad-sweets-5400_s1.jpg' },
+        { name: '辻利兵衛本店 抹茶キューブケーキ 9個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5122/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/tuji_cube270_s1a.jpg' },
+        { name: '銀座鈴屋謹製 フィナンシェ 21個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-402/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/sha-402_s1.jpg' },
+        { name: 'GODIVA ラングドシャ 30枚入', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/gdv_ca8_s1a.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: '銀座千疋屋 3種のガトー詰合せ 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01437/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01437_s1.jpg' },
+        { name: 'GODIVA カップアイス 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-012/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/godivaci6cp_s1a.jpg' },
+        { name: '高島屋 国産ストレート果汁100% 3本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01117/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-01117_s1.jpg' },
+        { name: 'メリーチョコレート カカオサブレ 42枚', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-424/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-424_s1.jpg' },
+        { name: '銀座千疋屋 フルーツチーズケーキ 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-906/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/food-906_s1.jpg' },
+        { name: 'モロゾフ サマーロイヤルタイム 14個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-277/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/marutaka-277_s1.jpg' },
+        { name: 'マカロン・エ・ショコラ マカロンボーロ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-475/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/mec_mb_l_s1.jpg' },
+        { name: 'ヨックモック 焼き菓子4種 52個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01116/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-01116_s1_ss.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: 'ひととえ ピッコロドルチェ 20個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01463/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01463_s1all.jpg' },
+        { name: 'ひととえ 黒わらび餅 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-081/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/nt_kwm12_s1a.jpg' },
+        { name: 'カルビー かっぱえびせん匠海 2種33枚', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5286/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/calkapa50_s1.jpg' },
+        { name: '井桁堂 和フィナンシェ 18個入', url: 'https://item.rakuten.co.jp/bellevie-harima/igtd-008/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/igtwf20_s1a.jpg' },
+        { name: 'プリマハム 匠伝説 贅沢ハムセット', url: 'https://item.rakuten.co.jp/bellevie-harima/prima_007/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/prima/26s/tl870_s.jpg' },
+        { name: 'アーモンドキャロット ミニタルト18個入', url: 'https://item.rakuten.co.jp/bellevie-harima/almond-carrot-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/almondcarrot/almondcarrot18_s1a.jpg' },
+        { name: 'えくぼ屋 姫てまり 煎餅詰合せ 40枚', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01049/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-01049_s1.jpg' },
+        { name: '中山製菓 ガトーセック詰合せ 18個', url: 'https://item.rakuten.co.jp/bellevie-harima/naka-004/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/nkymsk/nysgs20_s1a.jpg' }
+      ]
+    },
+    '子育て世代': {
+      '絶対に失敗したくない': [
+        { name: '銀座千疋屋 ミルフィーユアイス 9個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-035/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/sbygmfi_s1a.jpg' },
+        { name: 'C3 シーキューブ ベリーウィッチ10個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01062/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-01062_s1.jpg' },
+        { name: 'ひととえ 3層デザートジュレパフェ 8個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-076/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/hjp9_s1a.jpg' },
+        { name: '春摘み苺アイス 練乳入り 20個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5136/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/ad-sweets-5136_s1.jpg' },
+        { name: '三喜屋珈琲 コーヒーゼリー詰合せ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01473/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01473_s1.jpg' },
+        { name: 'ごろごろ果実のリッチミルクアイス 7個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01479/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01479_yoyaku.jpg' },
+        { name: '三國清三 北海道クレームブリュレ 5個入', url: 'https://item.rakuten.co.jp/bellevie-harima/fuji_001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/creme_brulee/fuji_001_s1.jpg' },
+        { name: '米沢牛入り濃旨デミハンバーグ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-339/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-339_s1.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: 'ふみこ農園プレミアムフルーツジュース6本', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-004/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/pfj6_s1a.jpg' },
+        { name: 'スープストックトーキョー 8種 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-419/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-419_s1.jpg' },
+        { name: '三和油脂 まいにちのこめ油 4本詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01407/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/food-01407_s1.jpg' },
+        { name: 'カーム 飛騨丼5種 5点詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-516/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/food-516_s1.jpg' },
+        { name: 'マイハニー ナッツの蜂蜜漬け＆アカシア蜂蜜', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-254/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/myhoney_mini_s1a.jpg' },
+        { name: 'カーム クッキングオイル 4種 4本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-511/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/food-511_s1.jpg' },
+        { name: 'すこやかカルピスギフト190g×22本', url: 'https://item.rakuten.co.jp/bellevie-harima/calpis_003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01251058051m01.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: 'アフタヌーンティー アイス＆シャーベット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-799/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/food-799_s1.jpg' },
+        { name: 'カスターニャ 和のチーズケーキ 6種入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-810/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-810_s1.jpg' },
+        { name: 'フィナンシェ10個&ウェッジウッド12袋', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5193/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/wedgf22_s1a.jpg' },
+        { name: '神戸・串乃家 串揚げ 10種 20本入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-343/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-343_s1.jpg' },
+        { name: '銀座千疋屋 銀座ストレートジュース5本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-487/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/food-487_s1a.jpg' },
+        { name: 'カタログギフト うましま 月コース', url: 'https://item.rakuten.co.jp/bellevie-harima/10003889/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/umashima/umsm30_s1.jpg' },
+        { name: 'スターバックスコーヒー＆パウンドケーキ', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/starbucks/sbpc4re2_s1b.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: 'コールドストーン アイスキャンディ10本', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-310/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/mmsb-00722_s1.jpg' },
+        { name: 'ホシフルーツ 果実のパウンドケーキ11個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5300/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/hf_pa12_s1.jpg' },
+        { name: 'ひととえ 贅沢フルーツの水ようかん6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01225/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-01225_s1.jpg' },
+        { name: '銀座千疋屋 銀座プレミアムアイス10個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0153/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-041_s1b.jpg' },
+        { name: 'クマンシェ フィナンシェ 3種 9個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5504/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/ad-sweets-5504_s1all.jpg' },
+        { name: '銀座千疋屋 ゼリー詰合せA 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad_sweets_0160/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0000/sby5bai/ginzazeri_s1a_703.jpg' },
+        { name: '北海道産 花咲蟹ごはん 100g×5', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-524/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-524_s1.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: '博多あまおう たっぷり苺のアイス 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_237/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/amaouice_s1a.jpg' },
+        { name: 'ザ・スウィーツキャラメルバターパイ22枚', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-301/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/sha-301_s1.jpg' },
+        { name: '氷美果 凍らせて食べるゼリー 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-423/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-423_s1.jpg' },
+        { name: '北海道フルーツアイスバラエティ 7個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-062/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/food-062_s1.jpg' },
+        { name: '大阪 難波 蓬莱本館 豚まん 12個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-238/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/horai_s1a.jpg' },
+        { name: '凍らせて食べるフルーツソルベ 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-358/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/sha-358_s1.jpg' },
+        { name: 'サクラ クレパスタオルセット 3種5枚入', url: 'https://item.rakuten.co.jp/bellevie-harima/iwamoto_sakura_005/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/craypas/2017/cptowel1725_s1a.jpg' },
+        { name: 'ひととえ 凍らせて食べるアイス 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-ice001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/hitteic9_s1a.jpg' }
+      ]
+    },
+    'お友達': {
+      '絶対に失敗したくない': [
+        { name: 'モロゾフ 凍らせてシャーベット 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_233/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka_233_sb.jpg' },
+        { name: 'ホシフルーツ 芳果フィナンシェ 10個入', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5489/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/ad-sweets-5489_s1.jpg' },
+        { name: 'スタバコーヒー＆パウンドケーキ2本', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/starbucks/sbpc3re2_s1b.jpg' },
+        { name: 'DEAN＆DELUCA アイス 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01271/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01271_s1.jpg' },
+        { name: '中山製菓 ベイクドクッキー 18個入', url: 'https://item.rakuten.co.jp/bellevie-harima/naka-008/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/nkymsk/nysrc24_s1a.jpg' },
+        { name: 'AGF ちょっと贅沢なアイスコーヒー6本', url: 'https://item.rakuten.co.jp/bellevie-harima/sp26s-00356/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/summer/products/01261060016m01.jpg' },
+        { name: '法善寺あられ 月の種ギフト 10袋入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-460/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food3/hzj_tnt_b_s1.jpg' },
+        { name: 'カタログギフト すいーともぐもぐ チャイ', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweet_m3000/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/mogumogu/ad-sweet_m3000_s1.jpg' }
+      ],
+      '家族みんなでたのしんでほしい': [
+        { name: 'ひととえ 凍らせて食べるアイス 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/danke-ice003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/hitteic6_s1a.jpg' },
+        { name: 'はらぺこあおむし 揚げせんべい＆おかき', url: 'https://item.rakuten.co.jp/bellevie-harima/aomushi-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/aomushi-003_s1.jpg' },
+        { name: 'カスターニャ カタラーナ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-820/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-820_s1.jpg' },
+        { name: 'プチアイスアソート 7種 51個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01442/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01442_s1.jpg' },
+        { name: '北海道冷やしぜんざい 3種 6個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-819/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/food-819_s1.jpg' },
+        { name: '凍らせて食べるフルーツソルベ 6個入', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-417/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/sha-417_s1.jpg' },
+        { name: 'ひととえ 3層デザートジュレパフェ 6個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-075/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/hjp6_s1a.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: 'イニックコーヒー Bottle set 2本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-022/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/inicbtl_s1a.jpg' },
+        { name: '果実工房 フルーツコラーゲンゼリー 36本入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-413/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/marutaka-413_s1.jpg' },
+        { name: '小島屋 OTONUTS おとナッツ 3種類セット', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/otonuts3_s1a.jpg' },
+        { name: 'ニナス ロイヤルBOXギフトセット 2缶', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01055/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/food-01055_s1.jpg' },
+        { name: '大徳醤油 醤油しぼりセット', url: 'https://item.rakuten.co.jp/bellevie-harima/daitoku-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food/dts_sbr_s1a.jpg' },
+        { name: 'DEAN & DELUCA フルーツジュース 6本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01274/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/fd_s1/s1/food-01274_s1.jpg' },
+        { name: 'オランジー ハンドソープとタオルセット', url: 'https://item.rakuten.co.jp/bellevie-harima/tkd-org-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/towel/tkd-org-001_s1.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: 'のみくらべサイダー ギフトセット 7本', url: 'https://item.rakuten.co.jp/bellevie-harima/food-719/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-719_s126.jpg' },
+        { name: 'ノースファームストック ギフトセレクション', url: 'https://item.rakuten.co.jp/bellevie-harima/northfarm_0004/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/northfarm/nfsbd04_s1a.jpg' },
+        { name: 'スープストックトーキョー カレー6個詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-418/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-418_s1.jpg' },
+        { name: 'フルッテート 凍らせて食べるアイス 20個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-029/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets2/frut_s1.jpg' },
+        { name: 'DEAN & DELUCA アイスコーヒー 3本ギフト', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01273/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-01273_s1.jpg' },
+        { name: 'ライスフィールド ベイクドアンドフライド', url: 'https://item.rakuten.co.jp/bellevie-harima/kjra-006-b/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/ricef10_s1a.jpg' },
+        { name: 'カタログギフト やさしいごちそう', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-yasagochi_5000/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/yasashigochisou/ad-yasagochi_5000_s1.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: 'ゴディバ チョコレートロールケーキ', url: 'https://item.rakuten.co.jp/bellevie-harima/godiva-056/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/godiva-056_s1.jpg' },
+        { name: 'ヨックモック ドゥーブルジュレ 5個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-509/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-509_s1.jpg' },
+        { name: '帝国ホテル 温冷スープセット TR-30', url: 'https://item.rakuten.co.jp/bellevie-harima/sha-114/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/teikoku_hotel/thors6_s1a.jpg' },
+        { name: 'モロゾフ ファヤージュ 20枚', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_144/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets4/marutaka_144_s1a.jpg' },
+        { name: 'ユーハイム 2層仕立てのフルーツゼリー 6個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-506/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-506_s1all.jpg' },
+        { name: 'DEAN & DELUCA アメリカンクッキー缶', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01275/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01275_s1.jpg' },
+        { name: 'カタログギフト ジルスチュアート COコース', url: 'https://item.rakuten.co.jp/bellevie-harima/cat-jill-003/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/jill/jill38_s1a.jpg' },
+        { name: 'dancyu カタログギフト CAコース', url: 'https://item.rakuten.co.jp/bellevie-harima/dancyu_001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/catalog001/dancyu/dancyuca_s1.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: 'ブールミッシュ ミニトリュフケーキ 9個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-403/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/marutaka-403.jpg' },
+        { name: 'ひととえ 凍らせて食べるフルーツ大福6個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01388/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01388_s1.jpg' },
+        { name: 'フロッシュ 洗剤ギフト詰合せ', url: 'https://item.rakuten.co.jp/bellevie-harima/frosch_002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/frosh/frs20_s1a.jpg' },
+        { name: 'メリーチョコレート フルーツゼリー 8個', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-504/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-504_s1all.jpg' },
+        { name: 'リーガロイヤルホテル キャラメルパイ10本', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5323/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/rihga_hotel/ad-sweets-5323_s1.jpg' },
+        { name: 'ユーハイム テーゲベック クッキー缶', url: 'https://item.rakuten.co.jp/bellevie-harima/food-924/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/food-924_s1.jpg' },
+        { name: 'Milk ミルキーダックワーズ 10個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01373/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01373_s1.jpg' }
+      ]
+    },
+    '一人暮らしの方': {
+      '絶対に失敗したくない': [
+        { name: 'ひかりがさね ふんわりバームの詰合せ10個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5424/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/ad-sweets-5424_s1.jpg' },
+        { name: 'スタバ 濃縮アイスコーヒークラフトギフト', url: 'https://item.rakuten.co.jp/bellevie-harima/star-b-020/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/starbucks/star-b-020_s1.jpg' },
+        { name: '京寿楽庵 涼の雫 3個', url: 'https://item.rakuten.co.jp/bellevie-harima/kjra-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets/kjraj10_s1a.jpg' },
+        { name: '銀座千疋屋 銀座フルーツクーヘン 8個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-145/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/point3/sbky_fk8_s1.jpg' },
+        { name: '吉野家の３種丼セット', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_155/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/yoshinoya/yoshinoya_s1a.jpg' },
+        { name: 'CALM カーム パスタセット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-505/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/food-505_s1.jpg' },
+        { name: 'リストランテマッサ監修 ナポリ風ピッツア', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-429/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/marutaka-429_s1sub.jpg' }
+      ],
+      '健康を気遣いたい': [
+        { name: 'イニックコーヒー ビーンズアロマ 18本入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-733/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/drink/food-733_s1.jpg' },
+        { name: '京都モリタ屋 京丹波高原豚 しゃぶしゃぶ用', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-337/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/marutaka-337_s1.jpg' },
+        { name: '果実工房 フルーツコラーゲンゼリー 15本', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-406/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/marutaka-406_s1.jpg' },
+        { name: '鎌田醤油 だし醤油 3本 ギフトセット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-971/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food5/food-971_s1.jpg' },
+        { name: '博多華味鳥 水たき料亭のカレーセット', url: 'https://item.rakuten.co.jp/bellevie-harima/food-159/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/0702/sg_s1/food-159_s1.jpg' },
+        { name: 'アマノフーズ 味噌汁ギフトセット 8食入', url: 'https://item.rakuten.co.jp/bellevie-harima/amano-002/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food2/amano-002_s1.jpg' },
+        { name: '坂井宏行監修 デミグラスソースハンバーグ', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-428/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/marutaka-428_s1sub.jpg' }
+      ],
+      'センスが良いと思われたい': [
+        { name: 'つるとんたん かけのおうどん 3人前', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01206/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/food-01206_s1.jpg' },
+        { name: 'メリーチョコレート 国産果実の果樹園倶楽部', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-504/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/marutaka-504_s1all.jpg' },
+        { name: 'ドゥパリ 濃厚チーズケーキ フレフレボン!', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01263/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01263_s1.jpg' },
+        { name: 'PAUL&JOE ティッシュポーチ&ハンカチセット', url: 'https://item.rakuten.co.jp/bellevie-harima/goods-992/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/others2/goods-992_s1.jpg' },
+        { name: 'KAMAKURA お抹茶ショコラサンド 茶の福 8個', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01469/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01469_s1.jpg' },
+        { name: '横浜ハイカラ 缶スイーツセット 4個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-998/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-998_s1.jpg' },
+        { name: 'Davids 歯磨き粉とフェイスタオルセット', url: 'https://item.rakuten.co.jp/bellevie-harima/tkd-davids-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/towel/tkd-davids-001_s1.jpg' }
+      ],
+      '特別感を届けたい': [
+        { name: 'ミルフイユ＆ウェッジウッドティーバッグ', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5422/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/ad-sweets-5422_s1.jpg' },
+        { name: '7種のフルーツ デザートパウンドケーキ 6個', url: 'https://item.rakuten.co.jp/bellevie-harima/ad-sweets-5408/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/ad-sweets-5408_s1.jpg' },
+        { name: 'ビールとかわすいうなぎの家飲みセット', url: 'https://item.rakuten.co.jp/bellevie-harima/thegift-017/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/thegift-017_s1all.jpg' },
+        { name: 'エスプリ･アンテノール 27個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01039/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/kosei/food-01039_s1_t.jpg' },
+        { name: '三國シェフ監修 スープギフトセット 4個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01194/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food4/food-01194_s1.jpg' },
+        { name: 'ホテルオークラ ドゥーブルフロマージュ', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01025/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets3/food-01025_s1.jpg' },
+        { name: '田島硝子 富士山ロックグラス', url: 'https://item.rakuten.co.jp/bellevie-harima/fujiyama-001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/fujiglass/fujiglass1_s1a.jpg' }
+      ],
+      '気を遣わせずに贈りたい': [
+        { name: 'ひととえ ピッコロドルチェ 9個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01463/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets7/food-01463_s1all.jpg' },
+        { name: '北海道三都市ラーメン 6食入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-503/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/food6/marutaka-503_s1.jpg' },
+        { name: 'スターバックスコーヒー＆パウンドケーキ', url: 'https://item.rakuten.co.jp/bellevie-harima/pound_cake_001/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/product/starbucks/sbpc2re2_s1b.jpg' },
+        { name: 'クアトロえびチーズ バラエティー 16枚入', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka_194/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/shimahide/quattro16_s1a.jpg' },
+        { name: 'ひととえ こがね芋 15個入', url: 'https://item.rakuten.co.jp/bellevie-harima/food-01312/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets6/food-01312_s1.jpg' },
+        { name: '飛騨高山ファクトリー すこやかドレッシング', url: 'https://item.rakuten.co.jp/bellevie-harima/hidatakayama_0001-b/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/seasoning/sukoyakad3_s1a2.jpg' },
+        { name: 'やまや 博多あげせん 10枚', url: 'https://item.rakuten.co.jp/bellevie-harima/marutaka-402/', img: 'https://image.rakuten.co.jp/bellevie-harima/cabinet/food/sweets5/marutaka-402_s1.jpg' }
+      ]
+    }
+  };
+
   var dpCategoryData = {
     '定番安心ギフト': {
       desc: 'きちんと感があり、失礼なく贈れるお中元をお探しの方へ。上司や取引先、お世話になった方にも選びやすい、間違いのない定番ギフトをご提案します。',
@@ -1348,15 +1681,16 @@
     }
   };
 
-  function dpGetCategory(q1, q2) {
-    var formal = ['上司・目上の方','会社・取引先','お世話になった方'];
-    if (q2 === '絶対に失敗したくない') return '定番安心ギフト';
-    if (q2 === '家族みんなで楽しんでほしい') return '家族で楽しむギフト';
-    if (q2 === '健康を気遣いたい') return '健康を気遣うギフト';
-    if (q2 === 'センスが良いと思われたい') return 'センスで選ぶギフト';
-    if (q2 === '特別感を届けたい') return '特別感のあるご褒美ギフト';
-    if (q2 === '気を遣わせずに贈りたい') return '気軽に贈れるプチ中元';
-    return '定番安心ギフト';
+  function dpGetCategoryLabel(q2) {
+    var map = {
+      '絶対に失敗したくない':         '定番安心ギフト',
+      '家族みんなでたのしんでほしい': '家族で楽しむギフト',
+      '健康を気遣いたい':             '健康を気遣うギフト',
+      'センスが良いと思われたい':     'センスで選ぶギフト',
+      '特別感を届けたい':             '特別感のあるご褒美ギフト',
+      '気を遣わせずに贈りたい':       '気軽に贈れるプチ中元'
+    };
+    return map[q2] || q2;
   }
 
   function dpSetStep(n) {
@@ -1427,14 +1761,18 @@
     });
   }
 
-  var dpFamilyQ1 = ['両親・親戚','お友達','お世話になった方'];
-
-  function dpFilterQ2() {
-    var show = dpFamilyQ1.indexOf(dpQ1) !== -1;
-    document.querySelectorAll('#dp-q2 .dp-card').forEach(function(c) {
-      if (c.getAttribute('onclick') && c.getAttribute('onclick').indexOf('家族みんなで楽しんでほしい') !== -1) {
-        c.style.display = show ? '' : 'none';
-      }
+  function dpRenderQ2() {
+    var container = document.getElementById('dp-q2-cards');
+    container.innerHTML = '';
+    var opts = dpQ2Options[dpQ1] || [];
+    opts.forEach(function(label) {
+      var icon = dpQ2Icons[label] || 'star';
+      var card = document.createElement('div');
+      card.className = 'dp-card';
+      card.setAttribute('onclick', 'dpSel(this,\'q2\',\'' + label + '\')');
+      card.innerHTML = '<span class="material-symbols-outlined dp-card-icon">' + icon + '</span>'
+        + '<div class="dp-card-lbl">' + label + '</div>';
+      container.appendChild(card);
     });
   }
 
@@ -1443,7 +1781,7 @@
     el.classList.add('sel');
     if (q === 'q1') {
       dpQ1 = val;
-      dpRipple(el, '#41DFE1', function() { dpFilterQ2(); dpSetStep(2); });
+      dpRipple(el, '#41DFE1', function() { dpRenderQ2(); dpSetStep(2); });
     } else {
       dpQ2 = val;
       dpRipple(el, '#E14441', function() { dpShowResult(); });
@@ -1460,20 +1798,20 @@
   }
 
   function dpShowResult() {
-    var cat = dpGetCategory(dpQ1, dpQ2);
-    var data = dpCategoryData[cat];
+    var cat = dpGetCategoryLabel(dpQ2);
+    var prods = (dpProductData[dpQ1] && dpProductData[dpQ1][dpQ2]) ? dpProductData[dpQ1][dpQ2] : [];
     document.getElementById('dp-result-for').textContent = dpQ1 + ' ｜ ' + dpQ2;
     document.getElementById('dp-result-ttl').textContent = cat;
-    document.getElementById('dp-comment-text').textContent = data.comment;
-    var order = data.orderByQ1 && data.orderByQ1[dpQ1];
-    dpProdList  = order ? order.map(function(i){ return data.products[i]; }) : data.products.slice();
+    var comment = dpCategoryComments[cat] || '';
+    document.getElementById('dp-comment-text').textContent = comment;
+    dpProdList  = prods.slice();
     dpProdIndex = 0;
-    var p = dpProdList[0];
+    var p = dpProdList[0] || { url: '#', img: '', name: '' };
     var single = document.getElementById('dp-prod-single');
     single.style.display = 'none';
     single.innerHTML = '<a class="dp-prod-single-card" href="'+p.url+'" target="_blank">'
       + '<div class="dp-prod-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy"></div>'
-      + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div><div class="dp-prod-price">'+p.price+'</div></div>'
+      + '<div class="dp-prod-body"><div class="dp-prod-name">'+p.name+'</div></div>'
       + '</a>';
     document.getElementById('dp-btn-buy').href = p.url;
     dpRenderAlso(0);
