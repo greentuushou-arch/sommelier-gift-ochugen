@@ -890,7 +890,7 @@
     .dp-q-ttl { font-size: 37px; font-weight: 700; color: #494949; text-align: center; margin-bottom: 8px; }
     .dp-q-sub { font-size: 18px; color: #494949; text-align: center; margin-bottom: 28px; }
     .dp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 680px; margin: 0 auto; }
-    .dp-card { background: #19A1A3; border: 2px solid transparent; border-radius: 14px; padding: 24px 14px 20px; text-align: center; cursor: pointer; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .dp-card { background: #19A1A3; border: 2px solid transparent; border-radius: 14px; padding: 24px 14px 20px; text-align: center; cursor: pointer; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; box-shadow: 0 2px 8px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .dp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
     .dp-card.sel { border-color: #fff; background: #fff; transform: scale(1.06); box-shadow: 0 10px 32px rgba(0,0,0,0.18); }
     .dp-card .material-symbols-rounded { font-size: 38px; color: #fff; display: block; margin-bottom: 10px; }
@@ -973,7 +973,10 @@
       .dp-hero-ttl { font-size: 30px; text-align: center; }
       .dp-q-ttl { font-size: 28px; }
       .dp-result-ttl { font-size: 22px; }
-      .dp-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .dp-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; grid-auto-rows: 1fr; }
+      .dp-card { padding: 18px 10px 16px; }
+      .dp-card-lbl { font-size: 13px; }
+      .dp-card .material-symbols-rounded { font-size: 32px; margin-bottom: 8px; }
       .dp-step-inner { padding: 24px 16px 36px; }
       .dp-prod-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .dp-result-products { padding: 20px 16px; }
@@ -1770,7 +1773,7 @@
       var card = document.createElement('div');
       card.className = 'dp-card';
       card.setAttribute('onclick', 'dpSel(this,\'q2\',\'' + label + '\')');
-      card.innerHTML = '<span class="material-symbols-outlined dp-card-icon">' + icon + '</span>'
+      card.innerHTML = '<span class="material-symbols-rounded dp-card-icon">' + icon + '</span>'
         + '<div class="dp-card-lbl">' + label + '</div>';
       container.appendChild(card);
     });
